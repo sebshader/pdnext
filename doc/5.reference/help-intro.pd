@@ -1,4 +1,8 @@
+<<<<<<< bd399d2c2571ed511d2357c132d506e8c61d65bd
 #N canvas 518 52 579 803 12;
+=======
+#N canvas 519 22 579 799 12;
+>>>>>>> add init/close bangs
 #X declare;
 #X obj 24 150 bang;
 #X text 124 150 - output a bang message;
@@ -52,6 +56,7 @@
 #X text 122 780 - measure real time;
 #X obj 22 804 pipe;
 #X text 122 804 - dynamically growable delay line for numbers;
+<<<<<<< bd399d2c2571ed511d2357c132d506e8c61d65bd
 #X text 212 885 - arithmetic;
 #X text 213 908 - relational tests;
 #X text 255 933 - bit twiddling;
@@ -283,11 +288,245 @@
 #X obj 26 2568 threshold~;
 #X text 126 2568 - detect signal thresholds;
 #X text 21 1970 ---------------------- AUDIO MATH -----------------------
+=======
+#X text 212 860 - arithmetic;
+#X text 213 883 - relational tests;
+#X text 255 908 - bit twiddling;
+#X obj 23 936 mtof;
+#X obj 23 958 ftom;
+#X obj 64 936 powtodb;
+#X obj 132 935 rmstodb;
+#X obj 64 957 dbtopow;
+#X obj 132 957 dbtorms;
+#X text 214 949 - convert acoustical units;
+#X obj 22 981 mod;
+#X obj 53 981 div;
+#X obj 84 981 sin;
+#X obj 115 981 cos;
+#X obj 146 981 tan;
+#X obj 22 1003 atan;
+#X obj 62 1003 atan2;
+#X obj 111 1003 sqrt;
+#X obj 151 1003 log;
+#X obj 182 1003 exp;
+#X obj 213 1003 abs;
+#X text 253 993 - higher math;
+#X obj 22 1025 random;
+#X text 122 1025 - lower math;
+#X obj 22 1048 max;
+#X obj 54 1048 min;
+#X text 122 1048 - greater or lesser of 2 numbers;
+#X obj 22 1071 clip;
+#X text 122 1071 - force a number into a range;
+#X obj 23 1142 notein;
+#X obj 82 1142 ctlin;
+#X obj 133 1142 pgmin;
+#X obj 183 1142 bendin;
+#X obj 242 1142 touchin;
+#X obj 310 1142 polytouchin;
+#X obj 24 1166 midiin;
+#X obj 85 1166 sysexin;
+#X text 412 1158 - MIDI input;
+#X obj 22 1198 noteout;
+#X obj 90 1198 ctlout;
+#X obj 150 1198 pgmout;
+#X obj 209 1198 bendout;
+#X obj 22 1220 touchout;
+#X obj 100 1220 polytouchout;
+#X obj 213 1220 midiout;
+#X text 321 1208 - MIDI output;
+#X obj 22 1251 makenote;
+#X obj 22 1275 stripnote;
+#X text 114 1277 - strip "note off" messages;
+#X obj 25 1369 tabread;
+#X text 125 1369 - read a number from a table;
+#X obj 25 1392 tabread4;
+#X text 125 1392 - read a number from a table;
+#X obj 25 1415 tabwrite;
+#X text 125 1415 - write a number to a table;
+#X obj 25 1439 soundfiler;
+#X text 125 1439 - read and write tables to soundfiles;
+#X obj 25 1575 loadbang;
+#X text 125 1575 - bang on load;
+#X obj 25 1636 netsend;
+#X text 125 1636 - send messages over the internet;
+#X obj 25 1659 netreceive;
+#X text 125 1659 - receive them;
+#X obj 25 1690 qlist;
+#X text 125 1690 - message sequencer;
+#X text 125 1714 - file to message converter;
+#X obj 25 1772 openpanel;
+#X text 125 1772 - "Open" dialog;
+#X obj 25 1795 savepanel;
+#X text 125 1795 - "Save as" dialog;
+#X obj 25 1832 bag;
+#X text 125 1832 - set of numbers;
+#X obj 25 1862 poly;
+#X text 125 1862 - polyphonic voice allocation;
+#X obj 25 1892 key;
+#X obj 59 1892 keyup;
+#X text 125 1892 - numeric key values from keyboard;
+#X obj 25 1915 keyname;
+#X text 125 1915 - symbolic key name;
+#X text 154 2004 - arithmetic on audio signals;
+#X text 126 2034 - maximum or minimum of 2 inputs;
+#X obj 26 2062 clip~;
+#X text 126 2062 - constrict signal to lie between two bounds;
+#X obj 26 2165 wrap~;
+#X obj 26 2193 fft~;
+#X text 126 2193 - complex forward discrete Fourier transform;
+#X obj 26 2215 ifft~;
+#X text 126 2215 - complex inverse discrete Fourier transform;
+#X obj 26 2245 rfft~;
+#X text 126 2245 - real forward discrete Fourier transform;
+#X obj 26 2267 rifft~;
+#X text 126 2267 - real inverse discrete Fourier transform;
+#X obj 26 2321 framp~;
+#X text 126 2321 - output a ramp for each block;
+#X obj 26 2351 mtof~;
+#X obj 77 2351 ftom~;
+#X obj 127 2351 rmstodb~;
+#X obj 205 2351 dbtorms~;
+#X text 284 2351 - acoustic conversions;
+#X obj 26 2409 dac~;
+#X text 126 2409 - audio output;
+#X obj 26 2433 adc~;
+#X text 126 2433 - audio input;
+#X obj 26 2457 sig~;
+#X text 126 2457 - convert numbers to audio signals;
+#X obj 26 2481 line~;
+#X text 126 2481 - generate audio ramps;
+#X obj 26 2505 vline~;
+#X text 126 2505 - deluxe line~;
+#X obj 26 2553 snapshot~;
+#X text 126 2553 - sample a signal (convert it back to a number);
+#X obj 26 2577 vsnapshot~;
+#X text 126 2577 - deluxe snapshot~;
+#X obj 26 2601 bang~;
+#X text 126 2601 - send a bang message after each DSP block;
+#X obj 26 2625 samplerate~;
+#X text 126 2625 - get the sample rate;
+#X obj 26 2649 send~;
+#X text 126 2649 - nonlocal signal connection with fanout;
+#X obj 26 2673 receive~;
+#X text 126 2673 - get signal from send~;
+#X obj 26 2697 throw~;
+#X text 126 2697 - add to a summing bus;
+#X obj 26 2721 catch~;
+#X text 126 2721 - define and read a summing bus;
+#X obj 26 2745 block~;
+#X text 126 2745 - specify block size and overlap;
+#X obj 26 2769 switch~;
+#X text 126 2769 - switch DSP computation on and off;
+#X obj 26 2793 readsf~;
+#X text 126 2793 - soundfile playback from disk;
+#X obj 26 2817 writesf~;
+#X text 126 2817 - record sound to disk;
+#X obj 23 2879 phasor~;
+#X text 123 2879 - sawtooth oscillator;
+#X obj 23 2903 cos~;
+#X text 123 2903 - cosine;
+#X obj 23 2927 osc~;
+#X text 123 2927 - cosine oscillator;
+#X obj 23 2951 tabwrite~;
+#X text 123 2951 - write to a table;
+#X obj 23 2975 tabplay~;
+#X text 123 2975 - play back from a table (non-transposing);
+#X obj 23 2999 tabread~;
+#X text 123 2999 - non-interpolating table read;
+#X obj 23 3023 tabread4~;
+#X text 123 3023 - four-point interpolating table read;
+#X obj 23 3047 tabosc4~;
+#X text 123 3047 - wavetable oscillator;
+#X obj 23 3071 tabsend~;
+#X text 123 3071 - write one block continuously to a table;
+#X obj 23 3095 tabreceive~;
+#X text 123 3095 - read one block continuously from a table;
+#X text 18 3130 -------------------- AUDIO FILTERS ------------------------
+;
+#X obj 24 3160 vcf~;
+#X text 124 3160 - voltage controlled filter;
+#X obj 24 3184 noise~;
+#X text 124 3184 - white noise generator;
+#X obj 24 3208 env~;
+#X text 124 3208 - envelope follower;
+#X obj 24 3232 hip~;
+#X text 124 3232 - high pass filter;
+#X obj 24 3256 lop~;
+#X text 124 3256 - low pass filter;
+#X obj 24 3280 bp~;
+#X text 124 3280 - band pass filter;
+#X obj 24 3304 biquad~;
+#X text 124 3304 - raw filter;
+#X obj 24 3328 samphold~;
+#X text 124 3328 - sample and hold unit;
+#X obj 24 3352 print~;
+#X text 124 3352 - print out one or more "blocks";
+#X obj 24 3376 rpole~;
+#X text 124 3376 - raw real-valued one-pole filter;
+#X obj 24 3400 rzero~;
+#X text 124 3400 - raw real-valued one-zero filter;
+#X obj 24 3424 rzero_rev~;
+#X text 127 3424 - time-reversed;
+#X obj 24 3448 cpole~;
+#X obj 83 3448 czero~;
+#X text 220 3448 - corresponding complex-valued filters;
+#X text 18 3486 -------------------- AUDIO DELAY ------------------------
+;
+#X obj 24 3510 delwrite~;
+#X text 124 3510 - write to a delay line;
+#X obj 24 3534 delread~;
+#X text 124 3534 - read from a delay line;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X restore 25 3608 pd;
+#X text 125 3608 - define a subwindow;
+#X obj 25 1463 table;
+#X obj 25 3632 inlet;
+#X text 125 3632 - add an inlet to a pd;
+#X obj 25 3656 outlet;
+#X text 125 3656 - add an outlet to a pd;
+#X obj 25 3680 inlet~;
+#X obj 85 3680 outlet~;
+#X obj 24 3759 struct;
+#X text 124 3759 - define a data structure;
+#X obj 24 3783 drawcurve;
+#X obj 112 3783 filledcurve;
+#X text 225 3783 - draw a curve;
+#X obj 24 3807 drawpolygon;
+#X obj 129 3807 filledpolygon;
+#X text 259 3807 - draw a polygon;
+#X obj 24 3831 plot;
+#X text 124 3831 - plot an array field;
+#X obj 24 3855 drawnumber;
+#X text 124 3855 - print a numeric value;
+#X obj 25 3919 pointer;
+#X text 125 3919 - point to an object belonging to a template;
+#X obj 25 3943 get;
+#X text 125 3943 - get numeric fields;
+#X obj 25 3967 set;
+#X text 125 3967 - change numeric fields;
+#X obj 25 3991 element;
+#X text 125 3991 - get an array element;
+#X obj 25 4015 getsize;
+#X text 125 4015 - get the size of an array;
+#X obj 25 4039 setsize;
+#X text 125 4039 - change the size of an array;
+#X obj 25 4063 append;
+#X text 125 4063 - add an element to a list;
+#X obj 25 4087 scalar;
+#X text 130 4432 (use tabwrite~ now);
+#X obj 30 4457 namecanvas;
+#X obj 142 3448 czero_rev~;
+#X obj 26 2529 threshold~;
+#X text 126 2529 - detect signal thresholds;
+#X text 21 1974 ---------------------- AUDIO MATH -----------------------
+>>>>>>> add init/close bangs
 ;
 #X text 18 1570 --------------------- MISC ----------------------;
 #X text 20 831 ------------------------- MATH -----------------;
 #X text 20 630 ------------------------- TIME --------------------------
 ;
+<<<<<<< bd399d2c2571ed511d2357c132d506e8c61d65bd
 #X text 17 3623 ------------------------ SUBWINDOWS ------------------------
 ;
 #X text 18 3768 ---------------------- DATA TEMPLATES ----------------------
@@ -331,11 +570,57 @@
 #X obj 113 2334 exp~;
 #X text 207 2336 - math;
 #X obj 159 2335 abs~;
+=======
+#X text 17 3584 ------------------------ SUBWINDOWS ------------------------
+;
+#X text 18 3729 ---------------------- DATA TEMPLATES ----------------------
+;
+#X text 18 3889 ---------------------- ACCESSING DATA ----------------------
+;
+#X text 17 2849 ------------ AUDIO OSCILLATORS AND TABLES -------------
+;
+#X obj 67 2034 min~;
+#X obj 26 2034 max~;
+#X obj 22 884 ==;
+#X obj 54 884 !=;
+#X obj 86 884 >;
+#X obj 118 884 <;
+#X obj 149 884 >=;
+#X obj 180 884 <=;
+#X text 26 4407 ------------------------ OBSOLETE --------------------------
+;
+#X obj 54 861 -;
+#X obj 87 861 *;
+#X obj 119 861 /;
+#X obj 152 861 pow;
+#X obj 22 861 +;
+#X obj 22 907 &;
+#X obj 54 907 &&;
+#X obj 86 907 |;
+#X obj 118 907 ||;
+#X obj 149 907 %;
+#X obj 26 2004 +~;
+#X obj 58 2004 -~;
+#X obj 89 2004 *~;
+#X obj 121 2004 /~;
+#X obj 25 1944 declare;
+#X text 125 1944 - set search path and/or load libraries;
+#X text 163 3681 - signal versions;
+#X obj 22 1094 wrap;
+#X text 121 1094 - wrap a number to range [0 \, 1);
+#X text 126 2163 - wraparound (fractional part);
+#X obj 25 2295 pow~;
+#X obj 69 2295 log~;
+#X obj 113 2295 exp~;
+#X text 207 2297 - math;
+#X obj 159 2296 abs~;
+>>>>>>> add init/close bangs
 #X text 24 120 --------------- GENERAL ----------------;
 #X obj 24 607 list;
 #X text 124 607 - manipulate lists;
 #X text 112 1286 - schedule delayed "note off" message for a note-on
 ;
+<<<<<<< bd399d2c2571ed511d2357c132d506e8c61d65bd
 #X obj 25 1537 array;
 #X text 127 1512 - create a named table;
 #X text 26 2417 ------------- GENERAL AUDIO MANIPULATION --------------
@@ -346,12 +631,25 @@
 ;
 #X text 125 4125 - create a single scalar;
 #X text 129 4474 (potentially dangerous but no substitute exists yet)
+=======
+#X obj 25 1487 array;
+#X text 127 1462 - create a named table;
+#X text 26 2378 ------------- GENERAL AUDIO MANIPULATION --------------
+;
+#X text 125 1738 - general text handling;
+#X text 128 1489 - general array creation and manipulation;
+#X text 17 1343 ----------------- ARRAYS/TABLES -------------------
+;
+#X text 125 4086 - create a single scalar;
+#X text 129 4458 (potentially dangerous but no substitute exists yet)
+>>>>>>> add init/close bangs
 ;
 #X text 23 22 The following is a list of built-in objects in Pd. (Not
 included in this list are messages \, atoms \, graphs \, etc. which
 aren't typed into object boxes but come straight off the "add" menu.)
 Right-click (or control-click on a Macintosh) on any object to get
 its "help window".;
+<<<<<<< bd399d2c2571ed511d2357c132d506e8c61d65bd
 #X msg 30 4446 scope~;
 #X msg 30 4498 template;
 #X text 129 4499 (use struct now);
@@ -410,3 +708,64 @@ its "help window".;
 #X obj 21 1365 fudiparse;
 #X obj 100 1365 fudiformat;
 #X text 196 1367 - FUDI messages to and from Pd lists;
+=======
+#X msg 30 4430 scope~;
+#X msg 30 4482 template;
+#X text 129 4483 (use struct now);
+#X obj 25 1714 textfile;
+#X obj 25 1738 text;
+#X obj 180 907 <<;
+#X obj 211 907 >>;
+#X obj 26 2087 sqrt~;
+#X text 17 1115 ------------------- MIDI and OSC------------------------
+;
+#X obj 22 1302 oscparse;
+#X obj 21 1326 oscformat;
+#X text 113 1303 - OSC messages to Pd lists;
+#X text 113 1326 - Pd lists to OSC messages;
+#X text 18 4118 -------- "EXTRA" (patches and externs in pd/extra)
+---------;
+#X obj 26 4147 sigmund~;
+#X text 126 4147 - pitch tracker;
+#X obj 26 4172 bonk~;
+#X text 126 4172 - attack detector;
+#X obj 26 4197 choice;
+#X text 126 4197 - best match of list to templates;
+#X obj 26 4221 hilbert~;
+#X obj 104 4221 complex-mod~;
+#X text 218 4222 - phase quadrature / frequency shifting;
+#X text 195 4248 - C-style expressions (control and signal);
+#X obj 76 4247 expr~;
+#X obj 26 4246 expr;
+#X obj 129 4247 fexpr~;
+#X obj 26 4273 loop~;
+#X text 122 4276 - phasor~ with S/H on its frequency input;
+#X obj 26 4298 lrshift~;
+#X text 122 4301 - left and right shift (useful with FFT objects);
+#X obj 27 4324 pd~;
+#X text 124 4322 - run another copy of Pd (for multiprocessing);
+#X obj 27 4351 rev1~;
+#X obj 79 4351 rev2~;
+#X obj 128 4351 rev3~;
+#X text 188 4351 - reverberators;
+#X obj 60 4324 stdout;
+#X obj 27 4378 bob~;
+#X text 123 4380 - Moog resonant filter model;
+#X text 118 3707 - make copies of a subpatch;
+#X obj 26 3707 clone;
+#X obj 157 1167 midirealtimein;
+#X obj 301 1169 midiclkin;
+#X obj 24 3560 delread4~;
+#X text 154 3561 - read with a time-varying delay time;
+#X obj 118 3561 vd~;
+#X obj 26 2112 rsqrt~;
+#X text 115 2086 - approximate (16-bit) square root;
+#X text 125 2114 - reciprocal square root;
+#X obj 25 2136 q8_sqrt~;
+#X obj 110 2137 q8_rsqrt~;
+#X text 218 2137 - fast \, cheap 8 bits versions;
+#X obj 25 1550 initbang;
+#X obj 25 1599 closebang;
+#X text 125 1599 - bang on close;
+#X text 125 1550 - bang before load;
+>>>>>>> add init/close bangs
