@@ -877,7 +877,7 @@ static void gatom_vis(t_gobj *z, t_glist *glist, int vis)
                 (double)x1, (double)y1,
                 canvas_realizedollar(x->a_glist, x->a_label)->s_name,
                 sys_hostfontsize(glist_getfont(glist), glist_getzoom(glist)),
-                "black");
+                "$text_color");
         }
         else sys_vgui(".x%lx.c delete %lx.l\n", glist_getcanvas(glist), x);
     }
@@ -1060,10 +1060,11 @@ static void text_select(t_gobj *z, t_glist *glist, int state)
 {
     t_text *x = (t_text *)z;
     t_rtext *y = glist_findrtext(glist, x);
+    char *outline;
     rtext_select(y, state);
     if (glist_isvisible(glist) && gobj_shouldvis(&x->te_g, glist))
-        sys_vgui(".x%lx.c itemconfigure %sR -fill %s\n", glist,
-            rtext_gettag(y), (state? "blue" : "black"));
+        sys_vgui(".x%lx.c itemconfigure %sR -fill %s\n", glist, 
+                 rtext_gettag(y), (state? "$select_color" : "$text_color"));
 }
 
 static void text_activate(t_gobj *z, t_glist *glist, int state)
@@ -1231,16 +1232,22 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
 {
     int n = obj_noutlets(ob), nplus = (n == 1 ? 1 : n-1), i;
     int width = x2 - x1;
+    int issignal;
     for (i = 0; i < n; i++)
     {
         int onset = x1 + (width - IOWIDTH) * i / nplus;
         if (firsttime)
+        {
+            issignal = obj_issignaloutlet(ob,i);
             sys_vgui(".x%lx.c create rectangle %d %d %d %d \
--tags [list %so%d outlet] -fill black\n",
+-fill %s -outline %s -tags [list %so%d outlet]\n",
                 glist_getcanvas(glist),
                 onset, y2 + 1 - 2*glist->gl_zoom,
                 onset + IOWIDTH, y2,
+                (issignal ? "$signal_nlet" : "$msg_nlet"),
+                (issignal ? "$signal_cord" : "$msg_cord"),
                 tag, i);
+        }
         else
             sys_vgui(".x%lx.c coords %so%d %d %d %d %d\n",
                 glist_getcanvas(glist), tag, i,
@@ -1253,12 +1260,17 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
     {
         int onset = x1 + (width - IOWIDTH) * i / nplus;
         if (firsttime)
+        {
+            issignal = obj_issignalinlet(ob,i);
             sys_vgui(".x%lx.c create rectangle %d %d %d %d \
--tags [list %si%d inlet] -fill black\n",
+-fill %s -outline %s -tags [list %si%d inlet]\n",
                 glist_getcanvas(glist),
                 onset, y1,
                 onset + IOWIDTH, y1 + glist->gl_zoom + EXTRAPIX,
+                (issignal ? "$signal_nlet" : "$msg_nlet"),
+                (issignal ? "$signal_cord" : "$msg_cord"),
                 tag, i);
+        }
         else
             sys_vgui(".x%lx.c coords %si%d %d %d %d %d\n",
                 glist_getcanvas(glist), tag, i,
@@ -1277,31 +1289,40 @@ void text_drawborder(t_text *x, t_glist *glist,
     height = y2 - y1;
     if (x->te_type == T_OBJECT)
     {
-        char *pattern = ((pd_class(&x->te_pd) == text_class) ? "-" : "\"\"");
+        char *pattern; char *outline;
+        if (pd_class(&x->te_pd) == text_class)
+        {
+            pattern = "-";
+            outline = "$dash_outline";
+        }
+        else
+        {
+            pattern = "\"\"";
+            outline = "$box_outline";
+        }
         if (firsttime)
-            sys_vgui(".x%lx.c create line\
- %d %d %d %d %d %d %d %d %d %d -dash %s -width %d -tags [list %sR obj]\n",
+            sys_vgui(".x%lx.c create polygon \
+ %d %d %d %d %d %d %d %d %d %d -dash %s -outline %s -fill $obj_box_fill -width %d -tags [list %sR obj]\n",
                 glist_getcanvas(glist),
-                    x1, y1,  x2, y1,  x2, y2,  x1, y2,  x1, y1,  pattern,
-                    glist->gl_zoom, tag);
+                    x1, y1,  x2, y1,  x2, y2,  x1, y2,  x1, y1, pattern, 
+                    outline, glist->gl_zoom, tag);
         else
         {
             sys_vgui(".x%lx.c coords %sR\
  %d %d %d %d %d %d %d %d %d %d\n",
                 glist_getcanvas(glist), tag,
                     x1, y1,  x2, y1,  x2, y2,  x1, y2,  x1, y1);
-            sys_vgui(".x%lx.c itemconfigure %sR -dash %s\n",
-                glist_getcanvas(glist), tag, pattern);
         }
     }
     else if (x->te_type == T_MESSAGE)
     {
         if (firsttime)
-            sys_vgui(".x%lx.c create line\
- %d %d %d %d %d %d %d %d %d %d %d %d %d %d -width %d -tags [list %sR msg]\n",
+            sys_vgui(".x%lx.c create polygon \
+                     %d %d %d %d %d %d %d %d %d %d %d %d %d %d \
+                     -outline $box_outline -fill $msg_box_fill -width %d -tags [list %sR msg]\n",
                 glist_getcanvas(glist),
                 x1, y1,  x2+4, y1,  x2, y1+4,  x2, y2-4,  x2+4, y2,
-                x1, y2,  x1, y1,
+                x1, y2,  x1, y1, 
                     glist->gl_zoom, tag);
         else
             sys_vgui(".x%lx.c coords %sR\
@@ -1313,8 +1334,8 @@ void text_drawborder(t_text *x, t_glist *glist,
     else if (x->te_type == T_ATOM)
     {
         if (firsttime)
-            sys_vgui(".x%lx.c create line\
- %d %d %d %d %d %d %d %d %d %d %d %d -width %d -tags [list %sR atom]\n",
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d \
+                     -outline $box_outline -fill $atom_box_fill -width %d  -tags [list %sR atom]\n",
                 glist_getcanvas(glist),
                 x1, y1,  x2-4, y1,  x2, y1+4,  x2, y2,  x1, y2,  x1, y1,
                     glist->gl_zoom, tag);
