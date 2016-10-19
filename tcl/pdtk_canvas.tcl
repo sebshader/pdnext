@@ -112,7 +112,11 @@ proc pdtk_canvas_new {mytoplevel width height geometry editable} {
         -highlightthickness 0 -scrollregion [list 0 0 $width $height] \
         -xscrollcommand "$mytoplevel.xscroll set" \
         -yscrollcommand "$mytoplevel.yscroll set" \
+<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
         -background "$::canvas_fill" -selectbackground $::txt_hilight
+=======
+        -background "$::canvas_fill"
+>>>>>>> first attempt at colors
     scrollbar $mytoplevel.xscroll -orient horizontal -command "$tkcanvas xview"
     scrollbar $mytoplevel.yscroll -orient vertical -command "$tkcanvas yview"
     pack $tkcanvas -side left -expand 1 -fill both

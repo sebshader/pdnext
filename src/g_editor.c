@@ -89,6 +89,44 @@ int gobj_filter_highlight_behavior(t_rtext *y)
         return 0;
 }
 
+/* ------------------ for inlet/outlet highlighting --------------- */
+static char canvas_cnct_inlet_tag[4096];
+static char canvas_cnct_outlet_tag[4096];
+static int outlet_issignal = 0;
+static int inlet_issignal = 0;
+static int last_inlet_filter = 0;
+static int last_outlet_filter = 0;
+
+/* iemgui uses black inlets and outlets while default objects use gray ones
+   add here more as necessary */
+int gobj_filter_highlight_behavior(t_rtext *y)
+{
+    char *buf;
+    char name[4];
+    int bufsize, i;
+    rtext_gettext(y, &buf, &bufsize);
+    for (i = 0; i < 3; i++)
+    {
+        name[i] = buf[i];
+    }
+    name[3]='\0';
+    if (!strcmp(name, "bng") ||
+        !strcmp(name, "nbx") ||
+        !strcmp(name, "hdl") ||
+        !strcmp(name, "hsl") ||
+        !strcmp(name, "tgl") ||
+        !strcmp(name, "vdl") ||
+        !strcmp(name, "vsl") ||
+        !strcmp(name, "vu ") ||
+/* alternative names for hradio and vradio when invoked from the menu */
+        !strcmp(name, "hra") ||
+        !strcmp(name, "vra")
+        )
+        return 1;
+    else
+        return 0;
+}
+
 /* ---------------- generic widget behavior ------------------------- */
 
 void gobj_getrect(t_gobj *x, t_glist *glist, int *x1, int *y1,
@@ -1697,8 +1735,11 @@ void canvas_doconnect(t_canvas *x, int xpos, int ypos, int which, int doit)
             }
             if (doit)
             {
+<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
                 int iow = IOWIDTH * x->gl_zoom;
                 int iom = IOMIDDLE * x->gl_zoom;
+=======
+>>>>>>> first attempt at colors
                 int issignal = obj_issignaloutlet(ob1, closest1);
                 oc = obj_connect(ob1, closest1, ob2, closest2);
                 lx1 = x11 + (noutlet1 > 1 ?
@@ -2820,7 +2861,11 @@ void canvas_connect(t_canvas *x, t_floatarg fwhoout, t_floatarg foutno,
         sys_vgui(
     ".x%lx.c create line %d %d %d %d -width %d -fill %s -tags [list l%lx cord]\n",
             glist_getcanvas(x), 0, 0, 0, 0,
+<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
             (obj_issignaloutlet(objsrc, outno) ? 2 : 1) * x->gl_zoom,
+=======
+            (obj_issignaloutlet(objsrc, outno) ? 2 : 1),
+>>>>>>> first attempt at colors
             (obj_issignaloutlet(objsrc, outno) ? "$signal_cord" : "$msg_cord"), oc);
         canvas_fixlinesfor(x, objsrc);
     }

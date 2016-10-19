@@ -238,18 +238,28 @@ set ::undo_toplevel "."
 
 # color scheme
 set ::canvas_fill "white"
+<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
 set ::gopbox_color "#FF8080"
 set ::objtxt_color "#000"
 set ::msgtxt_color "#000"
 set ::comment_color "#000"
+=======
+set ::text_color "#000"
+>>>>>>> first attempt at colors
 set ::select_color "#00f"
 set ::dash_outline "#f00"
 set ::dash_fill "#fff"
 set ::box_outline "#ccc"
+<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
+=======
+set ::graph_outline "#777"
+set ::atom_box_fill "#eee"
+>>>>>>> first attempt at colors
 set ::msg_box_fill "#f8f8f6"
 set ::obj_box_fill "#f6f8f8"
 set ::signal_cord_highlight "#58a"
 set ::signal_cord "#558"
+<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
 set ::msg_cord_highlight "#474"
 set ::msg_cord "#121"
 set ::msg_nlet "#fff"
@@ -259,6 +269,12 @@ set ::selrect_color "#000"
 set ::txt_hilight "#37e744"
 # can't figure out how to get system value of txt_hilight
 # does SystemHighlight work on linux?
+=======
+set ::signal_nlet $signal_cord
+set ::msg_cord_highlight "#474"
+set ::msg_cord "#121"
+set ::msg_nlet "#fff"
+>>>>>>> first attempt at colors
 
 namespace eval ::pdgui:: {
     variable scriptname [ file normalize [ info script ] ]

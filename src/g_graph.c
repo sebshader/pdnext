@@ -738,8 +738,13 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
         int fs = sys_hostfontsize(glist_getfont(x), glist_getzoom(x));
 
             /* draw a rectangle around the graph */
+<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
         sys_vgui(".x%lx.c create line %d %d %d %d %d %d %d %d %d %d "
             "-width %d -capstyle projecting -fill %s -tags [list %s graph]\n",
+=======
+        sys_vgui(".x%lx.c create line\
+            %d %d %d %d %d %d %d %d %d %d -fill $graph_outline -tags [list %s graph]\n",
+>>>>>>> first attempt at colors
             glist_getcanvas(x->gl_owner),
             x1, y1, x1, y2, x2, y2, x2, y1, x1, y1, glist_getzoom(x), selected, tag);
 
@@ -963,11 +968,18 @@ static void graph_select(t_gobj *z, t_glist *glist, int state)
         if (canvas_showtext(x))
             rtext_select(y, state);
         sys_vgui(".x%lx.c itemconfigure %sR -fill %s\n", glist, 
+<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
                  rtext_gettag(y), (state? "$select_color" : "$graph_outline"));
         sys_vgui(".x%lx.c itemconfigure graph%lx -fill %s\n",
                  glist_getcanvas(glist), z, 
                  (state? "$select_color" : "$graph_outline"));
         x->gl_isselected = state;
+=======
+                 rtext_gettag(y), (state? "$select_color" : "black"));
+        sys_vgui(".x%lx.c itemconfigure graph%lx -fill %s\n",
+                 glist_getcanvas(glist), z, 
+                 (state? "$select_color" : "$graph_outline"));
+>>>>>>> first attempt at colors
     }
 }
 
