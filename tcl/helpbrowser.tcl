@@ -6,8 +6,8 @@ namespace eval ::helpbrowser:: {
     variable helplist
     variable reference_count
     variable reference_paths
-    variable doctypes "*.{pd,pat,mxb,mxt,help,txt,htm,html,pdf,c}"
-    variable maxcols
+    variable height 0
+    variable doctypes "*.{pd,pat,mxb,mxt,help,txt,htm,html,pdf}"
 
     namespace export open_helpbrowser
     namespace export refresh
