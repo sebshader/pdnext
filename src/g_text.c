@@ -1076,11 +1076,22 @@ static void text_select(t_gobj *z, t_glist *glist, int state)
 {
     t_text *x = (t_text *)z;
     t_rtext *y = glist_findrtext(glist, x);
-    char *outline;
     rtext_select(y, state);
-    if (glist_isvisible(glist) && gobj_shouldvis(&x->te_g, glist))
-        sys_vgui(".x%lx.c itemconfigure %sR -fill %s\n", glist, 
-                 rtext_gettag(y), (state? "$select_color" : "$text_color"));
+    if (glist_isvisible(glist) && gobj_shouldvis(&x->te_g, glist)) {
+    	char *outline;
+    	if (pd_class(&x->te_pd) == text_class) {
+			/* SS: I guess we should fill instead if it's a comment? */
+			if (x->te_type == T_TEXT) {
+				sys_vgui(".x%lx.c itemconfigure %sR -fill %s\n",
+					glist, rtext_gettag(y), (state? "$select_color" : "$text_color"));
+                return;
+            }
+			outline = "$dash_outline";
+		} else
+			outline = "$box_outline";
+        sys_vgui(".x%lx.c itemconfigure %sR -outline %s\n", glist, 
+                 rtext_gettag(y), (state? "$select_color" : outline));
+    }
 }
 
 static void text_activate(t_gobj *z, t_glist *glist, int state)
@@ -1245,6 +1256,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
     int iow = IOWIDTH * glist->gl_zoom, ioh = IOHEIGHT * glist->gl_zoom;
     /* draw over border, so assume border width = 1 pixel * glist->gl_zoom */
     int issignal;
+    int onsety = glist->gl_zoom + EXTRAPIX;
     for (i = 0; i < n; i++)
     {
         int onset = x1 + (width - iow) * i / nplus;
@@ -1365,7 +1377,8 @@ void text_drawborder(t_text *x, t_glist *glist,
     else if (x->te_type == T_TEXT && glist->gl_edit)
     {
         if (firsttime)
-            sys_vgui(".x%lx.c create line %d %d %d %d -tags [list %sR commentbar]\n",
+            sys_vgui(".x%lx.c create line\
+ %d %d %d %d -fill $text_color -tags [list %sR commentbar]\n",
                 glist_getcanvas(glist),
                 x2, y1,  x2, y2, tag);
         else
