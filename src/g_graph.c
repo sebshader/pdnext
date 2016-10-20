@@ -961,7 +961,7 @@ static void graph_select(t_gobj *z, t_glist *glist, int state)
                  rtext_gettag(y), (state? "$select_color" : "black"));
         sys_vgui(".x%lx.c itemconfigure graph%lx -fill %s\n",
                  glist_getcanvas(glist), z, 
-                 (state? "$select_color" : "$graph_outline"));
+                 (state? "$select_color" : "black"));
     }
 }
 
