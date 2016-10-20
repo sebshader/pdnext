@@ -807,11 +807,19 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
                     i++, f += x->gl_ytick.k_inc)
             {
                 int tickpix = (i % x->gl_ytick.k_lperb ? 2 : 4);
+<<<<<<< c791ad7fc2fa80b0896b964f5e3bcf25753e945f
                 sys_vgui(".x%lx.c create line %d %d %d %d -fill %s -width %d -tags [list %s graph]\n",
                     glist_getcanvas(x->gl_owner),
                     x1, (int)glist_ytopixels(x, f),
                     x1 + tickpix, (int)glist_ytopixels(x, f), selected, glist_getzoom(x), tag);
                 sys_vgui(".x%lx.c create line %d %d %d %d -fill %s -width %d -tags [list %s graph]\n",
+=======
+                sys_vgui(".x%lx.c create line %d %d %d %d -tags [list %s graph]\n",
+                    glist_getcanvas(x->gl_owner),
+                    x1, (int)glist_ytopixels(x, f),
+                    x1 + tickpix, (int)glist_ytopixels(x, f), tag);
+                sys_vgui(".x%lx.c create line %d %d %d %d -tags [list %s graph]\n",
+>>>>>>> took out graph_outline
                     glist_getcanvas(x->gl_owner),
                     x2, (int)glist_ytopixels(x, f),
                     x2 - tickpix, (int)glist_ytopixels(x, f), selected, glist_getzoom(x), tag);
@@ -821,11 +829,19 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
                     i++, f -= x->gl_ytick.k_inc)
             {
                 int tickpix = (i % x->gl_ytick.k_lperb ? 2 : 4);
+<<<<<<< c791ad7fc2fa80b0896b964f5e3bcf25753e945f
                 sys_vgui(".x%lx.c create line %d %d %d %d -fill %s -width %d -tags [list %s graph]\n",
                     glist_getcanvas(x->gl_owner),
                     x1, (int)glist_ytopixels(x, f),
                     x1 + tickpix, (int)glist_ytopixels(x, f), selected, glist_getzoom(x), tag);
                 sys_vgui(".x%lx.c create line %d %d %d %d -fill %s -width %d -tags [list %s graph]\n",
+=======
+                sys_vgui(".x%lx.c create line %d %d %d %d -tags [list %s graph]\n",
+                    glist_getcanvas(x->gl_owner),
+                    x1, (int)glist_ytopixels(x, f),
+                    x1 + tickpix, (int)glist_ytopixels(x, f), tag);
+                sys_vgui(".x%lx.c create line %d %d %d %d -tags [list %s graph]\n",
+>>>>>>> took out graph_outline
                     glist_getcanvas(x->gl_owner),
                     x2, (int)glist_ytopixels(x, f),
                     x2 - tickpix, (int)glist_ytopixels(x, f), selected, glist_getzoom(x), tag);
@@ -833,8 +849,13 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
         }
             /* draw x labels */
         for (i = 0; i < x->gl_nxlabels; i++)
+<<<<<<< c791ad7fc2fa80b0896b964f5e3bcf25753e945f
             sys_vgui(".x%lx.c create text %d %d -text {%s} -font {{%s} -%d %s} "
                 "-anchor %s  -fill %s -tags [list %s label graph]\n",
+=======
+            sys_vgui(".x%lx.c create text\
+ %d %d -text {%s} -font {{%s} -%d %s} -anchor %s -tags [list %s label graph]\n",
+>>>>>>> took out graph_outline
                 glist_getcanvas(x),
                 (int)glist_xtopixels(x, atof(x->gl_xlabel[i]->s_name)),
                 (int)glist_ytopixels(x, x->gl_xlabely),
@@ -843,8 +864,13 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
 
             /* draw y labels */
         for (i = 0; i < x->gl_nylabels; i++)
+<<<<<<< c791ad7fc2fa80b0896b964f5e3bcf25753e945f
             sys_vgui(".x%lx.c create text %d %d -text {%s} -font {{%s} -%d %s} "
                 "-anchor %s -fill %s -tags [list %s label graph]\n",
+=======
+            sys_vgui(".x%lx.c create text\
+ %d %d -text {%s} -font {{%s} -%d %s} -anchor %s -tags [list %s label graph]\n",
+>>>>>>> took out graph_outline
                 glist_getcanvas(x),
                 (int)glist_xtopixels(x, x->gl_ylabelx),
                 (int)glist_ytopixels(x, atof(x->gl_ylabel[i]->s_name)),
@@ -966,8 +992,12 @@ static void graph_select(t_gobj *z, t_glist *glist, int state)
                  rtext_gettag(y), (state? "$select_color" : "$graph_outline"));
         sys_vgui(".x%lx.c itemconfigure graph%lx -fill %s\n",
                  glist_getcanvas(glist), z, 
+<<<<<<< c791ad7fc2fa80b0896b964f5e3bcf25753e945f
                  (state? "$select_color" : "$graph_outline"));
         x->gl_isselected = state;
+=======
+                 (state? "$select_color" : "black"));
+>>>>>>> took out graph_outline
     }
 }
 
