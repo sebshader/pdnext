@@ -159,13 +159,6 @@ set sys_guidir {}
 set sys_searchpath {}
 # hard-coded search patch for objects, help, plugins, etc.
 set sys_staticpath {}
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
-# optional user documents path for patches & external downloads,
-# if empty, the user is prompted about creating this
-# if set to "DISABLED", the docs path functionality is disabled
-set docspath {}
-=======
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
 # the path to the folder where the current plugin is being loaded from
 set current_plugin_loadpath {}
 # a list of plugins that were loaded
@@ -238,28 +231,18 @@ set ::undo_toplevel "."
 
 # color scheme
 set ::canvas_fill "white"
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
 set ::gopbox_color "#FF8080"
 set ::objtxt_color "#000"
 set ::msgtxt_color "#000"
 set ::comment_color "#000"
-=======
-set ::text_color "#000"
->>>>>>> first attempt at colors
 set ::select_color "#00f"
 set ::dash_outline "#f00"
 set ::dash_fill "#fff"
 set ::box_outline "#ccc"
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
-=======
-set ::graph_outline "#777"
-set ::atom_box_fill "#eee"
->>>>>>> first attempt at colors
 set ::msg_box_fill "#f8f8f6"
 set ::obj_box_fill "#f6f8f8"
 set ::signal_cord_highlight "#58a"
 set ::signal_cord "#558"
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
 set ::msg_cord_highlight "#474"
 set ::msg_cord "#121"
 set ::msg_nlet "#fff"
@@ -269,12 +252,6 @@ set ::selrect_color "#000"
 set ::txt_hilight "#37e744"
 # can't figure out how to get system value of txt_hilight
 # does SystemHighlight work on linux?
-=======
-set ::signal_nlet $signal_cord
-set ::msg_cord_highlight "#474"
-set ::msg_cord "#121"
-set ::msg_nlet "#fff"
->>>>>>> first attempt at colors
 
 namespace eval ::pdgui:: {
     variable scriptname [ file normalize [ info script ] ]
@@ -574,7 +551,6 @@ proc fit_font_into_metrics {} {
 }
 
 # ------------------------------------------------------------------------------
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
 # optional documents directory
 
 # check the Pd documents directory path & prompt user to create if it's empty,
@@ -718,8 +694,7 @@ proc add_to_searchpaths {path {save true}} {
 }
 
 # ------------------------------------------------------------------------------
-=======
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
+ consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
 # procs called directly by pd
 
 proc pdtk_pd_startup {major minor bugfix test
@@ -933,11 +908,7 @@ proc load_plugin_script {filename} {
 proc load_startup_plugins {} {
     # load built-in plugins
     load_plugin_script [file join $::sys_guidir pd_deken.tcl]
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
     load_plugin_script [file join $::sys_guidir pd_docsdir.tcl]
-=======
-    load_plugin_script [file join $::sys_guidir pd_docspath.tcl]
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
 
     # load other installed plugins
     foreach pathdir [concat $::sys_searchpath $::sys_staticpath] {

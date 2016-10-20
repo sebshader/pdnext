@@ -879,13 +879,20 @@ static void gatom_vis(t_gobj *z, t_glist *glist, int vis)
         if (vis)
         {
             int x1, y1;
+            char* txtcolor;
             gatom_getwherelabel(x, glist, &x1, &y1);
+    	 	switch (x->a_text.te_type) {
+				case T_TEXT: txtcolor = "$comment_color"; break;
+				case T_OBJECT: txtcolor = "$objtxt_color"; break;
+				case T_MESSAGE: txtcolor = "$msgtxt_color"; break;
+				default: txtcolor = "black";
+			}
             sys_vgui("pdtk_text_new .x%lx.c {%lx.l label text} %f %f {%s} %d %s\n",
                 glist_getcanvas(glist), x,
                 (double)x1, (double)y1,
                 canvas_realizedollar(x->a_glist, x->a_label)->s_name,
                 sys_hostfontsize(glist_getfont(glist), glist_getzoom(glist)),
-                "$text_color");
+                txtcolor);
         }
         else sys_vgui(".x%lx.c delete %lx.l\n", glist_getcanvas(glist), x);
     }
@@ -1392,8 +1399,8 @@ void text_drawborder(t_text *x, t_glist *glist,
     {
         corner = ((y2-y1)/4);
         if (firsttime)
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d \
-                     -outline $box_outline -fill $atom_box_fill -width %d  -tags [list %sR atom]\n",
+            sys_vgui(".x%lx.c create line\
+ %d %d %d %d %d %d %d %d %d %d %d %d -width %d -tags [list %sR atom]\n",
                 glist_getcanvas(glist),
                 x1, y1,  x2-corner, y1,  x2, y1+corner, x2, y2,  x1, y2,  x1, y1,
                 glist->gl_zoom, tag);

@@ -338,11 +338,7 @@ static void rtext_senditup(t_rtext *x, int action, int *widthp, int *heightp,
             outchars_b, tempbuf,
             sys_hostfontsize(font, glist_getzoom(x->x_glist)),
             (glist_isselected(x->x_glist,
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
                 &x->x_glist->gl_gobj)? "$select_color" : txtcolor));
-=======
-                &x->x_glist->gl_gobj)? "$select_color" : "$text_color"));
->>>>>>> first attempt at colors
     }
     else if (action == SEND_UPDATE)
     {
@@ -486,7 +482,6 @@ void rtext_select(t_rtext *x, int state)
 {
     t_glist *glist = x->x_glist;
     t_canvas *canvas = glist_getcanvas(glist);
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
     char* txtcolor;
     	switch (x->x_text->te_type) {
 		case T_TEXT: txtcolor = "$comment_color"; break;
@@ -503,10 +498,6 @@ void rtext_select(t_rtext *x, int state)
 	}
     sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, 
         x->x_tag, (state? "$select_color" : txtcolor));
-=======
-    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, 
-        x->x_tag, (state? "$select_color" : "$text_color"));
->>>>>>> first attempt at colors
 }
 
 void rtext_activate(t_rtext *x, int state)

@@ -1735,11 +1735,8 @@ void canvas_doconnect(t_canvas *x, int xpos, int ypos, int which, int doit)
             }
             if (doit)
             {
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
                 int iow = IOWIDTH * x->gl_zoom;
                 int iom = IOMIDDLE * x->gl_zoom;
-=======
->>>>>>> first attempt at colors
                 int issignal = obj_issignaloutlet(ob1, closest1);
                 oc = obj_connect(ob1, closest1, ob2, closest2);
                 lx1 = x11 + (noutlet1 > 1 ?
@@ -2861,11 +2858,7 @@ void canvas_connect(t_canvas *x, t_floatarg fwhoout, t_floatarg foutno,
         sys_vgui(
     ".x%lx.c create line %d %d %d %d -width %d -fill %s -tags [list l%lx cord]\n",
             glist_getcanvas(x), 0, 0, 0, 0,
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
             (obj_issignaloutlet(objsrc, outno) ? 2 : 1) * x->gl_zoom,
-=======
-            (obj_issignaloutlet(objsrc, outno) ? 2 : 1),
->>>>>>> first attempt at colors
             (obj_issignaloutlet(objsrc, outno) ? "$signal_cord" : "$msg_cord"), oc);
         canvas_fixlinesfor(x, objsrc);
     }
