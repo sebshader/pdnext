@@ -2805,8 +2805,7 @@ void canvas_connect(t_canvas *x, t_floatarg fwhoout, t_floatarg foutno,
     if (!(oc = obj_connect(objsrc, outno, objsink, inno))) goto bad;
     if (glist_isvisible(x))
     {
-        sys_vgui(
-    ".x%lx.c create line %d %d %d %d -width %d -tags [list l%lx cord]\n",
+        sys_vgui(".x%lx.c create line %d %d %d %d -width %d -fill %s -tags [list l%lx cord]\n",
             glist_getcanvas(x), 0, 0, 0, 0,
             (obj_issignaloutlet(objsrc, outno) ? 2 : 1),
             (obj_issignaloutlet(objsrc, outno) ? "$signal_cord" : "$msg_cord"), oc);

@@ -307,13 +307,20 @@ static void rtext_senditup(t_rtext *x, int action, int *widthp, int *heightp,
     }
     if (action == SEND_FIRST)
     {
+    	char* txtcolor;
+    	 switch (x->x_text->te_type) {
+			case T_TEXT: txtcolor = "$comment_color"; break;
+			case T_OBJECT: txtcolor = "$objtxt_color"; break;
+			case T_MESSAGE: txtcolor = "$msgtxt_color"; break;
+			default: txtcolor = "black";
+		}
         sys_vgui("pdtk_text_new .x%lx.c {%s %s text} %f %f {%.*s} %d %s\n",
             canvas, x->x_tag, rtext_gettype(x)->s_name,
             dispx + LMARGIN, dispy + TMARGIN,
             outchars_b, tempbuf,
             sys_hostfontsize(font, glist_getzoom(x->x_glist)),
             (glist_isselected(x->x_glist,
-                &x->x_glist->gl_gobj)? "$select_color" : "$text_color"));
+                &x->x_glist->gl_gobj)? "$select_color" : txtcolor));
     }
     else if (action == SEND_UPDATE)
     {
@@ -457,8 +464,15 @@ void rtext_select(t_rtext *x, int state)
 {
     t_glist *glist = x->x_glist;
     t_canvas *canvas = glist_getcanvas(glist);
+    char* txtcolor;
+    	switch (x->x_text->te_type) {
+		case T_TEXT: txtcolor = "$comment_color"; break;
+		case T_OBJECT: txtcolor = "$objtxt_color"; break;
+		case T_MESSAGE: txtcolor = "$msgtxt_color"; break;
+		default: txtcolor = "black";
+	}
     sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, 
-        x->x_tag, (state? "$select_color" : "$text_color"));
+        x->x_tag, (state? "$select_color" : txtcolor));
 }
 
 void rtext_activate(t_rtext *x, int state)
