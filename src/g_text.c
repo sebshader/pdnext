@@ -1060,11 +1060,22 @@ static void text_select(t_gobj *z, t_glist *glist, int state)
 {
     t_text *x = (t_text *)z;
     t_rtext *y = glist_findrtext(glist, x);
-    char *outline;
     rtext_select(y, state);
-    if (glist_isvisible(glist) && gobj_shouldvis(&x->te_g, glist))
-        sys_vgui(".x%lx.c itemconfigure %sR -fill %s\n", glist, 
-                 rtext_gettag(y), (state? "$select_color" : "$text_color"));
+    if (glist_isvisible(glist) && gobj_shouldvis(&x->te_g, glist)) {
+    	char *outline;
+    	if (pd_class(&x->te_pd) == text_class) {
+			/* SS: I guess we should fill instead if it's a comment? */
+			if (x->te_type == T_TEXT) {
+				sys_vgui(".x%lx.c itemconfigure %sR -fill %s\n",
+					glist, rtext_gettag(y), (state? "$select_color" : "$text_color"));
+                return;
+            }
+			outline = "$dash_outline";
+		} else
+			outline = "$box_outline";
+        sys_vgui(".x%lx.c itemconfigure %sR -outline %s\n", glist, 
+                 rtext_gettag(y), (state? "$select_color" : outline));
+    }
 }
 
 static void text_activate(t_gobj *z, t_glist *glist, int state)
@@ -1233,17 +1244,19 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
     int n = obj_noutlets(ob), nplus = (n == 1 ? 1 : n-1), i;
     int width = x2 - x1;
     int issignal;
+    int onsety = glist->gl_zoom + EXTRAPIX;
     for (i = 0; i < n; i++)
     {
         int onset = x1 + (width - IOWIDTH) * i / nplus;
+
         if (firsttime)
         {
             issignal = obj_issignaloutlet(ob,i);
             sys_vgui(".x%lx.c create rectangle %d %d %d %d \
 -fill %s -outline %s -tags [list %so%d outlet]\n",
                 glist_getcanvas(glist),
-                onset, y2 + 1 - 2*glist->gl_zoom,
-                onset + IOWIDTH, y2,
+                onset, y2 + 1 - 2*glist->gl_zoom - EXTRAPIX,
+                onset + IOWIDTH, y2 - onsety + 2,
                 (issignal ? "$signal_nlet" : "$msg_nlet"),
                 (issignal ? "$signal_cord" : "$msg_cord"),
                 tag, i);
@@ -1251,8 +1264,8 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
         else
             sys_vgui(".x%lx.c coords %so%d %d %d %d %d\n",
                 glist_getcanvas(glist), tag, i,
-                onset, y2 + 1 - 2*glist->gl_zoom,
-                onset + IOWIDTH, y2);
+                onset, y2 + 1 - 2*glist->gl_zoom - EXTRAPIX,
+                onset + IOWIDTH, y2 - onsety + 2);
     }
     n = obj_ninlets(ob);
     nplus = (n == 1 ? 1 : n-1);
@@ -1266,7 +1279,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
 -fill %s -outline %s -tags [list %si%d inlet]\n",
                 glist_getcanvas(glist),
                 onset, y1,
-                onset + IOWIDTH, y1 + glist->gl_zoom + EXTRAPIX,
+                onset + IOWIDTH, y1 + onsety,
                 (issignal ? "$signal_nlet" : "$msg_nlet"),
                 (issignal ? "$signal_cord" : "$msg_cord"),
                 tag, i);
@@ -1275,7 +1288,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
             sys_vgui(".x%lx.c coords %si%d %d %d %d %d\n",
                 glist_getcanvas(glist), tag, i,
                 onset, y1,
-                onset + IOWIDTH, y1 + glist->gl_zoom + EXTRAPIX);
+                onset + IOWIDTH, y1 + onsety);
     }
 }
 
@@ -1352,7 +1365,7 @@ void text_drawborder(t_text *x, t_glist *glist,
     {
         if (firsttime)
             sys_vgui(".x%lx.c create line\
- %d %d %d %d -tags [list %sR commentbar]\n",
+ %d %d %d %d -fill $text_color -tags [list %sR commentbar]\n",
                 glist_getcanvas(glist),
                 x2, y1,  x2, y2, tag);
         else
