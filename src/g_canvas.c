@@ -620,7 +620,7 @@ void canvas_drawredrect(t_canvas *x, int doit)
 {
     if (doit)
         sys_vgui(".x%lx.c create line %d %d %d %d %d %d %d %d %d %d "
-            "-fill #ff8080 -width %d -capstyle projecting -tags GOP\n",
+            "-fill $gopbox_color -width %d -capstyle projecting -tags GOP\n",
             glist_getcanvas(x),
             x->gl_xmargin, x->gl_ymargin,
             x->gl_xmargin + x->gl_pixwidth, x->gl_ymargin,

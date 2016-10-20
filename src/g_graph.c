@@ -746,7 +746,7 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
         {
             i -= glist_fontheight(x);
             sys_vgui(".x%lx.c create text %d %d -text {%s} -anchor nw "
-                "-font {{%s} -%d %s} -tags [list %s label graph]\n",
+                "-font {{%s} -%d %s} -fill $select_color -tags [list %s label graph]\n",
                 (long)glist_getcanvas(x),  x1, i,
                 arrayname->s_name, sys_font,
                 fs, sys_fontweight, tag);
@@ -802,11 +802,11 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
                     i++, f += x->gl_ytick.k_inc)
             {
                 int tickpix = (i % x->gl_ytick.k_lperb ? 2 : 4);
-                sys_vgui(".x%lx.c create line %d %d %d %d -width %d -tags [list %s graph]\n",
+                sys_vgui(".x%lx.c create line %d %d %d %d -fill $graph_outline -width %d -tags [list %s graph]\n",
                     glist_getcanvas(x->gl_owner),
                     x1, (int)glist_ytopixels(x, f),
                     x1 + tickpix, (int)glist_ytopixels(x, f), glist_getzoom(x), tag);
-                sys_vgui(".x%lx.c create line %d %d %d %d -width %d -tags [list %s graph]\n",
+                sys_vgui(".x%lx.c create line %d %d %d %d -fill $graph_outline -width %d -tags [list %s graph]\n",
                     glist_getcanvas(x->gl_owner),
                     x2, (int)glist_ytopixels(x, f),
                     x2 - tickpix, (int)glist_ytopixels(x, f), glist_getzoom(x), tag);
@@ -816,11 +816,11 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
                     i++, f -= x->gl_ytick.k_inc)
             {
                 int tickpix = (i % x->gl_ytick.k_lperb ? 2 : 4);
-                sys_vgui(".x%lx.c create line %d %d %d %d -width %d -tags [list %s graph]\n",
+                sys_vgui(".x%lx.c create line %d %d %d %d -fill $graph_outline -width %d -tags [list %s graph]\n",
                     glist_getcanvas(x->gl_owner),
                     x1, (int)glist_ytopixels(x, f),
                     x1 + tickpix, (int)glist_ytopixels(x, f), glist_getzoom(x), tag);
-                sys_vgui(".x%lx.c create line %d %d %d %d -width %d -tags [list %s graph]\n",
+                sys_vgui(".x%lx.c create line %d %d %d %d -fill $graph_outline -width %d -tags [list %s graph]\n",
                     glist_getcanvas(x->gl_owner),
                     x2, (int)glist_ytopixels(x, f),
                     x2 - tickpix, (int)glist_ytopixels(x, f), glist_getzoom(x), tag);
@@ -829,7 +829,7 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
             /* draw x labels */
         for (i = 0; i < x->gl_nxlabels; i++)
             sys_vgui(".x%lx.c create text %d %d -text {%s} -font {{%s} -%d %s} "
-                "-anchor %s -tags [list %s label graph]\n",
+                "-anchor %s  -fill $graph_outline -tags [list %s label graph]\n",
                 glist_getcanvas(x),
                 (int)glist_xtopixels(x, atof(x->gl_xlabel[i]->s_name)),
                 (int)glist_ytopixels(x, x->gl_xlabely),
@@ -839,7 +839,7 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
             /* draw y labels */
         for (i = 0; i < x->gl_nylabels; i++)
             sys_vgui(".x%lx.c create text %d %d -text {%s} -font {{%s} -%d %s} "
-                "-anchor %s -tags [list %s label graph]\n",
+                "-anchor %s -fill $graph_outline -tags [list %s label graph]\n",
                 glist_getcanvas(x),
                 (int)glist_xtopixels(x, x->gl_ylabelx),
                 (int)glist_ytopixels(x, atof(x->gl_ylabel[i]->s_name)),
