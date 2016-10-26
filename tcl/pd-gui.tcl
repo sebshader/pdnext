@@ -246,6 +246,7 @@ set ::signal_cord "#0B8100"
 set ::msg_cord_highlight "black"
 set ::msg_cord "#0B8100"
 set ::msg_nlet "white"
+set ::graph_outline "dark violet"
 set ::signal_nlet "light green"
 
 namespace eval ::pdgui:: {
