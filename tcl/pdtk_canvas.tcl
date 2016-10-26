@@ -112,11 +112,7 @@ proc pdtk_canvas_new {mytoplevel width height geometry editable} {
         -highlightthickness 0 -scrollregion [list 0 0 $width $height] \
         -xscrollcommand "$mytoplevel.xscroll set" \
         -yscrollcommand "$mytoplevel.yscroll set" \
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
         -background "$::canvas_fill" -selectbackground $::txt_hilight
-=======
-        -background "$::canvas_fill"
->>>>>>> first attempt at colors
     scrollbar $mytoplevel.xscroll -orient horizontal -command "$tkcanvas xview"
     scrollbar $mytoplevel.yscroll -orient vertical -command "$tkcanvas yview"
     pack $tkcanvas -side left -expand 1 -fill both
@@ -155,11 +151,7 @@ proc pdtk_canvas_raise {mytoplevel} {
 
 proc pdtk_canvas_saveas {name initialfile initialdir destroyflag} {
     if { ! [file isdirectory $initialdir]} {set initialdir $::filenewdir}
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
     set filename [tk_getSaveFile -initialdir $initialdir \
-=======
-    set filename [tk_getSaveFile -initialfile $initialfile -initialdir $initialdir \
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
                       -defaultextension .pd -filetypes $::filetypes]
     if {$filename eq ""} return; # they clicked cancel
 
