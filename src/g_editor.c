@@ -1596,7 +1596,7 @@ void canvas_doclick(t_canvas *x, int xpos, int ypos, int which,
     if (doit)
     {
         if (!shiftmod) glist_noselect(x);
-        sys_vgui(".x%lx.c create rectangle %d %d %d %d -tags x\n",
+        sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline $selrect_color -tags x\n",
               x, xpos, ypos, xpos, ypos);
         x->gl_editor->e_xwas = xpos;
         x->gl_editor->e_ywas = ypos;
