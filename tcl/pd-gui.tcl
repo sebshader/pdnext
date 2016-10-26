@@ -249,6 +249,7 @@ set ::msg_nlet "white"
 set ::graph_outline "dark violet"
 set ::signal_nlet "light green"
 set ::selrect_color "green"
+set ::txt_hilight "black"
 
 namespace eval ::pdgui:: {
     variable scriptname [ file normalize [ info script ] ]
