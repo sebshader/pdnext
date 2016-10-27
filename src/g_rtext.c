@@ -310,7 +310,14 @@ static void rtext_senditup(t_rtext *x, int action, int *widthp, int *heightp,
     	char* txtcolor;
     	 switch (x->x_text->te_type) {
 			case T_TEXT: txtcolor = "$comment_color"; break;
-			case T_OBJECT: txtcolor = "$objtxt_color"; break;
+			case T_OBJECT: 
+			/*SS: check if we're gop */
+				if (pd_class(&x->x_text->te_pd) == canvas_class &&
+				glist_isgraph((t_glist *)(x->x_text)))
+					txtcolor = "$graph_outline";
+				else 
+					txtcolor = "$objtxt_color";
+				break;
 			case T_MESSAGE: txtcolor = "$msgtxt_color"; break;
 			default: txtcolor = "black";
 		}
@@ -467,7 +474,14 @@ void rtext_select(t_rtext *x, int state)
     char* txtcolor;
     	switch (x->x_text->te_type) {
 		case T_TEXT: txtcolor = "$comment_color"; break;
-		case T_OBJECT: txtcolor = "$objtxt_color"; break;
+		case T_OBJECT:
+			/*SS: check if we're gop */
+				if (pd_class(&x->x_text->te_pd) == canvas_class &&
+				glist_isgraph((t_glist *)(x->x_text)))
+					txtcolor = "$graph_outline";
+				else 
+					txtcolor = "$objtxt_color";
+				break;
 		case T_MESSAGE: txtcolor = "$msgtxt_color"; break;
 		default: txtcolor = "black";
 	}
