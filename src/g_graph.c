@@ -834,7 +834,7 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
             /* draw x labels */
         for (i = 0; i < x->gl_nxlabels; i++)
             sys_vgui(".x%lx.c create text %d %d -text {%s} -font {{%s} -%d %s} "
-                "-anchor %s  -fill %s -tags [list %s label graph]\n",
+                "-anchor %s -fill %s -tags [list %s label graph]\n",
                 glist_getcanvas(x),
                 (int)glist_xtopixels(x, atof(x->gl_xlabel[i]->s_name)),
                 (int)glist_ytopixels(x, x->gl_xlabely),
