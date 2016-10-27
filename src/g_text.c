@@ -871,20 +871,13 @@ static void gatom_vis(t_gobj *z, t_glist *glist, int vis)
         if (vis)
         {
             int x1, y1;
-            char* txtcolor;
             gatom_getwherelabel(x, glist, &x1, &y1);
-    	 	switch (x->a_text.te_type) {
-				case T_TEXT: txtcolor = "$comment_color"; break;
-				case T_OBJECT: txtcolor = "$objtxt_color"; break;
-				case T_MESSAGE: txtcolor = "$msgtxt_color"; break;
-				default: txtcolor = "black";
-			}
             sys_vgui("pdtk_text_new .x%lx.c {%lx.l label text} %f %f {%s} %d %s\n",
                 glist_getcanvas(glist), x,
                 (double)x1, (double)y1,
                 canvas_realizedollar(x->a_glist, x->a_label)->s_name,
                 sys_hostfontsize(glist_getfont(glist), glist_getzoom(glist)),
-                txtcolor);
+                "black");
         }
         else sys_vgui(".x%lx.c delete %lx.l\n", glist_getcanvas(glist), x);
     }
