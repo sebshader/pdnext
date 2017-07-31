@@ -12,7 +12,7 @@ namespace eval ::pd_menucommands:: {
 
 proc ::pd_menucommands::menu_new {} {
     variable untitled_number
-    if { ! [file isdirectory $::filenewdir]} {set ::filenewdir $::env(HOME)}
+    if { ! [file isdirectory $::filenewdir]} {set ::filenewdir [get_dialog_initialdir]}
     # to localize "Untitled" there will need to be changes in g_canvas.c and
     # g_readwrite.c, where it tests for the string "Untitled"
     set untitled_name "Untitled"
@@ -21,7 +21,7 @@ proc ::pd_menucommands::menu_new {} {
 }
 
 proc ::pd_menucommands::menu_open {} {
-    if { ! [file isdirectory $::fileopendir]} {set ::fileopendir $::env(HOME)}
+    if { ! [file isdirectory $::fileopendir]} {set ::fileopendir [get_dialog_initialdir]}
     set files [tk_getOpenFile -defaultextension .pd \
                        -multiple true \
                        -filetypes $::filetypes \
@@ -37,23 +37,12 @@ proc ::pd_menucommands::menu_open {} {
 # TODO set the current font family & size via the -fontmap option:
 # http://wiki.tcl.tk/41871
 proc ::pd_menucommands::menu_print {mytoplevel} {
-    set initialfile "[file rootname [lookup_windowname $mytoplevel]].ps"
-    set filename [tk_getSaveFile -initialfile $initialfile \
+    set filename [tk_getSaveFile -initialfile pd.ps \
                       -defaultextension .ps \
-                      -filetypes { {{Postscript} {.ps}} }]
+                      -filetypes { {{postscript} {.ps}} }]
     if {$filename ne ""} {
         set tkcanvas [tkcanvas_name $mytoplevel]
-        if {$::font_family eq "DejaVu Sans Mono"} {
-            # FIXME hack to fix incorrect PS font naming,
-            # this could be removed in the future
-            set ps [$tkcanvas postscript]
-            regsub -all "DejavuSansMono" $ps "DejaVuSansMono" ps
-            set f [open $filename w]
-            puts $f $ps
-            close $f
-        } else {
-            $tkcanvas postscript -file $filename
-        }
+        $tkcanvas postscript -file $filename
     }
 }
 
@@ -157,6 +146,10 @@ proc ::pd_menucommands::menu_manual {} {
 
 proc ::pd_menucommands::menu_helpbrowser {} {
     ::helpbrowser::open_helpbrowser
+}
+
+proc ::pd_menucommands::menu_texteditor {} {
+    ::pdwindow::error "the text editor is not implemented"
 }
 
 # ------------------------------------------------------------------------------
