@@ -451,9 +451,15 @@ proc ::deken::clicked_link {URL filename} {
     set installdir [::deken::find_installpath]
     set extname [lindex [split $filename "-"] 0]
     if { "$installdir" == "" } {
+<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
         if {[namespace exists ::pd_docsdir] && [::pd_docsdir::externals_path_is_valid]} {
             # if the docspath is set, try the externals subdir
             set installdir [::pd_docsdir::get_externals_path]
+=======
+        if {[namespace exists ::pd_docspath] && [::pd_docspath::externalspath_is_valid]} {
+            # if the docspath is set, try the externals subdir
+            set installdir [::pd_docspath::get_externalspath]
+>>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
         } else {
             # ask the user (and remember the decision)
             ::deken::prompt_installdir
@@ -488,7 +494,11 @@ proc ::deken::clicked_link {URL filename} {
                         # if docsdir is set & the install path is valid,
                         # saying "no" is temporary to ensure the docsdir
                         # hierarchy remains, use the Path dialog to override
+<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
                         if {[namespace exists ::pd_docsdir] && [::pd_docsdir::path_is_valid] &&
+=======
+                        if {[namespace exists ::pd_docspath] && [::pd_docspath::is_valid] && \
+>>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
                             [file writable [file normalize $prevpath]] } {
                             set keepprevpath 0
                         }

@@ -159,10 +159,13 @@ set sys_guidir {}
 set sys_searchpath {}
 # hard-coded search patch for objects, help, plugins, etc.
 set sys_staticpath {}
+<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
 # optional user documents path for patches & external downloads,
 # if empty, the user is prompted about creating this
 # if set to "DISABLED", the docs path functionality is disabled
 set docspath {}
+=======
+>>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
 # the path to the folder where the current plugin is being loaded from
 set current_plugin_loadpath {}
 # a list of plugins that were loaded
@@ -555,6 +558,7 @@ proc fit_font_into_metrics {} {
 }
 
 # ------------------------------------------------------------------------------
+<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
 # optional documents directory
 
 # check the Pd documents directory path & prompt user to create if it's empty,
@@ -698,6 +702,8 @@ proc add_to_searchpaths {path {save true}} {
 }
 
 # ------------------------------------------------------------------------------
+=======
+>>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
 # procs called directly by pd
 
 proc pdtk_pd_startup {major minor bugfix test
@@ -726,7 +732,6 @@ proc pdtk_pd_startup {major minor bugfix test
     ::pdtk_canvas::create_popup
     load_startup_plugins
     open_filestoopen
-    after 1000 {setup_docspath}
     set ::done_init 1
 }
 
@@ -912,7 +917,11 @@ proc load_plugin_script {filename} {
 proc load_startup_plugins {} {
     # load built-in plugins
     load_plugin_script [file join $::sys_guidir pd_deken.tcl]
+<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
     load_plugin_script [file join $::sys_guidir pd_docsdir.tcl]
+=======
+    load_plugin_script [file join $::sys_guidir pd_docspath.tcl]
+>>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
 
     # load other installed plugins
     foreach pathdir [concat $::sys_searchpath $::sys_staticpath] {

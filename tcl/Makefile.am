@@ -49,7 +49,11 @@ dist_libpdtcl_DATA = \
     scrollbox.tcl \
     pd_guiprefs.tcl \
     pd_deken.tcl \
+<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
     pd_docsdir.tcl \
+=======
+    pd_docspath.tcl \
+>>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
     pd.ico
 
 #########################################
