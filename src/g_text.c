@@ -1256,7 +1256,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
             sys_vgui(".x%lx.c create rectangle %d %d %d %d \
 -fill %s -outline %s -tags [list %so%d outlet]\n",
                 glist_getcanvas(glist),
-                onset, y2 + 1 - 2*glist->gl_zoom - EXTRAPIX,
+                onset, y2 - 2*glist->gl_zoom,
                 onset + IOWIDTH, y2 - glist->gl_zoom + 1,
                 (issignal ? "$signal_nlet" : "$msg_nlet"),
                 (issignal ? "$signal_cord" : "$msg_cord"),
@@ -1265,7 +1265,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
         else
             sys_vgui(".x%lx.c coords %so%d %d %d %d %d\n",
                 glist_getcanvas(glist), tag, i,
-                onset, y2 + 1 - 2*glist->gl_zoom - EXTRAPIX,
+                onset, y2 - 2*glist->gl_zoom,
                 onset + IOWIDTH, y2 - glist->gl_zoom + 1);
     }
     n = obj_ninlets(ob);
