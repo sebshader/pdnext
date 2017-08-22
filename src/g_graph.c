@@ -681,7 +681,8 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
     t_glist *x = (t_glist *)gr;
     char tag[50];
     t_gobj *g;
-    int x1, y1, x2, y2, state = x->gl_isselected;;
+    int x1, y1, x2, y2, state = glist_isselected(parent_glist,
+                gr);
         /* ordinary subpatches: just act like a text object */
     if (!x->gl_isgraph)
     {
@@ -967,7 +968,6 @@ static void graph_select(t_gobj *z, t_glist *glist, int state)
         sys_vgui(".x%lx.c itemconfigure graph%lx -fill %s\n",
                  glist_getcanvas(glist), z, 
                  (state? "$select_color" : "$graph_outline"));
-        x->gl_isselected = state;
     }
 }
 
