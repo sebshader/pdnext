@@ -1078,7 +1078,6 @@ static void text_select(t_gobj *z, t_glist *glist, int state)
     t_rtext *y = glist_findrtext(glist, x);
     char *outline;
     rtext_select(y, state);
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
     if (glist_isvisible(glist) && gobj_shouldvis(&x->te_g, glist)) {
     	char *outline;
 		/* SS: I guess we should fill instead if it's a comment? */
@@ -1096,11 +1095,6 @@ static void text_select(t_gobj *z, t_glist *glist, int state)
         sys_vgui(".x%lx.c itemconfigure %sR -outline %s\n", glist, 
                  rtext_gettag(y), (state? "$select_color" : outline));
     }
-=======
-    if (glist_isvisible(glist) && gobj_shouldvis(&x->te_g, glist))
-        sys_vgui(".x%lx.c itemconfigure %sR -fill %s\n", glist, 
-                 rtext_gettag(y), (state? "$select_color" : "$text_color"));
->>>>>>> first attempt at colors
 }
 
 static void text_activate(t_gobj *z, t_glist *glist, int state)
@@ -1262,14 +1256,10 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
 {
     int n = obj_noutlets(ob), nplus = (n == 1 ? 1 : n-1), i;
     int width = x2 - x1;
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
     int iow = IOWIDTH * glist->gl_zoom, ioh = IOHEIGHT * glist->gl_zoom;
     /* draw over border, so assume border width = 1 pixel * glist->gl_zoom */
     int issignal;
-    int onsety = glist->gl_zoom + EXTRAPIX;
-=======
-    int issignal;
->>>>>>> first attempt at colors
+
     for (i = 0; i < n; i++)
     {
         int onset = x1 + (width - iow) * i / nplus;
@@ -1279,13 +1269,8 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
             sys_vgui(".x%lx.c create rectangle %d %d %d %d \
 -fill %s -outline %s -tags [list %so%d outlet]\n",
                 glist_getcanvas(glist),
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
                 onset, y2 - ioh + glist->gl_zoom,
                 onset + iow, y2,
-=======
-                onset, y2 + 1 - 2*glist->gl_zoom,
-                onset + IOWIDTH, y2,
->>>>>>> first attempt at colors
                 (issignal ? "$signal_nlet" : "$msg_nlet"),
                 (issignal ? "$signal_cord" : "$msg_cord"),
                 tag, i);
@@ -1308,11 +1293,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
 -fill %s -outline %s -tags [list %si%d inlet]\n",
                 glist_getcanvas(glist),
                 onset, y1,
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
                 onset + iow, y1 + ioh - glist->gl_zoom,
-=======
-                onset + IOWIDTH, y1 + glist->gl_zoom + EXTRAPIX,
->>>>>>> first attempt at colors
                 (issignal ? "$signal_nlet" : "$msg_nlet"),
                 (issignal ? "$signal_cord" : "$msg_cord"),
                 tag, i);
@@ -1356,13 +1337,9 @@ void text_drawborder(t_text *x, t_glist *glist,
         {
             sys_vgui(".x%lx.c coords %sR %d %d %d %d %d %d %d %d %d %d\n",
                 glist_getcanvas(glist), tag,
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
                 x1, y1,  x2, y1,  x2, y2,  x1, y2,  x1, y1);
             sys_vgui(".x%lx.c itemconfigure %sR -dash %s\n",
                 glist_getcanvas(glist), tag, pattern);
-=======
-                    x1, y1,  x2, y1,  x2, y2,  x1, y2,  x1, y1);
->>>>>>> first attempt at colors
         }
     }
     else if (x->te_type == T_MESSAGE)
@@ -1374,13 +1351,8 @@ void text_drawborder(t_text *x, t_glist *glist,
                      %d %d %d %d %d %d %d %d %d %d %d %d %d %d \
                      -outline $box_outline -fill $msg_box_fill -width %d -tags [list %sR msg]\n",
                 glist_getcanvas(glist),
-<<<<<<< be4e3335ead496c5f198c3c218e0b9a2480acd7a
                 x1, y1,  x2+corner, y1,  x2, y1+corner,  x2, y2-corner,  x2+corner, y2,
                 x1, y2,  x1, y1,
-=======
-                x1, y1,  x2+4, y1,  x2, y1+4,  x2, y2-4,  x2+4, y2,
-                x1, y2,  x1, y1, 
->>>>>>> first attempt at colors
                     glist->gl_zoom, tag);
         else
             sys_vgui(".x%lx.c coords %sR %d %d %d %d %d %d %d %d %d %d %d %d %d %d\n",
