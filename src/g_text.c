@@ -1246,7 +1246,6 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
     int n = obj_noutlets(ob), nplus = (n == 1 ? 1 : n-1), i;
     int width = x2 - x1;
     int issignal;
-    int onsety = glist->gl_zoom + EXTRAPIX;
     for (i = 0; i < n; i++)
     {
         int onset = x1 + (width - IOWIDTH) * i / nplus;
@@ -1258,7 +1257,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
 -fill %s -outline %s -tags [list %so%d outlet]\n",
                 glist_getcanvas(glist),
                 onset, y2 + 1 - 2*glist->gl_zoom - EXTRAPIX,
-                onset + IOWIDTH, y2 - onsety + 2,
+                onset + IOWIDTH, y2 - glist->gl_zoom + 1,
                 (issignal ? "$signal_nlet" : "$msg_nlet"),
                 (issignal ? "$signal_cord" : "$msg_cord"),
                 tag, i);
@@ -1267,7 +1266,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
             sys_vgui(".x%lx.c coords %so%d %d %d %d %d\n",
                 glist_getcanvas(glist), tag, i,
                 onset, y2 + 1 - 2*glist->gl_zoom - EXTRAPIX,
-                onset + IOWIDTH, y2 - onsety + 2);
+                onset + IOWIDTH, y2 - glist->gl_zoom + 1);
     }
     n = obj_ninlets(ob);
     nplus = (n == 1 ? 1 : n-1);
@@ -1281,7 +1280,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
 -fill %s -outline %s -tags [list %si%d inlet]\n",
                 glist_getcanvas(glist),
                 onset, y1,
-                onset + IOWIDTH, y1 + onsety,
+                onset + IOWIDTH, y1 + glist->gl_zoom + EXTRAPIX,
                 (issignal ? "$signal_nlet" : "$msg_nlet"),
                 (issignal ? "$signal_cord" : "$msg_cord"),
                 tag, i);
@@ -1290,7 +1289,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
             sys_vgui(".x%lx.c coords %si%d %d %d %d %d\n",
                 glist_getcanvas(glist), tag, i,
                 onset, y1,
-                onset + IOWIDTH, y1 + onsety);
+                onset + IOWIDTH, y1 + glist->gl_zoom + EXTRAPIX);
     }
 }
 
