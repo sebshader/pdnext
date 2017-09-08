@@ -689,16 +689,13 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
         text_widgetbehavior.w_visfn(gr, parent_glist, vis);
         return;
     }
-    if (vis && canvas_showtext(x)) {
-    	t_rtext *y = glist_findrtext(parent_glist, &x->gl_obj);
-        rtext_draw(y);
-        rtext_select(y, state);
-        sys_vgui(".x%lx.c itemconfigure %sR -fill %s\n", parent_glist, 
-                 rtext_gettag(y), (state? "$select_color" : "$graph_outline"));
-    } else if (!vis)
-        rtext_erase(glist_findrtext(parent_glist, &x->gl_obj));
     
+    if (vis && canvas_showtext(x))
+        rtext_draw(glist_findrtext(parent_glist, &x->gl_obj));
     graph_getrect(gr, parent_glist, &x1, &y1, &x2, &y2);
+    if (!vis)
+        rtext_erase(glist_findrtext(parent_glist, &x->gl_obj));
+
     sprintf(tag, "graph%lx", (t_int)x);
     if (vis)
         glist_drawiofor(parent_glist, &x->gl_obj, 1,
