@@ -62,37 +62,24 @@ proc ::dialog_path::create_dialog {mytoplevel} {
     pack $mytoplevel.extraframe.extra -side left -expand 1
     pack $mytoplevel.extraframe.verbose -side right -expand 1
 
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
     # add docsdir path widgets if pd_docsdir is loaded
     if {[namespace exists ::pd_docsdir]} {
-=======
-    # modify the docs path if pd_docspath is loaded
-    if {[namespace exists ::pd_docspath]} {
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
         labelframe $mytoplevel.docspath -text [_ "Pd Documents Directory"] \
             -borderwidth 1 -padx 5 -pady 5
         pack $mytoplevel.docspath -side top -anchor s -fill x -padx {2m 4m} -pady 2m
 
         frame $mytoplevel.docspath.path
         pack $mytoplevel.docspath.path -fill x
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
         entry $mytoplevel.docspath.path.entry -textvariable docspath \
             -takefocus 0 -state readonly -readonlybackground $readonly_color
         button $mytoplevel.docspath.path.browse -text [_ "Browse"] \
             -command "::dialog_path::browse_docspath $mytoplevel"
-=======
-        entry $mytoplevel.docspath.path.entry -textvariable ::pd_docspath::docspath \
-            -takefocus 0 -state readonly -readonlybackground $readonly_color
-        button $mytoplevel.docspath.path.browse -text [_ "Browse"] \
-            -command "::dialog_path::browse_docspath %W"
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
         pack $mytoplevel.docspath.path.browse -side right -fill x -ipadx 8
         pack $mytoplevel.docspath.path.entry -side right -expand 1 -fill x
 
         frame $mytoplevel.docspath.buttons
         pack $mytoplevel.docspath.buttons -fill x
         button $mytoplevel.docspath.buttons.reset -text [_ "Reset"] \
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
             -command "::dialog_path::reset_docspath $mytoplevel"
         button $mytoplevel.docspath.buttons.disable -text [_ "Disable"] \
             -command "::dialog_path::disable_docspath $mytoplevel"
@@ -104,16 +91,6 @@ proc ::dialog_path::create_dialog {mytoplevel} {
     }
 
     # add deken path widgets if deken is loaded
-=======
-            -command "::dialog_path::reset_docspath %W"
-        button $mytoplevel.docspath.buttons.disable -text [_ "Disable"] \
-            -command "::dialog_path::disable_docspath %W"
-        pack $mytoplevel.docspath.buttons.reset -side left -ipadx 8
-        pack $mytoplevel.docspath.buttons.disable -side left -ipadx 8
-    }
-
-    # add deken path widgets if deken is available, increase window height to make room
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
     if {[namespace exists ::deken]} {
         labelframe $mytoplevel.installpath -text [_ "Externals Install Directory"] \
             -borderwidth 1 -padx 5 -pady 5
@@ -164,16 +141,12 @@ proc ::dialog_path::create_dialog {mytoplevel} {
     # re-adjust height based on optional sections
     update
     wm minsize $mytoplevel [winfo width $mytoplevel] [winfo height $mytoplevel]
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
 
     position_over_window $mytoplevel .pdwindow
-=======
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
 }
 
 # browse for a new Pd user docs path
 proc ::dialog_path::browse_docspath {mytoplevel} {
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
     global docspath
     global installpath
     # set the new docs dir
@@ -184,62 +157,34 @@ proc ::dialog_path::browse_docspath {mytoplevel} {
         set installpath [::pd_docsdir::get_externals_path "$docspath"]
         $mytoplevel.docspath.path.entry xview moveto 1
         return 1
-=======
-    # set the new docs path
-    set newpath [tk_chooseDirectory -initialdir $::fileopendir \
-                                    -title [_ "Choose Pd documents directory:"]]
-    if {$newpath ne ""} {
-        if {[::pd_docspath::createpath $newpath]} {
-            ::pd_docspath::setpath $newpath
-            return 1
-        } else {
-            # didn't work
-            ::pdwindow::error [format [_ "Couldn't create Pd documents directory: %s"] $newpath]
-        }
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
     }
     return 0
 }
 
 # ignore the Pd user docs path
 proc ::dialog_path::disable_docspath {mytoplevel} {
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
     global docspath
     set docspath [::pd_docsdir::get_disabled_path]
-=======
-    ::pd_docspath::disable
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
     return 1
 }
 
 # reset to the default Pd user docs path
 proc ::dialog_path::reset_docspath {mytoplevel} {
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
     global docspath
     global installpath
     set docspath [::pd_docsdir::get_default_path]
     set installpath [::pd_docsdir::get_externals_path "$docspath"]
     $mytoplevel.docspath.path.entry xview moveto 1
     return 1
-=======
-    return [::pd_docspath::reset]
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
 }
 
 # browse for a new deken installpath, this assumes deken is available
 proc ::dialog_path::browse_installpath {mytoplevel} {
-<<<<<<< 4a8535a829bb10c423d8da8daf45c4b17ad1dc2a
     global installpath
     if {![file isdirectory $installpath]} {
         set initialdir $::env(HOME)
     } else {
         set initialdir $installpath
-=======
-    if {![file isdirectory $::deken::installpath]} {
-        set initialdir $::fileopendir
-    } else {
-        set initialdir $::deken::installpath
->>>>>>> transitioned docspath into plugin file; use filenewdir & fileopendir consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
     }
     set newpath [tk_chooseDirectory -initialdir $initialdir \
                                     -title [_ "Install externals to directory:"]]

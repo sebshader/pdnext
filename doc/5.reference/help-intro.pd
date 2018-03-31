@@ -177,8 +177,7 @@
 #X text 126 2779 - add to a summing bus;
 #X obj 26 2803 catch~;
 #X text 126 2803 - define and read a summing bus;
-#X obj 24 3722 block~;
-#X text 296 3693 - switch DSP computation on and off;
+#X obj 28 3767 block~;
 #X obj 26 2827 readsf~;
 #X text 126 2827 - soundfile playback from disk;
 #X obj 26 2851 writesf~;
@@ -247,7 +246,7 @@
 #X obj 23 3688 outlet;
 #X text 123 3688 - add an outlet to a pd;
 #X obj 23 3713 inlet~;
-#X obj 83 3713 outlet~;
+#X obj 77 3716 outlet~;
 #X obj 24 3841 struct;
 #X text 124 3841 - define a data structure;
 #X obj 24 3865 drawcurve;
@@ -385,7 +384,7 @@ its "help window".;
 #X obj 27 4437 bob~;
 #X text 123 4439 - Moog resonant filter model;
 #X text 116 3740 - make copies of a subpatch;
-#X obj 24 3740 clone;
+#X obj 23 3740 clone;
 #X obj 194 1204 midirealtimein;
 #X obj 24 3594 delread4~;
 #X text 154 3595 - read with a time-varying delay time;
@@ -407,8 +406,8 @@ its "help window".;
 #X obj 21 1365 fudiparse;
 #X obj 100 1365 fudiformat;
 #X text 196 1367 - FUDI messages to and from Pd lists;
-#X msg 76 3722 switch;
-#X text 138 3763 - specify block size and overlap \, or \, if invoked
+#X msg 28 3792 switch;
+#X text 122 3772 - specify block size and overlap \, or \, if invoked
 as "switch" \, also switch subpatches on and off;
 #X obj 25 1629 initbang;
 #X obj 25 1654 closebang;

@@ -89,44 +89,6 @@ int gobj_filter_highlight_behavior(t_rtext *y)
         return 0;
 }
 
-/* ------------------ for inlet/outlet highlighting --------------- */
-static char canvas_cnct_inlet_tag[4096];
-static char canvas_cnct_outlet_tag[4096];
-static int outlet_issignal = 0;
-static int inlet_issignal = 0;
-static int last_inlet_filter = 0;
-static int last_outlet_filter = 0;
-
-/* iemgui uses black inlets and outlets while default objects use gray ones
-   add here more as necessary */
-int gobj_filter_highlight_behavior(t_rtext *y)
-{
-    char *buf;
-    char name[4];
-    int bufsize, i;
-    rtext_gettext(y, &buf, &bufsize);
-    for (i = 0; i < 3; i++)
-    {
-        name[i] = buf[i];
-    }
-    name[3]='\0';
-    if (!strcmp(name, "bng") ||
-        !strcmp(name, "nbx") ||
-        !strcmp(name, "hdl") ||
-        !strcmp(name, "hsl") ||
-        !strcmp(name, "tgl") ||
-        !strcmp(name, "vdl") ||
-        !strcmp(name, "vsl") ||
-        !strcmp(name, "vu ") ||
-/* alternative names for hradio and vradio when invoked from the menu */
-        !strcmp(name, "hra") ||
-        !strcmp(name, "vra")
-        )
-        return 1;
-    else
-        return 0;
-}
-
 /* ---------------- generic widget behavior ------------------------- */
 
 void gobj_getrect(t_gobj *x, t_glist *glist, int *x1, int *y1,

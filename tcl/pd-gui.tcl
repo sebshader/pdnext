@@ -694,7 +694,7 @@ proc add_to_searchpaths {path {save true}} {
 }
 
 # ------------------------------------------------------------------------------
- consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
+# consistently, default to home dir when opening GUI first for all platforms, default to home dir for Windows; dialog_path now sets minsize based on widget size due to optional sections
 # procs called directly by pd
 
 proc pdtk_pd_startup {major minor bugfix test
