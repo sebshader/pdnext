@@ -2717,6 +2717,7 @@ static int tryconnect(t_canvas*x, t_object*src, int nout, t_object*sink, int nin
             int iom = IOMIDDLE * x->gl_zoom;
             int x11=0, x12=0, x21=0, x22=0;
             int y11=0, y12=0, y21=0, y22=0;
+            int issignal = obj_issignaloutlet(src, nout);
             int noutlets1, ninlets, lx1, ly1, lx2, ly2;
             gobj_getrect(&src->ob_g, x, &x11, &y11, &x12, &y12);
             gobj_getrect(&sink->ob_g, x, &x21, &y21, &x22, &y22);
