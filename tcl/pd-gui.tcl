@@ -233,6 +233,30 @@ array set redo_actions {}
 set undo_action no
 set redo_action no
 
+# color scheme
+set ::canvas_fill "white"
+set ::gopbox_color "#FF8080"
+set ::objtxt_color "#000"
+set ::msgtxt_color "#000"
+set ::comment_color "#000"
+set ::select_color "#00f"
+set ::dash_outline "#f00"
+set ::dash_fill "#fff"
+set ::box_outline "#ccc"
+set ::msg_box_fill "#f8f8f6"
+set ::obj_box_fill "#f6f8f8"
+set ::signal_cord_highlight "#58a"
+set ::signal_cord "#558"
+set ::msg_cord_highlight "#474"
+set ::msg_cord "#121"
+set ::msg_nlet "#fff"
+set ::graph_outline "#000"
+set ::signal_nlet $signal_cord
+set ::selrect_color "#000"
+set ::txt_hilight "#37e744"
+# can't figure out how to get system value of txt_hilight
+# does SystemHighlight work on linux?
+
 namespace eval ::pdgui:: {
     variable scriptname [ file normalize [ info script ] ]
 }
