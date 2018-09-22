@@ -1295,7 +1295,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
         if (firsttime) {
         	issignal = obj_issignaloutlet(ob,i);
             sys_vgui(".x%lx.c create rectangle %d %d %d %d "
-                "-fill %s -outline %s -tags [list %so%d outlet]",
+                "-fill %s -outline %s -tags [list %so%d outlet]\n",
                 glist_getcanvas(glist),
                 onset, y2 - oh + glist->gl_zoom,
                 onset + iow, y2,
