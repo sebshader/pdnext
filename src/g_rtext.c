@@ -312,6 +312,20 @@ static void rtext_senditup(t_rtext *x, int action, int *widthp, int *heightp,
     if (action == SEND_FIRST)
     {
         int lmargin = LMARGIN, tmargin = TMARGIN;
+        char* txtcolor;
+    	switch (x->x_text->te_type) {
+			case T_TEXT: txtcolor = "$comment_color"; break;
+			case T_OBJECT: 
+			/*SS: check if we're gop */
+				if (pd_class(&x->x_text->te_pd) == canvas_class &&
+				glist_isgraph((t_glist *)(x->x_text)))
+					txtcolor = "$graph_outline";
+				else 
+					txtcolor = "$objtxt_color";
+				break;
+			case T_MESSAGE: txtcolor = "$msgtxt_color"; break;
+			default: txtcolor = "black";
+		}
         if (glist_getzoom(x->x_glist) > 1)
         {
             /* zoom margins */
@@ -328,7 +342,7 @@ static void rtext_senditup(t_rtext *x, int action, int *widthp, int *heightp,
             outchars_b, tempbuf,
             sys_hostfontsize(font, glist_getzoom(x->x_glist)),
             (glist_isselected(x->x_glist,
-                &x->x_glist->gl_gobj)? "blue" : "black"));
+                &x->x_glist->gl_gobj)? "$select_color" : txtcolor));
     }
     else if (action == SEND_UPDATE)
     {
@@ -472,8 +486,22 @@ void rtext_select(t_rtext *x, int state)
 {
     t_glist *glist = x->x_glist;
     t_canvas *canvas = glist_getcanvas(glist);
-    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas,
-        x->x_tag, (state? "blue" : "black"));
+    char* txtcolor;
+    	switch (x->x_text->te_type) {
+		case T_TEXT: txtcolor = "$comment_color"; break;
+		case T_OBJECT:
+			/*SS: check if we're gop */
+				if (pd_class(&x->x_text->te_pd) == canvas_class &&
+				glist_isgraph((t_glist *)(x->x_text)))
+					txtcolor = "$graph_outline";
+				else 
+					txtcolor = "$objtxt_color";
+				break;
+		case T_MESSAGE: txtcolor = "$msgtxt_color"; break;
+		default: txtcolor = "black";
+	}
+    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, 
+        x->x_tag, (state? "$select_color" : txtcolor));
 }
 
 void rtext_activate(t_rtext *x, int state)

@@ -640,7 +640,7 @@ void canvas_drawredrect(t_canvas *x, int doit)
 {
     if (doit)
         sys_vgui(".x%lx.c create line %d %d %d %d %d %d %d %d %d %d "
-            "-fill #ff8080 -width %d -capstyle projecting -tags GOP\n",
+            "-fill $gopbox_color -width %d -capstyle projecting -tags GOP\n",
             glist_getcanvas(x),
             x->gl_xmargin, x->gl_ymargin,
             x->gl_xmargin + x->gl_pixwidth, x->gl_ymargin,
@@ -801,16 +801,20 @@ static void canvas_drawlines(t_canvas *x)
 {
     t_linetraverser t;
     t_outconnect *oc;
+    int issignal;
     int yoffset = x->gl_zoom; /* slight offset to hide thick line corners */
     {
         linetraverser_start(&t, x);
-        while ((oc = linetraverser_next(&t)))
+        while ((oc = linetraverser_next(&t))) {
+        	issignal = (outlet_getsymbol(t.tr_outlet) == &s_signal ? 1 : 0);
             sys_vgui(
         ".x%lx.c create line %d %d %d %d -width %d -tags [list l%lx cord]\n",
                 glist_getcanvas(x),
                 t.tr_lx1, t.tr_ly1 - yoffset, t.tr_lx2, t.tr_ly2 + yoffset,
-                (outlet_getsymbol(t.tr_outlet) == &s_signal ? 2:1) * x->gl_zoom,
+                (issignal ? 2:1) * x->gl_zoom,
+                (issignal ? "$signal_cord" : "$msg_cord"),
                 oc);
+        }
     }
 }
 
