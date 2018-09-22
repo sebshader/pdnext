@@ -858,6 +858,8 @@ void x_misc_setup(void)
 {
     random_setup();
     loadbang_setup();
+    closebang_setup();
+    initbang_setup();
     namecanvas_setup();
     cputime_setup();
     realtime_setup();
