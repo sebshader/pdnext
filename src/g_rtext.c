@@ -322,18 +322,43 @@ static void rtext_senditup(t_rtext *x, int action, int *widthp, int *heightp,
             lmargin *= glist_getzoom(x->x_glist);
             tmargin *= glist_getzoom(x->x_glist);
         }
-            /* we add an extra space to the string just in case the last
+        /* we add an extra space to the string just in case the last
             character is an unescaped backslash ('\') which would have confused
             tcl/tk by escaping the close brace otherwise.  The GUI code
             drops the last character in the string. */
-        sys_vgui("pdtk_text_new .x%lx.c {%s %s text} %f %f {%s } %d %s\n",
-            canvas, x->x_tag, rtext_gettype(x)->s_name,
-            dispx + lmargin, dispy + tmargin,
-            escbuf,
-            sys_hostfontsize(font, glist_getzoom(x->x_glist)),
-            (glist_isselected(x->x_glist,
-                &x->x_glist->gl_gobj)? "blue" : "black"));
-    }
+    	if (x->x_text->te_type == T_ATOM) {
+			sys_vgui("pdtk_text_new .x%lx.c {%s %s text} %f %f "
+			"{%s } %d black\n",
+				canvas, x->x_tag, rtext_gettype(x)->s_name,
+				dispx + lmargin, dispy + tmargin,
+				escbuf,
+				sys_hostfontsize(font, glist_getzoom(x->x_glist)));
+		} else {
+			const char *txtcolor;
+    		switch (x->x_text->te_type) {
+				case T_OBJECT: 
+				/*SS: check if we're gop */
+					if (pd_class(&x->x_text->te_pd) == canvas_class &&
+						glist_isgraph((t_glist *)(x->x_text)))
+					{
+						if(glist_isselected(((t_glist *)(x->x_text))->gl_owner,
+							&x->x_text->te_g))
+						txtcolor = "select_color";
+						else txtcolor = "graph_outline";
+					}
+					else txtcolor = "obj_txt_color";
+					break;
+				case T_TEXT: txtcolor = "comment_color"; break;
+				case T_MESSAGE: txtcolor = "msg_txt_color";
+			}
+            sys_vgui("pdtk_text_new .x%lx.c {%s %s text} %f %f {%s } %d [::pdtk_canvas::get_color %s .x%lx]\n",
+				canvas, x->x_tag, rtext_gettype(x)->s_name,
+				dispx + lmargin, dispy + tmargin,
+				escbuf,
+				sys_hostfontsize(font, glist_getzoom(x->x_glist)), txtcolor,
+				canvas);
+    	}
+    }		
     else if (action == SEND_UPDATE)
     {
         sys_vgui("pdtk_text_set .x%lx.c %s {%s }\n",
@@ -476,10 +501,31 @@ void rtext_displace(t_rtext *x, int dx, int dy)
 
 void rtext_select(t_rtext *x, int state)
 {
-    t_glist *glist = x->x_glist;
-    t_canvas *canvas = glist_getcanvas(glist);
-    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas,
-        x->x_tag, (state? "blue" : "black"));
+    if(x->x_text->te_type == T_ATOM) {
+    	if(state)
+				sys_vgui(".x%lx.c itemconfigure %s -fill [::pdtk_canvas::get_color select_color .x%lx]\n",
+				glist_getcanvas(x->x_glist), x->x_tag, glist_getcanvas(x->x_glist));
+		else
+			sys_vgui(".x%lx.c itemconfigure %s -fill black\n",
+			glist_getcanvas(x->x_glist), x->x_tag);
+	
+    } else {
+        char* txtcolor;
+		switch (x->x_text->te_type) {
+			case T_TEXT: txtcolor = "comment_color"; break;
+			case T_OBJECT:
+				/*SS: check if we're gop */
+				if (pd_class(&x->x_text->te_pd) == canvas_class &&
+				glist_isgraph((t_glist *)(x->x_text)))
+					txtcolor = "graph_outline";
+				else txtcolor = "obj_txt_color";
+				break;
+			case T_MESSAGE: txtcolor = "msg_txt_color";
+		}
+		sys_vgui(".x%lx.c itemconfigure %s -fill [::pdtk_canvas::get_color %s .x%lx]\n", 
+			glist_getcanvas(x->x_glist), x->x_tag, 
+			(state? "select_color" : txtcolor), glist_getcanvas(x->x_glist));
+    }
 }
 
 void rtext_activate(t_rtext *x, int state)
