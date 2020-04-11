@@ -1114,7 +1114,7 @@ static void text_select(t_gobj *z, t_glist *glist, int state)
 		if(x->te_type == T_ATOM) {
 			if(state)
 				sys_vgui(".x%lx.c itemconfigure %sR -fill "
-					"[::pdtk_canvas::get_color select_color .x%lx]\n",
+					"[::pdtk_canvas::get_color selected .x%lx]\n",
 					glist, rtext_gettag(y), glist);
 			else
 				sys_vgui(".x%lx.c itemconfigure %sR -fill black\n",
@@ -1123,18 +1123,19 @@ static void text_select(t_gobj *z, t_glist *glist, int state)
 			sys_vgui(".x%lx.c itemconfigure %sR -fill "
 				"[::pdtk_canvas::get_color %s .x%lx]\n",
 				glist, rtext_gettag(y),
-				(state? "select_color" : "comment_color"), glist);
+				(state? "selected" : "comment"), glist);
 		} else {
 			if (pd_class(&x->te_pd) == text_class)
-				outline = "dash_outline";
+				outline = "obj_box_outline_broken";
 			else if (x->te_type == T_MESSAGE) outline = "msg_box_outline";
 			else outline = "obj_box_outline";
 			sys_vgui(".x%lx.c itemconfigure %sR -outline "
 				"[::pdtk_canvas::get_color %s .x%lx]\n", glist, 
-				rtext_gettag(y), (state? "select_color" : outline), glist);
+				rtext_gettag(y), (state? "selected" : outline), glist);
 		}
     }
 }
+
 static void text_activate(t_gobj *z, t_glist *glist, int state)
 {
     t_text *x = (t_text *)z;
@@ -1321,11 +1322,13 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
         if (firsttime) {
         	issignal = obj_issignaloutlet(ob,i);
             sys_vgui(".x%lx.c create rectangle %d %d %d %d "
-                "-fill [::pdtk_canvas::get_color %s .x%lx] -outline [::pdtk_canvas::get_color %s .x%lx] -tags [list %so%d outlet]\n",
+                "-fill [::pdtk_canvas::get_color %s .x%lx] "
+                "-outline [::pdtk_canvas::get_color %s .x%lx] -tags "
+                "[list %so%d outlet]\n",
                 c,
                 onset, y2 - oh + glist->gl_zoom,
                 onset + iow, y2,
-                (issignal ? "signal_nlet" : "msg_nlet"), c,
+                (issignal ? "signal_iolet" : "msg_iolet"), c,
                 (issignal ? "signal_cord" : "msg_cord"), c,
                 tag, i);
         } else
@@ -1342,11 +1345,13 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
         if (firsttime) {
         	issignal = obj_issignalinlet(ob,i);
             sys_vgui(".x%lx.c create rectangle %d %d %d %d "
-                "-fill [::pdtk_canvas::get_color %s .x%lx] -outline [::pdtk_canvas::get_color %s .x%lx] -tags [list %si%d inlet]\n",
+                "-fill [::pdtk_canvas::get_color %s .x%lx] -outline "
+                "[::pdtk_canvas::get_color %s .x%lx] -tags "
+                "[list %si%d inlet]\n",
                 c,
                 onset, y1,
                 onset + iow, y1 + ih - glist->gl_zoom,
-                (issignal ? "signal_nlet" : "msg_nlet"), c,
+                (issignal ? "signal_iolet" : "msg_iolet"), c,
                 (issignal ? "signal_cord" : "msg_cord"), c,
                 tag, i);
         } else
@@ -1372,7 +1377,7 @@ void text_drawborder(t_text *x, t_glist *glist,
         if (pd_class(&x->te_pd) == text_class)
         {
             pattern = "-";
-            outline = "dash_outline";
+            outline = "obj_box_outline_broken";
         }
         else
         {
@@ -1384,7 +1389,7 @@ void text_drawborder(t_text *x, t_glist *glist,
            		"-dash %s -outline [::pdtk_canvas::get_color %s .x%lx] "
            		"-fill [::pdtk_canvas::get_color obj_box_fill .x%lx] "
            		"-width %d -tags [list %sR obj]\n",
-                c,
+               c,
                 x1, y1,  x2, y1,  x2, y2,  x1, y2,  x1, y1,
                 pattern, outline, c,
                 c, glist->gl_zoom, tag);
@@ -1447,11 +1452,11 @@ void text_drawborder(t_text *x, t_glist *glist,
     else if (x->te_type == T_TEXT && glist->gl_edit)
     {
         if (firsttime)
-           sys_vgui(".x%lx.c create line %d %d %d %d "
-           "-fill [::pdtk_canvas::get_color comment_color .x%lx] "
-           "-tags [list %sR commentbar]\n",
+			sys_vgui(".x%lx.c create line %d %d %d %d "
+				"-fill [::pdtk_canvas::get_color comment .x%lx] "
+				"-tags [list %sR commentbar]\n",
         	c, x2, y1,  x2, y2, c, tag);
-        else
+       else
             sys_vgui(".x%lx.c coords %sR %d %d %d %d\n",
                 c, tag, x2, y1,  x2, y2);
     }
