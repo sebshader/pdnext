@@ -910,11 +910,13 @@ static void gatom_vis(t_gobj *z, t_glist *glist, int vis)
             int x1, y1;
             gatom_getwherelabel(x, glist, &x1, &y1);
             sys_vgui("pdtk_text_new .x%lx.c {%lx.l label text} "
-            	"%f %f {%s } %d black\n",
+            	"%f %f {%s } %d "
+            	"[::pdtk_canvas::get_color atom_box_label .x%lx]\n",
                 glist_getcanvas(glist), x,
                 (double)x1, (double)y1,
                 canvas_realizedollar(x->a_glist, x->a_label)->s_name,
-                sys_hostfontsize(glist_getfont(glist), glist_getzoom(glist)));
+                sys_hostfontsize(glist_getfont(glist), glist_getzoom(glist)),
+                glist_getcanvas(glist));
         }
         else sys_vgui(".x%lx.c delete %lx.l\n", glist_getcanvas(glist), x);
     }
@@ -1111,24 +1113,20 @@ static void text_select(t_gobj *z, t_glist *glist, int state)
     rtext_select(y, state);
     if (glist_isvisible(glist) && gobj_shouldvis(&x->te_g, glist)) {
     	char *outline;
-		if(x->te_type == T_ATOM) {
-			if(state)
-				sys_vgui(".x%lx.c itemconfigure %sR -fill "
-					"[::pdtk_canvas::get_color selected .x%lx]\n",
-					glist, rtext_gettag(y), glist);
-			else
-				sys_vgui(".x%lx.c itemconfigure %sR -fill black\n",
-					glist, rtext_gettag(y));
-		} else if(x->te_type == T_TEXT) {
-			sys_vgui(".x%lx.c itemconfigure %sR -fill "
+    	if (x->te_type == T_TEXT)
+    		sys_vgui(".x%lx.c itemconfigure %sR -fill "
 				"[::pdtk_canvas::get_color %s .x%lx]\n",
 				glist, rtext_gettag(y),
 				(state? "selected" : "comment"), glist);
-		} else {
+		else {
 			if (pd_class(&x->te_pd) == text_class)
-				outline = "obj_box_outline_broken";
-			else if (x->te_type == T_MESSAGE) outline = "msg_box_outline";
-			else outline = "obj_box_outline";
+					outline = "obj_box_outline_broken";
+			else
+				switch (x->te_type) {
+					case T_MESSAGE:	outline = "msg_box_outline"; break;
+					case T_ATOM: outline = "atom_box_outline"; break;
+					default: outline = "obj_box_outline";
+				}
 			sys_vgui(".x%lx.c itemconfigure %sR -outline "
 				"[::pdtk_canvas::get_color %s .x%lx]\n", glist, 
 				rtext_gettag(y), (state? "selected" : outline), glist);
@@ -1411,7 +1409,7 @@ void text_drawborder(t_text *x, t_glist *glist,
            		"-outline [::pdtk_canvas::get_color msg_box_outline .x%lx] "
            		"-fill [::pdtk_canvas::get_color msg_box_fill .x%lx] "
            		"-width %d -tags [list %sR msg]\n",
-                c,
+               c,
                 x1, y1,  x2+corner, y1,  x2, y1+corner,
                 x2, y2-corner,  x2+corner, y2,
                 x1, y2,  x1, y1, c, c,
@@ -1421,7 +1419,7 @@ void text_drawborder(t_text *x, t_glist *glist,
             	"%d %d %d %d %d %d %d\n",
                 c, tag, x1, y1, x2+corner, y1, x2, y1+corner, x2, y2-corner, 
                 x2+corner, y2, x1, y2, x1, y1);
-    }
+   }
     else if (x->te_type == T_ATOM)
     {
         int grabbed = glist->gl_zoom * ((t_gatom *)x)->a_grabbed;
