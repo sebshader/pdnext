@@ -1814,13 +1814,16 @@ static void plot_vis(t_gobj *z, t_glist *glist,
                 if (i == nelem-1 || inextx != ixpix)
                 {
                     sys_vgui(".x%lx.c create rectangle %d %d %d %d "
-                        "-fill black -width 0 -tags [list plot%lx array]\n",
+                        "-fill [::pdtk_canvas::get_color array_values .x%lx] "
+                        "-width 0 -tags [list plot%lx array]\n",
                         glist_getcanvas(glist),
                         ixpix, (int)glist_ytopixels(glist,
                             basey + fielddesc_cvttocoord(yfielddesc, minyval)),
                         inextx, (int)(glist_ytopixels(glist,
                             basey + fielddesc_cvttocoord(yfielddesc, maxyval))
-                                + linewidth), data);
+                                + linewidth), 
+                        glist_getcanvas(glist), 
+                        data);
                     ndrawn++;
                     minyval = 1e20;
                     maxyval = -1e20;
