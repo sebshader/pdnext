@@ -1833,13 +1833,17 @@ static void plot_vis(t_gobj *z, t_glist *glist,
         }
         else
         {
-            char outline[20];
+            char outline[56];
             int lastpixel = -1, ndrawn = 0;
             t_float yval = 0, wval = 0, xpix;
             int ixpix = 0;
                 /* draw the trace */
-            numbertocolor(fielddesc_getfloat(&x->x_outlinecolor, template,
-                data, 1), outline);
+            xpix = fielddesc_getfloat(&x->x_outlinecolor, template, data, 1);
+            if(xpix < 0) 
+            	sprintf(outline, "[::pdtk_canvas::get_color array_values "
+            		".x%lx]", glist_getcanvas(glist));
+            else
+            	numbertocolor(xpix, outline);
             if (wonset >= 0)
             {
                     /* found "w" field which controls linewidth.  The trace is
