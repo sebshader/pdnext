@@ -23,12 +23,19 @@ proc pdtk_textwindow_open {name geometry title font} {
             [concat pdtk_textwindow_close $name 1]
         bind $name <<Modified>> "pdtk_textwindow_dodirty $name"
         text $name.text -relief raised -highlightthickness 0 -bd 2 \
-            -font [get_font_for_size $font] \
-            -yscrollcommand "$name.scroll set" -background \
-            [::pdtk_canvas::get_color text_window_fill $name] \
-            -foreground [::pdtk_canvas::get_color text_window_text $name] \
-			-insertbackground \
-			[::pdtk_canvas::get_color text_window_cursor $name]
+            -font [get_font_for_size $font] -yscrollcommand "$name.scroll set"
+		set tmpcol [::pdtk_canvas::get_color text_window_text $name]
+		if {$tmpcol ne ""} {
+			$name.text configure -foreground $tmpcol
+		}	
+		set tmpcol [::pdtk_canvas::get_color text_window_cursor $name]
+		if {$tmpcol ne ""} {
+			$name.text configure -insertbackground $tmpcol
+		}
+		set tmpcol [::pdtk_canvas::get_color text_window_fill $name]
+		if {$tmpcol ne ""} {
+			$name.text configure -background $tmpcol
+		}
         set tmpcol [::pdtk_canvas::get_color text_window_highlight $name]
 		if {$tmpcol ne ""} {
 			$name.text configure -selectbackground $tmpcol
