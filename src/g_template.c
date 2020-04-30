@@ -1839,7 +1839,7 @@ static void plot_vis(t_gobj *z, t_glist *glist,
             int ixpix = 0;
                 /* draw the trace */
             color = fielddesc_getfloat(&x->x_outlinecolor, template, data, 1);
-            if(color) 
+            if(color < 0)
             	sprintf(outline, "[::pdtk_canvas::get_color array_values "
             		".x%lx]", (long)glist_getcanvas(glist));
             else
