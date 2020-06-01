@@ -13,6 +13,7 @@ to be different but are now unified except for some fossilized names.) */
 #include "s_utf8.h"
 #include "g_canvas.h"
 #include <string.h>
+#include <math.h>
 #include "g_all_guis.h"
 #include "g_undo.h"
 
@@ -822,17 +823,14 @@ static void canvas_drawlines(t_canvas *x)
     int zoom = x->gl_zoom; /* slight offset to hide thick line corners */
     {
         linetraverser_start(&t, x);
-        while ((oc = linetraverser_next(&t))) {
-        	issignal = (outlet_getsymbol(t.tr_outlet) == &s_signal);
-            sys_vgui(
-        		".x%lx.c create line %d %d %d %d -width %d -fill " 
-    			"[::pdtk_canvas::get_color %s .x%lx] -tags [list l%lx cord]\n",
-                glist_getcanvas(x),
+       while ((oc = linetraverser_next(&t)))
+			sys_vgui(
+        		"::pdtk_canvas::pdtk_connect %d %d %d %d %d [list l%lx cord] "
+        		".x%lx %s\n",
                 t.tr_lx1, t.tr_ly1, t.tr_lx2, t.tr_ly2,
-                (issignal ? 2:1) * zoom,
-                (issignal ? "signal_cord" : "msg_cord"),
-                glist_getcanvas(x), oc);
-        }
+                (issignal ? 2:1) * x->gl_zoom,
+                oc, glist_getcanvas(x),
+				(issignal ? "signal_cord" : "msg_cord"));
     }
 }
 
@@ -846,9 +844,9 @@ void canvas_fixlinesfor(t_canvas *x, t_text *text)
     {
         if (t.tr_ob == text || t.tr_ob2 == text)
         {
-            sys_vgui(".x%lx.c coords l%lx %d %d %d %d\n",
-                glist_getcanvas(x), oc,
-                t.tr_lx1, t.tr_ly1, t.tr_lx2, t.tr_ly2);
+            sys_vgui("::pdtk_canvas::pdtk_coords "
+            	"%d %d %d %d l%lx .x%lx.c\n",
+                t.tr_lx1, t.tr_ly1, t.tr_lx2, t.tr_ly2, oc, glist_getcanvas(x));
         }
     }
 }
