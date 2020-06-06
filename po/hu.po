@@ -915,9 +915,6 @@ msgstr "Mégsem!"
 msgid "Redo"
 msgstr "Mégis!"
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr "Új"
 
@@ -1008,6 +1005,9 @@ msgstr "HTML kézikönyv..."
 msgid "Browser..."
 msgstr "Beépített böngésző..."
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1042,6 +1042,10 @@ msgstr "MIDI beállítások..."
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Szülő ablak"
+
+#, fuzzy
+msgid "Bezier Cables"
+msgstr "Bezier görbe"
 
 #, fuzzy
 msgid "Save All Preferences"

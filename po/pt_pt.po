@@ -909,9 +909,6 @@ msgstr "Anular"
 msgid "Redo"
 msgstr "Restaurar"
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr "Novo"
 
@@ -1002,6 +999,9 @@ msgstr "Manual HTML"
 msgid "Browser..."
 msgstr "Navegador"
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1037,6 +1037,10 @@ msgstr "Configuração MIDI..."
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Janela superior"
+
+#, fuzzy
+msgid "Bezier Cables"
+msgstr "Curva de Bézier"
 
 #, fuzzy
 msgid "Save All Preferences"

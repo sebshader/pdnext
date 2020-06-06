@@ -821,8 +821,9 @@ static void canvas_drawlines(t_canvas *x)
     int issignal;
     int zoom = x->gl_zoom; /* slight offset to hide thick line corners */
     {
-        linetraverser_start(&t, x);
-       while ((oc = linetraverser_next(&t)))
+		linetraverser_start(&t, x);
+    	while ((oc = linetraverser_next(&t))) {
+			issignal = (outlet_getsymbol(t.tr_outlet) == &s_signal);
 			sys_vgui(
         		"::pdtk_canvas::pdtk_connect %d %d %d %d %d [list l%lx cord] "
         		".x%lx %s\n",
@@ -830,6 +831,7 @@ static void canvas_drawlines(t_canvas *x)
                 (issignal ? 2:1) * x->gl_zoom,
                 oc, glist_getcanvas(x),
 				(issignal ? "signal_cord" : "msg_cord"));
+		}
     }
 }
 

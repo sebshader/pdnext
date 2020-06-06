@@ -939,9 +939,6 @@ msgstr "Уганда"
 msgid "Redo"
 msgstr "Чырвоны"
 
-msgid "List of objects..."
-msgstr ""
-
 #, fuzzy
 msgid "New"
 msgstr "_Новы"
@@ -1044,6 +1041,9 @@ msgstr ""
 msgid "Browser..."
 msgstr "Агляд.."
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1080,6 +1080,9 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Акно дасылкі"
+
+msgid "Bezier Cables"
+msgstr ""
 
 #, fuzzy
 msgid "Save All Preferences"

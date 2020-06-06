@@ -928,9 +928,6 @@ msgstr "Desfazer"
 msgid "Redo"
 msgstr "Refazer"
 
-msgid "List of objects..."
-msgstr "Lista de objetos..."
-
 msgid "New"
 msgstr "Novo"
 
@@ -1018,6 +1015,9 @@ msgstr "Manual em HTML..."
 msgid "Browser..."
 msgstr "Navegador..."
 
+msgid "List of objects..."
+msgstr "Lista de objetos..."
+
 msgid "puredata.info"
 msgstr "puredata.info"
 
@@ -1048,6 +1048,10 @@ msgstr "Configurações de MIDI..."
 
 msgid "Zoom New Windows"
 msgstr "Amplicar Zoom em Novas Janelas"
+
+#, fuzzy
+msgid "Bezier Cables"
+msgstr "Curva de Bezier"
 
 msgid "Save All Preferences"
 msgstr "Salvar Todas as Preferências"
