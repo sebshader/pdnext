@@ -2442,16 +2442,15 @@ static void canvas_doclick(t_canvas *x, int xpos, int ypos, int which,
                 {
                     if (doit)
                     {
-                        int issignal = obj_issignaloutlet(ob, closest);
                         x->gl_editor->e_onmotion = MA_CONNECT;
                         x->gl_editor->e_xwas = xpos;
                         x->gl_editor->e_ywas = ypos;
                         sys_vgui(
-                          ".x%lx.c create line %d %d %d %d -fill "
-                          "[::pdtk_canvas::get_color selected .x%lx] "
-                          "-width %d -tags x\n",
-                                x, xpos, ypos, xpos, ypos, x,
-                                (issignal ? 2 : 1) * x->gl_zoom);
+                           "::pdtk_canvas::pdtk_connect %d %d %d %d %d "
+                            "x .x%lx selected\n",
+                            xpos, ypos, xpos, ypos,
+                            (obj_issignaloutlet(ob, closest) ? 2 : 1) 
+							* x->gl_zoom, x);
                     }
                     else canvas_setcursor(x, CURSOR_EDITMODE_CONNECT);
                 }
@@ -2661,15 +2660,12 @@ static int tryconnect(t_canvas*x, t_object*src, int nout, t_object*sink, int nin
                              ((x22-x21-iow) * nin)/(ninlets-1) : 0)
                 + iom;
             ly2 = y21;
-            sys_vgui(".x%lx.c create line %d %d %d %d -fill "
-            	"[::pdtk_canvas::get_color %s .x%lx] -width %d -tags "
-            	"[list l%lx cord]\n",
-                    glist_getcanvas(x),
-                        lx1, ly1, lx2, ly2,
-                    (issignal ? "signal_cord" : "msg_cord"), 
-                    glist_getcanvas(x),
-                    (issignal ? 2 : 1) * x->gl_zoom, 
-                    oc);
+           sys_vgui(
+                "::pdtk_canvas::pdtk_connect %d %d %d %d %d [list l%lx cord] "
+        		".x%lx %s\n",
+                lx1, ly1, lx2, ly2,
+                (issignal ? 2 : 1) * x->gl_zoom, oc, glist_getcanvas(x),
+				(issignal ? "signal_cord" : "msg_cord"));
             canvas_undo_add(x, UNDO_CONNECT, "connect", canvas_undo_set_connect(x,
                     canvas_getindex(x, &src->ob_g), nout,
                     canvas_getindex(x, &sink->ob_g), nin));
@@ -2692,9 +2688,10 @@ static void canvas_doconnect(t_canvas *x, int xpos, int ypos, int mod, int doit)
     post("canvas_doconnect(%p, %d, %d, %d, %d)", x, xpos, ypos, mod, doit);
 #endif
     if (doit) sys_vgui(".x%lx.c delete x\n", x);
-    else sys_vgui(".x%lx.c coords x %d %d %d %d\n",
-                  x, x->gl_editor->e_xwas,
-                  x->gl_editor->e_ywas, xpos, ypos);
+    else sys_vgui("::pdtk_canvas::pdtk_coords "
+            	"%d %d %d %d x .x%lx.c\n",
+                  x->gl_editor->e_xwas, x->gl_editor->e_ywas,
+                  xpos, ypos, x);
 
     if ((y1 = canvas_findhitbox(x, xwas, ywas, &x11, &y11, &x12, &y12))
         && (y2 = canvas_findhitbox(x, xpos, ypos, &x21, &y21, &x22, &y22)))
@@ -4363,12 +4360,11 @@ void canvas_connect(t_canvas *x, t_floatarg fwhoout, t_floatarg foutno,
     if (glist_isvisible(x))
     {
         sys_vgui(
-    ".x%lx.c create line %d %d %d %d -width %d -fill "
-    "[::pdtk_canvas::get_color %s .x%lx] -tags [list l%lx cord]\n",
-            glist_getcanvas(x), 0, 0, 0, 0,
+           "::pdtk_canvas::pdtk_connect 0 0 0 0 %d [list l%lx cord] "
+        	".x%lx %s\n",
             (obj_issignaloutlet(objsrc, outno) ? 2 : 1) * x->gl_zoom,
-            (obj_issignaloutlet(objsrc, outno) ? "signal_cord" : "msg_cord"), 
-            glist_getcanvas(x), oc);
+            oc, glist_getcanvas(x),
+			(obj_issignaloutlet(objsrc, outno) ? "signal_cord" : "msg_cord"));
         canvas_fixlinesfor(x, objsrc);
     }
     return;
