@@ -889,9 +889,6 @@ msgstr "Annulla"
 msgid "Redo"
 msgstr "Ripristina"
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr "Nuovo File"
 
@@ -982,6 +979,9 @@ msgstr "Manuale HTML..."
 msgid "Browser..."
 msgstr ""
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1013,6 +1013,10 @@ msgstr "Settaggi MIDI..."
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Finestra parent"
+
+#, fuzzy
+msgid "Bezier Cables"
+msgstr "Curva bezier"
 
 #, fuzzy
 msgid "Save All Preferences"

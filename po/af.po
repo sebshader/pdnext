@@ -923,9 +923,6 @@ msgstr "Uganda "
 msgid "Redo"
 msgstr "Rede"
 
-msgid "List of objects..."
-msgstr ""
-
 #, fuzzy
 msgid "New"
 msgstr "Nuwe"
@@ -1029,6 +1026,9 @@ msgstr ""
 msgid "Browser..."
 msgstr "Blaai..."
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1059,6 +1059,9 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Description=Stuur Lêer"
+
+msgid "Bezier Cables"
+msgstr ""
 
 #, fuzzy
 msgid "Save All Preferences"
