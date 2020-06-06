@@ -920,9 +920,6 @@ msgstr "યુગાન્ડા"
 msgid "Redo"
 msgstr "લાલ:"
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr "નવું"
 
@@ -1023,6 +1020,9 @@ msgstr ""
 msgid "Browser..."
 msgstr "શોધો..."
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1053,6 +1053,9 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "મોકલો વિન્ડો"
+
+msgid "Bezier Cables"
+msgstr ""
 
 #, fuzzy
 msgid "Save All Preferences"

@@ -883,9 +883,6 @@ msgstr "Deshacer"
 msgid "Redo"
 msgstr "Rehacer"
 
-msgid "List of objects..."
-msgstr "Lista de objetos..."
-
 msgid "New"
 msgstr "Nuevo"
 
@@ -973,6 +970,9 @@ msgstr "Manual HTML..."
 msgid "Browser..."
 msgstr "Navegador..."
 
+msgid "List of objects..."
+msgstr "Lista de objetos..."
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1003,6 +1003,10 @@ msgstr ""
 
 msgid "Zoom New Windows"
 msgstr "Agrandar nuevas ventanas"
+
+#, fuzzy
+msgid "Bezier Cables"
+msgstr "Curva Bezier"
 
 msgid "Save All Preferences"
 msgstr "Guardar Preferencias"
