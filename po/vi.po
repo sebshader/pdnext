@@ -918,9 +918,6 @@ msgstr "U-gan-đa"
 msgid "Redo"
 msgstr "Màu đỏ:"
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr "Mới"
 
@@ -1021,6 +1018,9 @@ msgstr ""
 msgid "Browser..."
 msgstr "Duyệt..."
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1051,6 +1051,9 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Cửa sô Gởi"
+
+msgid "Bezier Cables"
+msgstr ""
 
 #, fuzzy
 msgid "Save All Preferences"

@@ -917,9 +917,6 @@ msgstr "यूगांडा"
 msgid "Redo"
 msgstr "लाल:"
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr "नया"
 
@@ -1020,6 +1017,9 @@ msgstr ""
 msgid "Browser..."
 msgstr "ब्राउज़..."
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1050,6 +1050,9 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "भेजें विंडो"
+
+msgid "Bezier Cables"
+msgstr ""
 
 #, fuzzy
 msgid "Save All Preferences"

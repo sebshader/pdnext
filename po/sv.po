@@ -900,9 +900,6 @@ msgstr "Ångra"
 msgid "Redo"
 msgstr "Gör om"
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr "Ny"
 
@@ -996,6 +993,9 @@ msgstr "HTML-manual..."
 msgid "Browser..."
 msgstr "Bläddra..."
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1026,6 +1026,10 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Föräldrafönster"
+
+#, fuzzy
+msgid "Bezier Cables"
+msgstr "Bezier-kurva"
 
 #, fuzzy
 msgid "Save All Preferences"
