@@ -584,6 +584,8 @@ proc ::pd_menus::create_preferences_menu {mymenu} {
     $mymenu add check -label [_ "Zoom New Windows"] \
         -variable ::zoom_open \
         -command {pdsend "pd zoom-open $zoom_open"}
+	$mymenu add check -label [_ "Bezier Cables"] \
+		-variable ::curve_cords
     $mymenu add  separator
     $mymenu add command -label [_ "Save All Preferences"] \
         -command {pdsend "pd save-preferences"}
