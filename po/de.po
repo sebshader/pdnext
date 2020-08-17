@@ -270,6 +270,15 @@ msgstr "Samplingrate:"
 msgid "Delay (msec):"
 msgstr "Verzögerung (msec):"
 
+msgid "48k"
+msgstr ""
+
+msgid "44.1k"
+msgstr ""
+
+msgid "96k"
+msgstr ""
+
 msgid "Block size:"
 msgstr "Blocklänge:"
 
@@ -815,6 +824,22 @@ msgstr "Webseite öffnen"
 msgid "_"
 msgstr ""
 
+#, fuzzy, tcl-format
+msgid ""
+"Do you want Pd to use the existing documents directory for patches and "
+"external libraries?\n"
+"\n"
+"Location: %s\n"
+"\n"
+"You can change or disable this later in the Path preferences."
+msgstr ""
+"Wollen Sie, dass Pd ein Dokumenten-Verzeichnis für Patches und Bibliotheken "
+"erstellt?\n"
+"\n"
+"Verzeichnis: %s\n"
+"\n"
+"Sie können Ihre Entscheidung jederzeit in den Suchpfad-Einstellungen ändern."
+
 #, tcl-format
 msgid ""
 "Do you want Pd to create a documents directory for patches and external "
@@ -852,6 +877,9 @@ msgstr "Konnte das Verzeichnis für Pd-Dokumente nicht erzeugen: %s\n"
 #, fuzzy, tcl-format
 msgid "couldn't create \"externals\" directory in: %s\n"
 msgstr "Konnte kein \"externals\" Verzeichnis in '%s' erstellen.\n"
+
+msgid "refusing to delete empty domain"
+msgstr ""
 
 #, fuzzy, tcl-format
 msgid "Couldn't create preferences \"%1$s\" in %2$s"
@@ -1004,6 +1032,14 @@ msgid ""
 msgstr ""
 "Alle Einstellungen löschen?\n"
 "(Benötigt Neustart von Pd)"
+
+#, fuzzy
+msgid "removed GUI settings"
+msgstr "Datei \".pdsettings\" entfernt"
+
+#, fuzzy
+msgid "no Pd-GUI settings to clear"
+msgstr "Keine Pd Einstellungen zum Zurücksetzen"
 
 msgid "Path..."
 msgstr "Suchpfade..."

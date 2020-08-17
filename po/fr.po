@@ -260,6 +260,15 @@ msgstr "Fréquence d'échantillonnage :"
 msgid "Delay (msec):"
 msgstr "Délai(ms) :"
 
+msgid "48k"
+msgstr ""
+
+msgid "44.1k"
+msgstr ""
+
+msgid "96k"
+msgstr ""
+
 msgid "Block size:"
 msgstr "Échantillons par bloc :"
 
@@ -801,6 +810,22 @@ msgstr "Ouvrir une page web"
 msgid "_"
 msgstr "_"
 
+#, fuzzy, tcl-format
+msgid ""
+"Do you want Pd to use the existing documents directory for patches and "
+"external libraries?\n"
+"\n"
+"Location: %s\n"
+"\n"
+"You can change or disable this later in the Path preferences."
+msgstr ""
+"Voulez-vous créer un dossier Documents pour les patchs et les externals ?\n"
+"\n"
+"Emplacement : %s\n"
+"\n"
+"Vous pourrez changer ou désactiver cet emplacement plus tard, dans les "
+"préférences de Chemins."
+
 #, tcl-format
 msgid ""
 "Do you want Pd to create a documents directory for patches and external "
@@ -838,6 +863,9 @@ msgstr "impossible de créer le dossier Documents : %s\n"
 #, fuzzy, tcl-format
 msgid "couldn't create \"externals\" directory in: %s\n"
 msgstr "le dossier \"externals\" n'a pas pu être créé dans : %s\n"
+
+msgid "refusing to delete empty domain"
+msgstr ""
 
 #, fuzzy, tcl-format
 msgid "Couldn't create preferences \"%1$s\" in %2$s"
@@ -990,6 +1018,14 @@ msgid ""
 msgstr ""
 "Effacer toutes les préférences ?\n"
 "(prendra effet au prochain redémarrage)"
+
+#, fuzzy
+msgid "removed GUI settings"
+msgstr "le fichier .pdsettings a été supprimé"
+
+#, fuzzy
+msgid "no Pd-GUI settings to clear"
+msgstr "aucune préférence à effacer"
 
 msgid "Path..."
 msgstr "Chemins..."
