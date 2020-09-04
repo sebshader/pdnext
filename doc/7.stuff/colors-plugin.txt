@@ -43,7 +43,7 @@
 array set ::pd_colors {
 canvas_fill "#FF8800"
 gop_box "white"
-obj_box_text "00FF00"
+obj_box_text "#00FF00"
 msg_box_text "light blue"
 comment "white"
 selected "yellow"
