@@ -68,8 +68,8 @@ atom_box_label "black"
 atom_box_outline "cyan"
 text_window_fill "black"
 text_window_text "white"
-text_window_highlight "green"
-text_window_cursor "green"
+text_window_highlight "#00FF00"
+text_window_cursor "#00FF00"
 pdwindow_fill "#000"
 pdwindow_fatal_text "#D00"
 pdwindow_fatal_highlight "#FFE0E8"
@@ -82,6 +82,8 @@ helpbrowser_highlight "red"
 canvas_text_cursor "deep sky blue"
 }
 set ::pd_colors(txt_highlight_front) $::pd_colors(selected)
+set ::pd_colors(msg_iolet_border) $::pd_colors(msg_cord)
+set ::pd_colors(signal_iolet_border) $::pd_colors(signal_cord)
 
 # how to set individual colors
 #set ::pd_colors(msg_box_fill) "white"

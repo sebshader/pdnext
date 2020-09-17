@@ -1322,7 +1322,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
                 onset, y2 - oh + glist->gl_zoom,
                 onset + iow, y2,
                 (issignal ? "signal_iolet" : "msg_iolet"), c,
-                (issignal ? "signal_cord" : "msg_cord"), c,
+                (issignal ? "signal_iolet_border" : "msg_iolet_border"), c,
                 tag, i);
         } else
             sys_vgui(".x%lx.c coords %so%d %d %d %d %d\n",
@@ -1345,7 +1345,7 @@ void glist_drawiofor(t_glist *glist, t_object *ob, int firsttime,
                 onset, y1,
                 onset + iow, y1 + ih - glist->gl_zoom,
                 (issignal ? "signal_iolet" : "msg_iolet"), c,
-                (issignal ? "signal_cord" : "msg_cord"), c,
+                (issignal ? "signal_iolet_border" : "msg_iolet_border"), c,
                 tag, i);
         } else
             sys_vgui(".x%lx.c coords %si%d %d %d %d %d\n",
