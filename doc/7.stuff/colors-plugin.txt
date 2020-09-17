@@ -82,6 +82,8 @@ helpbrowser_highlight "red"
 canvas_text_cursor "deep sky blue"
 }
 set ::pd_colors(txt_highlight_front) $::pd_colors(selected)
+set ::pd_colors(msg_iolet_border) $::pd_colors(msg_cord)
+set ::pd_colors(signal_iolet_border) $::pd_colors(signal_cord)
 
 # how to set individual colors
 #set ::pd_colors(msg_box_fill) "white"
