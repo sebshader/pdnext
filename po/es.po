@@ -912,6 +912,9 @@ msgstr "Deshacer"
 msgid "Redo"
 msgstr "Rehacer"
 
+msgid "List of objects..."
+msgstr "Lista de objetos..."
+
 msgid "New"
 msgstr "Nuevo"
 
@@ -999,9 +1002,6 @@ msgstr "Manual HTML..."
 msgid "Browser..."
 msgstr "Navegador..."
 
-msgid "List of objects..."
-msgstr "Lista de objetos..."
-
 msgid "puredata.info"
 msgstr ""
 
@@ -1038,10 +1038,6 @@ msgstr ""
 
 msgid "Zoom New Windows"
 msgstr "Agrandar nuevas ventanas"
-
-#, fuzzy
-msgid "Bezier Cables"
-msgstr "Curva Bezier"
 
 msgid "Save All Preferences"
 msgstr "Guardar Preferencias"
@@ -1119,6 +1115,10 @@ msgstr "ignorando '%s': archivo no existente"
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
 msgstr "ignorando '%s': no parece ser un fichero de Pd"
+
+#, fuzzy
+#~ msgid "Bezier Cables"
+#~ msgstr "Curva Bezier"
 
 #~ msgid "Unable to perform search. Are you online?"
 #~ msgstr "La búsqueda no pudo ser realizada. ¿Está usted online?"

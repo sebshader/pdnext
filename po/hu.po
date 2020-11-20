@@ -915,6 +915,9 @@ msgstr "Mégsem!"
 msgid "Redo"
 msgstr "Mégis!"
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "New"
 msgstr "Új"
 
@@ -1005,9 +1008,6 @@ msgstr "HTML kézikönyv..."
 msgid "Browser..."
 msgstr "Beépített böngésző..."
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "puredata.info"
 msgstr ""
 
@@ -1021,6 +1021,10 @@ msgid ""
 "Delete all preferences?\n"
 "(takes effect when Pd is restarted)"
 msgstr ""
+
+#, fuzzy
+msgid "removed GUI settings"
+msgstr "Minden bellítást ment"
 
 msgid "no Pd-GUI settings to clear"
 msgstr ""
@@ -1042,10 +1046,6 @@ msgstr "MIDI beállítások..."
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Szülő ablak"
-
-#, fuzzy
-msgid "Bezier Cables"
-msgstr "Bezier görbe"
 
 #, fuzzy
 msgid "Save All Preferences"
@@ -1128,6 +1128,10 @@ msgstr ""
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Bezier Cables"
+#~ msgstr "Bezier görbe"
 
 #~ msgid "for:"
 #~ msgstr "erre:"

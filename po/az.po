@@ -940,6 +940,9 @@ msgstr "Uqanda"
 msgid "Redo"
 msgstr "Səbəb"
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "New"
 msgstr "Yeni"
 
@@ -1040,9 +1043,6 @@ msgstr ""
 msgid "Browser..."
 msgstr "Gəz..."
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "puredata.info"
 msgstr ""
 
@@ -1079,9 +1079,6 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Fayl Yolla"
-
-msgid "Bezier Cables"
-msgstr ""
 
 #, fuzzy
 msgid "Save All Preferences"

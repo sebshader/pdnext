@@ -940,6 +940,9 @@ msgstr "ਯੂਗਾਂਡਾ"
 msgid "Redo"
 msgstr "ਲਾਲ:"
 
+msgid "List of objects..."
+msgstr ""
+
 #, fuzzy
 msgid "New"
 msgstr "ਨਵਾਂ(_N)"
@@ -1040,9 +1043,6 @@ msgstr ""
 msgid "Browser..."
 msgstr "ਝਲਕ..."
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "puredata.info"
 msgstr ""
 
@@ -1079,9 +1079,6 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "ਭੇਜਣ ਝਰੋਖਾ"
-
-msgid "Bezier Cables"
-msgstr ""
 
 #, fuzzy
 msgid "Save All Preferences"

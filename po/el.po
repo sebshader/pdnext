@@ -914,6 +914,9 @@ msgstr "Αναίρεση"
 msgid "Redo"
 msgstr "Ακύρωση Αναίρεσης"
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "New"
 msgstr "Νέο"
 
@@ -1005,9 +1008,6 @@ msgstr "Εγχειρίδιο HTML..."
 msgid "Browser..."
 msgstr "Πλοήγηση..."
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "puredata.info"
 msgstr ""
 
@@ -1021,6 +1021,10 @@ msgid ""
 "Delete all preferences?\n"
 "(takes effect when Pd is restarted)"
 msgstr ""
+
+#, fuzzy
+msgid "removed GUI settings"
+msgstr "Αποθήκευση όλων των ρυθμίσεων"
 
 msgid "no Pd-GUI settings to clear"
 msgstr ""
@@ -1042,10 +1046,6 @@ msgstr "Ρυθμίσεις MIDI..."
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Γονεϊκό Παράθυρο"
-
-#, fuzzy
-msgid "Bezier Cables"
-msgstr "Καμπύλη Bezier"
 
 #, fuzzy
 msgid "Save All Preferences"
@@ -1128,6 +1128,10 @@ msgstr ""
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Bezier Cables"
+#~ msgstr "Καμπύλη Bezier"
 
 #~ msgid "for:"
 #~ msgstr "για:"

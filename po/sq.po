@@ -940,6 +940,9 @@ msgstr "Uganda"
 msgid "Redo"
 msgstr "E kuqe:"
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "New"
 msgstr "E re"
 
@@ -1040,9 +1043,6 @@ msgstr ""
 msgid "Browser..."
 msgstr "Shfleto..."
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "puredata.info"
 msgstr ""
 
@@ -1079,9 +1079,6 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Dritare dërgimesh"
-
-msgid "Bezier Cables"
-msgstr ""
 
 #, fuzzy
 msgid "Save All Preferences"

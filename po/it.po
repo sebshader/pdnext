@@ -911,6 +911,9 @@ msgstr "Annulla"
 msgid "Redo"
 msgstr "Ripristina"
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "New"
 msgstr "Nuovo File"
 
@@ -1001,9 +1004,6 @@ msgstr "Manuale HTML..."
 msgid "Browser..."
 msgstr ""
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "puredata.info"
 msgstr ""
 
@@ -1017,6 +1017,10 @@ msgid ""
 "Delete all preferences?\n"
 "(takes effect when Pd is restarted)"
 msgstr ""
+
+#, fuzzy
+msgid "removed GUI settings"
+msgstr "Salva tutti i settaggi"
 
 msgid "no Pd-GUI settings to clear"
 msgstr ""
@@ -1038,10 +1042,6 @@ msgstr "Settaggi MIDI..."
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Finestra parent"
-
-#, fuzzy
-msgid "Bezier Cables"
-msgstr "Curva bezier"
 
 #, fuzzy
 msgid "Save All Preferences"
@@ -1124,6 +1124,10 @@ msgstr ""
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Bezier Cables"
+#~ msgstr "Curva bezier"
 
 #~ msgid "for:"
 #~ msgstr "per:"
