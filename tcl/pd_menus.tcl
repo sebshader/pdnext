@@ -81,9 +81,6 @@ proc ::pd_menus::configure_for_pdwindow {} {
         # catch errors that happen when trying to disable separators
         catch {$menubar.put entryconfigure $i -state disabled }
     }
-    # Help menu
-    # make sure "List of objects..." is enabled, it sometimes greys out on Mac
-    $menubar.help entryconfigure [_ "List of objects..."] -state normal
 }
 
 proc ::pd_menus::configure_for_canvas {mytoplevel} {
@@ -112,9 +109,6 @@ proc ::pd_menus::configure_for_canvas {mytoplevel} {
         }
     }
     update_undo_on_menu $mytoplevel $::undo_actions($mytoplevel) $::redo_actions($mytoplevel)
-    # Help menu
-    # make sure "List of objects..." is enabled, it sometimes greys out on Mac
-    $menubar.help entryconfigure [_ "List of objects..."] -state normal
 }
 
 proc ::pd_menus::configure_for_dialog {mytoplevel} {
@@ -156,9 +150,6 @@ proc ::pd_menus::configure_for_dialog {mytoplevel} {
         # catch errors that happen when trying to disable separators
         catch {$menubar.put entryconfigure $i -state disabled }
     }
-    # Help menu
-    # make sure "List of objects..." is enabled, it sometimes greys out on Mac
-    $menubar.help entryconfigure [_ "List of objects..."] -state normal
 }
 
 
