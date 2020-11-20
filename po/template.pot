@@ -5,7 +5,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Pure Data 0.51.2\n"
+"Project-Id-Version: Pure Data 0.51.3\n"
 "Report-Msgid-Bugs-To: pd-dev@iem.at\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -878,6 +878,9 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "New"
 msgstr ""
 
@@ -965,9 +968,6 @@ msgstr ""
 msgid "Browser..."
 msgstr ""
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "puredata.info"
 msgstr ""
 
@@ -1001,9 +1001,6 @@ msgid "MIDI..."
 msgstr ""
 
 msgid "Zoom New Windows"
-msgstr ""
-
-msgid "Bezier Cables"
 msgstr ""
 
 msgid "Save All Preferences"

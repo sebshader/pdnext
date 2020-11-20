@@ -388,6 +388,9 @@ proc init_for_platform {} {
                 # old default font for Tk 8.4 on macOS
                 # since font detection requires 8.5+
                 set ::font_family "Monaco"
+            } else {
+                # hack until DVSM bug is fixed on macOS 10.15+
+                set ::font_family "Menlo"
             }
             option add *DialogWindow*background "#E8E8E8" startupFile
             option add *DialogWindow*Entry.highlightBackground "#E8E8E8" startupFile
@@ -525,8 +528,10 @@ proc get_font_for_size {fsize} {
 # always do a good job of choosing in respect to Pd's needs.  So this chooses
 # from a list of fonts that are known to work well with Pd.
 proc find_default_font {} {
-    set testfonts {"DejaVu Sans Mono" "Bitstream Vera Sans Mono" "Monaco" \
-        "Inconsolata" "Courier 10 Pitch" "Andale Mono" "Droid Sans Mono"}
+    set testfonts {
+        "DejaVu Sans Mono" "Bitstream Vera Sans Mono" "Menlo" "Monaco" \
+        "Inconsolata" "Courier 10 Pitch" "Andale Mono" "Droid Sans Mono"
+    }
     foreach family $testfonts {
         if {[lsearch -exact -nocase [font families] $family] > -1} {
             set ::font_family $family
@@ -835,7 +840,7 @@ proc load_startup_plugins {} {
     load_plugin_script [file join $::sys_guidir pd_docsdir.tcl]
 
     # load other installed plugins
-    foreach pathdir [concat $::sys_searchpath $::sys_temppath $::sys_staticpath] {
+    foreach pathdir [concat $::sys_temppath $::sys_searchpath $::sys_staticpath] {
         set dir [file normalize $pathdir]
         if { ! [file isdirectory $dir]} {continue}
         if { [ catch {

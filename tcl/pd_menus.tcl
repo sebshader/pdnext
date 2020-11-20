@@ -81,15 +81,6 @@ proc ::pd_menus::configure_for_pdwindow {} {
         # catch errors that happen when trying to disable separators
         catch {$menubar.put entryconfigure $i -state disabled }
     }
-    # Help menu
-    # workaround for help menu bug on osx that disables entries immediately before a 
-	# separator
-	if {$::windowingsystem eq "aqua"} {
-		for {set i 0} {$i <= [$menubar.help index end]} {incr i} {
-			# catch errors that happen when trying to disable separators
-			catch {$menubar.help entryconfigure $i -state normal }
-		}
-	}
 }
 
 proc ::pd_menus::configure_for_canvas {mytoplevel} {
@@ -118,15 +109,6 @@ proc ::pd_menus::configure_for_canvas {mytoplevel} {
         }
     }
     update_undo_on_menu $mytoplevel $::undo_actions($mytoplevel) $::redo_actions($mytoplevel)
-    # Help menu
-    # workaround for help menu bug on osx that disables entries immediately before a 
-	# separator
-    if {$::windowingsystem eq "aqua"} {
-		for {set i 0} {$i <= [$menubar.help index end]} {incr i} {
-			# catch errors that happen when trying to disable separators
-			catch {$menubar.help entryconfigure $i -state normal }
-		}
-	}
 }
 
 proc ::pd_menus::configure_for_dialog {mytoplevel} {
@@ -168,15 +150,6 @@ proc ::pd_menus::configure_for_dialog {mytoplevel} {
         # catch errors that happen when trying to disable separators
         catch {$menubar.put entryconfigure $i -state disabled }
     }
-    # Help menu
-    # workaround for help menu bug on osx that disables entries immediately before a 
-	# separator
-    if {$::windowingsystem eq "aqua"} {
-		for {set i 0} {$i <= [$menubar.help index end]} {incr i} {
-			# catch errors that happen when trying to disable separators
-			catch {$menubar.help entryconfigure $i -state normal }
-		}
-	}
 }
 
 
@@ -243,7 +216,7 @@ proc ::pd_menus::build_edit_menu {mymenu} {
 proc ::pd_menus::build_put_menu {mymenu} {
     variable accelerator
     # The trailing 0 in menu_send_float basically means leave the object box
-    # sticking to the mouse cursor. The iemguis alway do that when created
+    # sticking to the mouse cursor. The iemguis always do that when created
     # from the menu, as defined in canvas_iemguis()
     $mymenu add command -label [_ "Object"]   -accelerator "$accelerator+1" \
         -command {menu_send_float $::focused_window obj 0}

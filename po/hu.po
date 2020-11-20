@@ -1022,10 +1022,6 @@ msgid ""
 "(takes effect when Pd is restarted)"
 msgstr ""
 
-#, fuzzy
-msgid "removed GUI settings"
-msgstr "Minden bellítást ment"
-
 msgid "no Pd-GUI settings to clear"
 msgstr ""
 

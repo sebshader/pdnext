@@ -1057,10 +1057,6 @@ msgid ""
 "(takes effect when Pd is restarted)"
 msgstr ""
 
-#, fuzzy
-msgid "removed GUI settings"
-msgstr "Ezarpen gustiak gorde"
-
 msgid "no Pd-GUI settings to clear"
 msgstr ""
 

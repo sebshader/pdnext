@@ -1016,9 +1016,6 @@ msgid ""
 "(takes effect when Pd is restarted)"
 msgstr ""
 
-#, fuzzy
-msgid "removed GUI settings"
-msgstr "Gravar a configuração"
 
 msgid "no Pd-GUI settings to clear"
 msgstr ""
