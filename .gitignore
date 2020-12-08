@@ -55,7 +55,8 @@ msw/0.*
 
 # gettext
 po/*.msg
-po/*.po~
+po/*.po
+po/*.pot
 
 # emacs tags
 TAGS
