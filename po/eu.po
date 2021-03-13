@@ -942,9 +942,6 @@ msgstr "Desegin"
 msgid "Redo"
 msgstr "Berregin"
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr "Berria"
 
@@ -1042,6 +1039,9 @@ msgstr ""
 msgid "Browser..."
 msgstr "Arakatu..."
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1081,6 +1081,10 @@ msgstr "MIDI Ezarpenak"
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "Leihoa"
+
+#, fuzzy
+msgid "Bezier Cables"
+msgstr "Bezier-en kurba"
 
 #, fuzzy
 msgid "Save All Preferences"
@@ -1163,10 +1167,6 @@ msgstr ""
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Bezier Cables"
-#~ msgstr "Bezier-en kurba"
 
 #~ msgid "WARNING: Font family '%s' not found, using default (%s)"
 #~ msgstr "ADI: Letraren familia '%s' aurkiturik ez, (%s) lehenetsi erabiltzen"

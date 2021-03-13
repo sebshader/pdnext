@@ -878,9 +878,6 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr ""
 
@@ -968,6 +965,9 @@ msgstr ""
 msgid "Browser..."
 msgstr ""
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1002,6 +1002,10 @@ msgstr ""
 
 msgid "Zoom New Windows"
 msgstr ""
+
+#, fuzzy
+msgid "Bezier Cables"
+msgstr "Béziercurve"
 
 msgid "Save All Preferences"
 msgstr ""
@@ -1079,7 +1083,3 @@ msgstr ""
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Bezier Cables"
-#~ msgstr "Béziercurve"

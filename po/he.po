@@ -925,9 +925,6 @@ msgstr ""
 msgid "Redo"
 msgstr "אדום:"
 
-msgid "List of objects..."
-msgstr ""
-
 msgid "New"
 msgstr ""
 
@@ -1026,6 +1023,9 @@ msgstr ""
 msgid "Browser..."
 msgstr "דפדף..."
 
+msgid "List of objects..."
+msgstr ""
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1062,6 +1062,9 @@ msgstr ""
 #, fuzzy
 msgid "Zoom New Windows"
 msgstr "חלון ראשי"
+
+msgid "Bezier Cables"
+msgstr ""
 
 #, fuzzy
 msgid "Save All Preferences"

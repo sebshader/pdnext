@@ -925,9 +925,6 @@ msgstr "Rückgängig"
 msgid "Redo"
 msgstr "Wiederherstellen"
 
-msgid "List of objects..."
-msgstr "Liste aller Objekte..."
-
 msgid "New"
 msgstr "Neu"
 
@@ -1015,6 +1012,9 @@ msgstr "HTML Anleitung..."
 msgid "Browser..."
 msgstr "Patch Browser..."
 
+msgid "List of objects..."
+msgstr "Liste aller Objekte..."
+
 msgid "puredata.info"
 msgstr ""
 
@@ -1051,6 +1051,10 @@ msgstr "MIDI Einstellungen..."
 
 msgid "Zoom New Windows"
 msgstr "Neue Fenster vergrößern"
+
+#, fuzzy
+msgid "Bezier Cables"
+msgstr "Bézier-Kurve"
 
 msgid "Save All Preferences"
 msgstr "Alle Einstellungen speichern"
