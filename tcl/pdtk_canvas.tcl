@@ -479,7 +479,7 @@ proc ::pdtk_canvas::pdtk_connect {x1 y1 x2 y2 width tags wind col} {
 		}
 		${wind}.c create line $x1 $y1 $x1 [expr {$y1 + $yoff}] \
 			[expr {$x1 + $halfx}] [expr {$y1 + $halfy}] $x2 \
-			[expr {$y2 - $yoff}] $x2 $y2 -smooth 1 -splinesteps 36 \
+			[expr {$y2 - $yoff}] $x2 $y2 -smooth 1 \
 			-width $width -tags $tags -fill [get_color $col $wind]
 	} else {
 		# have to set smooth and splinesteps in case it changes
