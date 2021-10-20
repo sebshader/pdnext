@@ -852,7 +852,8 @@ static void fudiformat_setup(void) {
   class_addanything(fudiformat_class, fudiformat_any);
 }
 
-
+EXTERN void initbang_setup(void);
+EXTERN void closebang_setup(void);
 
 void x_misc_setup(void)
 {
