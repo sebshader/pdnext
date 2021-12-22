@@ -2379,7 +2379,7 @@ static void canvas_doclick(t_canvas *x, int xpos, int ypos, int which,
                            "::pdtk_canvas::pdtk_connect %d %d %d %d %d "
                             "x .x%lx selected\n",
                             xpos, ypos, xpos, ypos,
-                            (obj_issignaloutlet(ob, closest) ? 2 : 1)
+                            (obj_issignaloutlet(hitobj, closest) ? 2 : 1)
 							* x->gl_zoom, x);
                     }
                     else canvas_setcursor(x, CURSOR_EDITMODE_CONNECT);
