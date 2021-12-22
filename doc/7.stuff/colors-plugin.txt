@@ -14,7 +14,9 @@
 # signal_cord - signal cord and outline of signal inlets
 # msg_cord - message cord and outline of message inlets
 # msg_iolet - message inlet/outlet fill
+# msg_iolet_border - border/outline of message inlet
 # signal_iolet - signal inlet/outlet fill
+# signal_iolet_border - border/outline of signal iolet
 # graph_outline - outline of arrays and GOP patches in the parent patch
 # graph_text - color of the names of GOP patches in the parent patch
 # selection_rectangle - selection rectangle color in edit mode
@@ -68,8 +70,8 @@ atom_box_label "black"
 atom_box_outline "cyan"
 text_window_fill "black"
 text_window_text "white"
-text_window_highlight "#00FF00"
-text_window_cursor "#00FF00"
+text_window_highlight "green"
+text_window_cursor "green"
 pdwindow_fill "#000"
 pdwindow_fatal_text "#D00"
 pdwindow_fatal_highlight "#FFE0E8"
