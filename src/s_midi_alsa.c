@@ -132,9 +132,9 @@ void sys_alsa_putmidimess(int portno, int a, int b, int c)
     if (portno >= 0 && portno < alsa_nmidiout)
     {
         snd_seq_event_t ev;
-        snd_seq_ev_clear(&ev);
         int status = a & 0xf0;
         int channel = a & 0x0f;
+        snd_seq_ev_clear(&ev);
         status = (status >= MIDI_SYSEX) ? status : (status & 0xf0);
         switch (status)
         {
@@ -237,7 +237,7 @@ void sys_alsa_poll_midi(void)
                for(i = 0; i < length; i++)
                    sys_midibytein(alsa_source, (buf[i] & 0xff));
            } else if (rslt == -ENOSPC) {
-               error("MIDI input queue overflow!");
+               pd_error(0, "MIDI input queue overflow!");
            }
        }
    }

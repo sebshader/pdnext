@@ -186,6 +186,11 @@ proc ::dialog_font::create_dialog {gfxstub} {
     pack .font.stretch.apply -side left -expand 1 -fill x -ipadx 10 \
         -anchor s
 
+    button .font.stretch.apply -text [_ "Apply"] \
+        -command "::dialog_font::stretch_apply $gfxstub" -default active
+    pack .font.stretch.apply -side left -expand 1 -fill x -ipadx 10 \
+        -anchor s
+
     # for focus handling on OSX
     if {$::windowingsystem eq "aqua"} {
         # since we show the active focus, disable the highlight outline
