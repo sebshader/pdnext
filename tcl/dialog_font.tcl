@@ -180,11 +180,6 @@ proc ::dialog_font::create_dialog {gfxstub} {
     pack .font.stretch.radio1 -side top -anchor w
     pack .font.stretch.radio2 -side top -anchor w
     pack .font.stretch.radio3 -side top -anchor w
-    
-    button .font.stretch.apply -text [_ "Apply"] \
-        -command "::dialog_font::stretch_apply $gfxstub" -default active
-    pack .font.stretch.apply -side left -expand 1 -fill x -ipadx 10 \
-        -anchor s
 
     button .font.stretch.apply -text [_ "Apply"] \
         -command "::dialog_font::stretch_apply $gfxstub" -default active
