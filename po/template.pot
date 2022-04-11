@@ -5,7 +5,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Pure Data 0.51.4\n"
+"Project-Id-Version: Pure Data 0.52.2\n"
 "Report-Msgid-Bugs-To: pd-dev@iem.at\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -386,6 +386,15 @@ msgstr ""
 msgid "Atom Box Properties"
 msgstr ""
 
+msgid "Messages"
+msgstr ""
+
+msgid "Send symbol:"
+msgstr ""
+
+msgid "Receive symbol:"
+msgstr ""
+
 msgid "Width:"
 msgstr ""
 
@@ -411,15 +420,6 @@ msgid "Top"
 msgstr ""
 
 msgid "Bottom"
-msgstr ""
-
-msgid "Messages"
-msgstr ""
-
-msgid "Send symbol:"
-msgstr ""
-
-msgid "Receive symbol:"
 msgstr ""
 
 msgid "Background color"
@@ -1044,7 +1044,15 @@ msgstr ""
 msgid "Couldn't create preferences \"%1$s\" in %2$s"
 msgstr ""
 
+#, tcl-format
+msgid "ignoring '%s': doesn't exist"
+msgstr ""
+
 msgid "About Pd"
+msgstr ""
+
+#, tcl-format
+msgid "couldn't read \"%s\" document"
 msgstr ""
 
 msgid "Save"
@@ -1113,6 +1121,9 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
+msgid "List"
+msgstr ""
+
 msgid "Symbol"
 msgstr ""
 
@@ -1177,6 +1188,9 @@ msgid "List of objects..."
 msgstr ""
 
 msgid "puredata.info"
+msgstr ""
+
+msgid "Check for updates"
 msgstr ""
 
 msgid "Report a bug"
@@ -1292,10 +1306,6 @@ msgid "Edit..."
 msgstr ""
 
 msgid "Delete"
-msgstr ""
-
-#, tcl-format
-msgid "ignoring '%s': doesn't exist"
 msgstr ""
 
 #, tcl-format

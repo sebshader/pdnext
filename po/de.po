@@ -402,6 +402,15 @@ msgstr "nur Y"
 msgid "Atom Box Properties"
 msgstr "Atom Box Eigenschaften"
 
+msgid "Messages"
+msgstr "Messages"
+
+msgid "Send symbol:"
+msgstr "Sendesymbol:"
+
+msgid "Receive symbol:"
+msgstr "Empfangssymbol:"
+
 msgid "Width:"
 msgstr "Breite:"
 
@@ -428,15 +437,6 @@ msgstr "Oben"
 
 msgid "Bottom"
 msgstr "Unten"
-
-msgid "Messages"
-msgstr "Messages"
-
-msgid "Send symbol:"
-msgstr "Sendesymbol:"
-
-msgid "Receive symbol:"
-msgstr "Empfangssymbol:"
 
 msgid "Background color"
 msgstr "Hintergrundfarbe"
@@ -1096,8 +1096,16 @@ msgstr "leere Domäne kann nicht gelöscht werden"
 msgid "Couldn't create preferences \"%1$s\" in %2$s"
 msgstr "Konnte Einstellungen '%1$s' nicht in %2$s erzeugen"
 
+#, tcl-format
+msgid "ignoring '%s': doesn't exist"
+msgstr "überspringe '%s': existiert nicht"
+
 msgid "About Pd"
 msgstr "Über Pd"
+
+#, fuzzy, tcl-format
+msgid "couldn't read \"%s\" document"
+msgstr "konnte das Verzeichnis für Pd-Dokumente nicht erzeugen: %s\n"
 
 msgid "Save"
 msgstr "Speichern"
@@ -1165,6 +1173,9 @@ msgstr "Message"
 msgid "Number"
 msgstr "Number"
 
+msgid "List"
+msgstr ""
+
 msgid "Symbol"
 msgstr "Symbol"
 
@@ -1229,6 +1240,9 @@ msgid "List of objects..."
 msgstr "Liste aller Objekte..."
 
 msgid "puredata.info"
+msgstr ""
+
+msgid "Check for updates"
 msgstr ""
 
 msgid "Report a bug"
@@ -1348,10 +1362,6 @@ msgstr "Bearbeiten..."
 
 msgid "Delete"
 msgstr "Löschen"
-
-#, tcl-format
-msgid "ignoring '%s': doesn't exist"
-msgstr "überspringe '%s': existiert nicht"
 
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
