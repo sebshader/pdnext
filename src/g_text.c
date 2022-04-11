@@ -954,7 +954,7 @@ static int gatom_doclick(t_gobj *z, t_glist *gl, int xpos, int ypos,
     return (1);
 }
 
-    /* probably never used but included in case needed for compatibilty */
+    /* probably never used but included in case needed for compatibility */
 static void gatom_click(t_gatom *x, t_floatarg xpos, t_floatarg ypos,
     t_floatarg shift, t_floatarg ctrl, t_floatarg alt)
 {
@@ -1832,4 +1832,5 @@ void g_text_setup(void)
         A_GIMME, 0);
     class_setwidget(gatom_class, &gatom_widgetbehavior);
     class_setpropertiesfn(gatom_class, gatom_properties);
+    class_sethelpsymbol(gatom_class, gensym("gui-boxes"));
 }

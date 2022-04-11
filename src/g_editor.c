@@ -2874,12 +2874,14 @@ void canvas_mouseup(t_canvas *x,
     else if (x->gl_editor->e_onmotion == MA_REGION)
         canvas_doregion(x, xpos, ypos, 1);
     else if ((x->gl_editor->e_onmotion == MA_MOVE ||
-              x->gl_editor->e_onmotion == MA_RESIZE) && !x->gl_editor->e_lastmoved)
+              x->gl_editor->e_onmotion == MA_RESIZE))
     {
-            /* if there's only one text item selected *and* the mouse hasn't moved,
-               activate the text, i.e. standard click/drag behavior:
-               - single click, no motion: enter object for editing.
-               - click-drag with motion: move object, keep it selected */
+            /* if there's only one text item selected activate the text.
+            LATER consider under sme conditions not activating it, for instance
+            if it appears to have been desired only to move the object.  Maybe
+            shift-click could allow dragging without activating text?  A
+            different solution (only activating if the object wasn't moved
+            (commit f0df4e586) turned out to flout ctrlD+move+retype. */
         if (x->gl_editor->e_selection &&
             !(x->gl_editor->e_selection->sel_next))
         {
@@ -4818,8 +4820,6 @@ static void canvas_font(t_canvas *x, t_floatarg font, t_floatarg resize,
     if (whichresize != 3) realresx = realresize;
     if (whichresize != 2) realresy = realresize;
     canvas_dofont(x2, font, realresx, realresy);
-    if ((realresx != 1 || realresx != 1) || (oldfont != (int)font))
-        canvas_dirty(x2, 1);
     canvas_undo_add(x2, UNDO_FONT, "font",
         canvas_undo_set_font(x2, oldfont, realresize, whichresize));
 
