@@ -760,7 +760,7 @@ static void graph_vis(t_gobj *gr, t_glist *parent_glist, int vis)
             i -= glist_fontheight(x);
             sys_vgui(".x%lx.c create text %d %d -text {%s} -anchor nw "
                 "-font {{%s} -%d %s} -fill [::pdtk_canvas::get_color %s .x%lx] "
-                "-tags [list %s label graph]\n",
+                "-tags [list %s name graph]\n",
                 glist_getcanvas(x),  x1, i, arrayname->s_name, sys_font,
                 fs, sys_fontweight, (state ? "selected" : "array_name"),
                 glist_getcanvas(x), tag);
