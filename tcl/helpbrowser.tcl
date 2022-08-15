@@ -1,5 +1,5 @@
 
-package provide helpbrowser 0.2
+package provide helpbrowser 0.3
 
 namespace eval ::helpbrowser:: {
     variable libdirlist
@@ -29,9 +29,7 @@ proc ::helpbrowser::open_helpbrowser {} {
         if {$::windowingsystem eq "aqua"} {
             .helpbrowser configure -menu $::dialog_menubar
         }
-        
-       
-        
+ 
         # set the maximum number of parent columns to create
         set ::helpbrowser::maxcols 4
 
@@ -45,13 +43,8 @@ proc ::helpbrowser::open_helpbrowser {} {
 
         # ignore undo bindings?
         # on macOS, this posts a ".helpbrowser: no such object" error
-        bind .helpbrowser <Mod1-z> "break"
-        bind .helpbrowser <Mod1-Z> "break"
-
-        # ignore undo bindings?
-        # on macOS, this posts a ".helpbrowser: no such object" error
-        bind .helpbrowser <Mod1-z> "break"
-        bind .helpbrowser <Mod1-Z> "break"
+        bind .helpbrowser <$::modifier-Key-z> "break"
+        bind .helpbrowser <$::modifier-Key-Z> "break"
 
         position_over_window .helpbrowser .pdwindow
     }
@@ -99,7 +92,6 @@ proc ::helpbrowser::make_frame {mytoplevel} {
                 [winfo height .helpbrowser.c]] \
                 -height [winfo reqheight .helpbrowser.c.f]
         }
-        
     }
     bind $mytoplevel <Configure> {
         if {"%W" eq ".helpbrowser"} {
@@ -156,13 +148,13 @@ proc ::helpbrowser::make_rootlistbox {{select true}} {
         -highlightbackground white -highlightthickness 5 \
         -highlightcolor white -selectborderwidth 0 \
         -height 20 -width 24 -exportselection 0 -bd 0]
-    
+
     ::helpbrowser::set_listbox_colors $current_listbox
     grid $current_listbox -column 0 -row 0 -sticky ns
     grid [scrollbar "$b-scroll" -command [list $current_listbox yview]] \
         -sticky ns -row 0 -column 1
     grid rowconfigure .helpbrowser.c.f 0 -weight 1
-    
+
     # first show the directories (for easier navigation)
     foreach item [lsort  $libdirlist] {
         $current_listbox insert end $item
@@ -400,7 +392,7 @@ proc ::helpbrowser::make_doclistbox {dir count {select true}} {
     }
     # force display update
     update idletasks
-    
+
     if {$count <= $::helpbrowser::maxcols} {
         .helpbrowser.c configure -width [winfo width .helpbrowser.c.f]
     } else {
