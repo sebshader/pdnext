@@ -6,10 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pure Data 0.43\n"
 "Report-Msgid-Bugs-To: pd-dev@iem.at\n"
-"POT-Creation-Date: 2017-07-06 18:10+0200\n"
+"POT-Creation-Date: 2023-01-04 02:48-0800\n"
 "PO-Revision-Date: 2005-11-04 08:04+0530\n"
 "Last-Translator: Amanpreet Singh Alam <amanpreetalam@yahoo.com>\n"
-"Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
+"Language-Team: Punjabi <https://hosted.weblate.org/projects/pure-data/pure-"
+"data/pa/>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,79 +18,25 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "-------dimensions(digits)(pix):-------"
+msgid "linear"
 msgstr ""
 
-msgid "--------dimensions(pix)(pix):--------"
+msgid "logarithmic"
 msgstr ""
 
-msgid "----------dimensions(pix):-----------"
+msgid "new-only"
 msgstr ""
 
-msgid "--------flash-time(ms)(ms):---------"
-msgstr ""
-
-msgid "-----------output-range:-----------"
-msgstr ""
-
-msgid "------selectable_dimensions(pix):------"
-msgstr ""
-
-msgid "------visible_rectangle(pix)(pix):------"
+msgid "new&old"
 msgstr ""
 
 #, fuzzy
-msgid "bottom:"
-msgstr "ਹੇਠਾਂ"
+msgid "no scale"
+msgstr "ਸੰਭਾਲੋ"
 
 #, fuzzy
-msgid "height:"
-msgstr "ਸੱਜਾ"
-
-msgid "hold:"
-msgstr ""
-
-msgid "intrrpt:"
-msgstr ""
-
-msgid "left:"
-msgstr ""
-
-msgid "lin"
-msgstr ""
-
-msgid "log"
-msgstr ""
-
-msgid "log-height:"
-msgstr ""
-
-msgid "max:"
-msgstr ""
-
-msgid "min:"
-msgstr ""
-
-#, fuzzy
-msgid "right:"
-msgstr "ਸੱਜਾ"
-
-#, fuzzy
-msgid "size:"
-msgstr "ਅਕਾਰ:"
-
-msgid "top:"
-msgstr ""
-
-msgid "value:"
-msgstr ""
-
-msgid "width:"
-msgstr ""
-
-#, tcl-format
-msgid "Do you want to save the changes you made in '%s'?"
-msgstr ""
+msgid "scale"
+msgstr "ਸੰਭਾਲੋ"
 
 #, tcl-format
 msgid "Discard changes to '%s'?"
@@ -357,6 +304,12 @@ msgstr ""
 msgid "Data Properties"
 msgstr ""
 
+msgid "Send"
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
 #, tcl-format
 msgid "Found '%1$s' in %2$s"
 msgstr ""
@@ -412,7 +365,7 @@ msgstr ""
 msgid "Y only"
 msgstr ""
 
-msgid "Atom Box Properties"
+msgid "GUI Box Properties"
 msgstr ""
 
 #, fuzzy
@@ -469,29 +422,16 @@ msgid "Label color"
 msgstr "ਚੋਣ ਰੰਗ"
 
 #, fuzzy
-msgid "Init"
-msgstr "ਸੱਦਾ"
-
-msgid "No init"
-msgstr ""
-
-msgid "Jump on click"
-msgstr ""
-
-msgid "Steady on click"
-msgstr ""
-
-#, fuzzy
 msgid "Bang"
 msgstr "ਪਾਬੰਦੀ"
 
 msgid "Flash Time (msec)"
 msgstr ""
 
-msgid "Intrrpt:"
+msgid "Min:"
 msgstr ""
 
-msgid "Hold:"
+msgid "Max:"
 msgstr ""
 
 #, fuzzy
@@ -553,6 +493,19 @@ msgid "%s Properties"
 msgstr ""
 
 msgid "Parameters"
+msgstr ""
+
+#, fuzzy
+msgid "Init"
+msgstr "ਸੱਦਾ"
+
+msgid "No init"
+msgstr ""
+
+msgid "Jump on click"
+msgstr ""
+
+msgid "Steady on click"
 msgstr ""
 
 msgid "X offset:"
@@ -635,6 +588,10 @@ msgstr ""
 msgid "Add a new path"
 msgstr ""
 
+#, tcl-format
+msgid "Edit existing path [%s]"
+msgstr ""
+
 msgid "Add new library"
 msgstr ""
 
@@ -653,6 +610,66 @@ msgstr ""
 #, fuzzy
 msgid "Help Browser"
 msgstr "ਝਲਕ..."
+
+msgid "Associated Files"
+msgstr ""
+
+#, fuzzy
+msgid "Pd Files"
+msgstr "ਫਾਇਲ"
+
+msgid "Max Patch Files"
+msgstr ""
+
+#, fuzzy
+msgid "Max Text Files"
+msgstr "ਫਾਇਲ"
+
+msgid "Max Patch Files (.pat)"
+msgstr ""
+
+msgid "Max Text Files (.mxt)"
+msgstr ""
+
+#, tcl-format
+msgid "detected font: %s"
+msgstr ""
+
+#, tcl-format
+msgid "WARNING: font family '%1$s' not found, using default (%2$s)"
+msgstr ""
+
+#, tcl-format
+msgid "WARNING: font weight '%1$s' not found, using default (%2$s)"
+msgstr ""
+
+#, tcl-format
+msgid "using font: %1$s %2$s"
+msgstr ""
+
+#, tcl-format
+msgid "'%1$s' already loaded, ignoring: '%2$s'"
+msgstr ""
+
+#, tcl-format
+msgid "Loading plugin: %s"
+msgstr ""
+
+#, tcl-format
+msgid "UNHANDLED ERROR: %s"
+msgstr ""
+
+#, tcl-format
+msgid "FAILED TO LOAD %s"
+msgstr ""
+
+#, tcl-format
+msgid "Failed to read plugin %s ...skipping!"
+msgstr ""
+
+#, tcl-format
+msgid "Failed to find plugins in %s ...skipping!"
+msgstr ""
 
 msgid "(Tcl) MISSING CLOSE-BRACE '}': "
 msgstr ""
@@ -683,15 +700,15 @@ msgstr ""
 msgid "ignoring '%s': doesn't look like a deken package"
 msgstr ""
 
-#, tcl-format
-msgid "Installing %s"
-msgstr ""
+#, fuzzy, tcl-format
+msgid "Installing '%s'"
+msgstr "ਪਾਠ ਖੋਜ..."
 
 #, tcl-format
-msgid "[deken] Successfully unzipped %1$s into %2$s."
+msgid "Successfully unzipped %1$s into %2$s."
 msgstr ""
 
-msgid "[deken] Unable to extract package automatically."
+msgid "Unable to extract package automatically."
 msgstr ""
 
 msgid "Please perform the following steps manually:"
@@ -713,7 +730,7 @@ msgid "3. Remove %s. (optional)"
 msgstr ""
 
 #, tcl-format
-msgid "[deken] uninstalling '%s'"
+msgid "Removing '%s'"
 msgstr ""
 
 #, tcl-format
@@ -721,23 +738,23 @@ msgid "Uninstalling %1$s from %2$s failed!"
 msgstr ""
 
 #, tcl-format
-msgid "skipping SHA256 verification of %s."
+msgid "Skipping SHA256 verification of '%s'."
 msgstr ""
 
 #, tcl-format
-msgid "SHA256 verification of %s"
+msgid "SHA256 verification of '%s'"
 msgstr ""
 
 #, tcl-format
-msgid "unable to fetch reference SHA256 for %s."
+msgid "Unable to fetch reference SHA256 for '%s'."
 msgstr ""
 
 #, tcl-format
-msgid "unable to perform SHA256 verification for %s."
+msgid "Unable to perform SHA256 verification for '%s'."
 msgstr ""
 
 #, tcl-format
-msgid "[deken] Unable to download from %1$s [%2$s]"
+msgid "Unable to download from %1$s [%2$s]"
 msgstr ""
 
 #, tcl-format
@@ -748,11 +765,11 @@ msgid "Download failed"
 msgstr ""
 
 #, tcl-format
-msgid "[deken] Unable to remove stray file %s"
+msgid "Unable to remove stray file '%s'"
 msgstr ""
 
 #, tcl-format
-msgid "[deken] Unable to rename downloaded file to %s"
+msgid "Unable to rename downloaded file to '%s'"
 msgstr ""
 
 msgid "Create"
@@ -810,51 +827,51 @@ msgstr ""
 
 #, fuzzy
 msgid "ZIP Files"
-msgstr "ਫਾਇਲ"
+msgstr "ZIP ਫਾਈਲਾਂ"
 
 #, fuzzy
 msgid "TAR Files"
-msgstr "ਫਾਇਲ"
+msgstr "TAR ਫਾਈਲਾਂ"
 
 #, fuzzy
 msgid "All Files"
-msgstr "ਫਾਇਲ"
+msgstr "ਸਾਰੀਆਂ ਫਾਈਲਾਂ"
 
 #, tcl-format
 msgid "Checksum mismatch for '%s'"
 msgstr ""
 
 #, tcl-format
-msgid "SHA256 verification of %s failed!"
+msgid "SHA256 verification of '%s' failed!"
 msgstr ""
 
 msgid "SHA256 verification failed"
 msgstr ""
 
 #, tcl-format
-msgid "Removing %s"
+msgid "Uninstalling previous installation of '%s'"
 msgstr ""
 
 #, tcl-format
-msgid "[deken] temporarily moving %1$s into %2$s failed."
+msgid "Temporarily moving %1$s into %2$s failed."
 msgstr ""
 
 #, tcl-format
-msgid "Installing package %s"
+msgid "Installing package '%s'"
 msgstr ""
 
 msgid "Installation completed!"
 msgstr ""
 
 #, tcl-format
-msgid "Successfully installed %s!"
+msgid "Successfully installed '%s'!"
 msgstr ""
 
 msgid "Installation failed!"
 msgstr ""
 
 #, tcl-format
-msgid "Failed to install %s!"
+msgid "Failed to install '%s'!"
 msgstr ""
 
 msgid "Package installation failed"
@@ -867,7 +884,7 @@ msgid ""
 msgstr ""
 
 #, tcl-format
-msgid "[deken] Unable to add %s to search paths"
+msgid "Unable to add %s to search paths"
 msgstr ""
 
 #, tcl-format
@@ -875,7 +892,7 @@ msgid "Add %s to the Pd search paths?"
 msgstr ""
 
 #, tcl-format
-msgid "[deken] Added %s to search paths"
+msgid "Added %s to search paths"
 msgstr ""
 
 msgid "No packages selected for installation."
@@ -891,6 +908,13 @@ msgstr ""
 #, fuzzy
 msgid "Search"
 msgstr "ਪਾਠ ਖੋਜ..."
+
+#, tcl-format
+msgid "Install (%d)"
+msgstr ""
+
+msgid "Install"
+msgstr ""
 
 #, tcl-format
 msgid "%s%% of download completed"
@@ -917,8 +941,17 @@ msgstr ""
 msgid "Right-clicking a search result will give you more options..."
 msgstr ""
 
+msgid "You can also search for libraries & objects via your web browser:"
+msgstr ""
+
 msgid "Find externals"
 msgstr ""
+
+msgid "Install DEK file..."
+msgstr ""
+
+msgid "Preferences..."
+msgstr "ਮੇਰੀ ਪਸੰਦ..."
 
 #, fuzzy
 msgid "Search for: "
@@ -939,33 +972,56 @@ msgstr ""
 msgid "Only install externals uploaded by people you trust."
 msgstr ""
 
-msgid "Preferences..."
-msgstr "ਮੇਰੀ ਪਸੰਦ..."
-
-msgid "Install DEK file..."
+msgid "Disabling tabbed view: incompatible Tcl/Tk detected"
 msgstr ""
 
-msgid "More..."
+msgid "Library"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Uploader"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+#, fuzzy
+msgid "Search Results"
+msgstr "ਪਾਠ ਖੋਜ..."
+
+msgid "Log"
 msgstr ""
 
 #, fuzzy, tcl-format
-msgid "[deken] Start searching for externals... %s"
+msgid "Searching for \"%s\"..."
 msgstr "ਪਾਠ ਖੋਜ..."
 
 #, tcl-format
-msgid "[deken] online? %s"
+msgid "online? %s"
 msgstr ""
 
 msgid "Unable to perform search. Are you online?"
 msgstr ""
 
-msgid "[deken] No matching externals found."
+#, tcl-format
+msgid "Found %1$d usable packages (of %2$d packages in total)."
+msgstr ""
+
+msgid "It appears that there are no matching packages for your architecture."
+msgstr ""
+
+msgid "No matching externals found."
 msgstr ""
 
 msgid "Try using the full name e.g. 'freeverb~'."
 msgstr ""
 
-msgid "No matching externals found."
+msgid "Or use wildcards like 'freeverb*'."
 msgstr ""
 
 msgid "Please select a (writable) installation directory!"
@@ -976,21 +1032,28 @@ msgid "Install %1$s to %2$s?"
 msgstr ""
 
 #, tcl-format
-msgid "Cancelling download of %s: No installation directory given."
+msgid "Cancelling download of '%s': No installation directory given."
 msgstr ""
 
-msgid "Installing to non-existent directory failed"
+msgid "Installing to non-existant directory failed"
 msgstr ""
 
 #, tcl-format
-msgid ""
-"Commencing downloading of:\n"
-"%1$s\n"
-"Into %2$s..."
+msgid "Unable to install to '%s'"
+msgstr ""
+
+msgid "Directory does not exist!"
+msgstr ""
+
+msgid "Directory is not writable!"
 msgstr ""
 
 #, tcl-format
 msgid "Downloading '%s'"
+msgstr ""
+
+#, tcl-format
+msgid "Commencing download of '%1$s' into '%2$s'..."
 msgstr ""
 
 msgid "aborting."
@@ -1006,9 +1069,8 @@ msgstr ""
 msgid "Download completed! Verifying..."
 msgstr ""
 
-#, fuzzy, tcl-format
-msgid "searching for '%s'"
-msgstr "ਪਾਠ ਖੋਜ..."
+msgid "Ignoring checksum mismatch"
+msgstr ""
 
 #, tcl-format
 msgid "[deken] deken-plugin.tcl (Pd externals search) loaded from %s."
@@ -1019,6 +1081,21 @@ msgid "[deken] Platform detected: %s"
 msgstr ""
 
 #, fuzzy, tcl-format
+msgid "Searching on %s..."
+msgstr "ਪਾਠ ਖੋਜ..."
+
+#, tcl-format
+msgid "Searching on %1$s returned %2$d results"
+msgstr ""
+
+msgid "No usable servers for searching found..."
+msgstr ""
+
+#, tcl-format
+msgid "Uploaded by %1$s @ %2$s"
+msgstr ""
+
+#, fuzzy, tcl-format
 msgid "Searching for '%s' failed!"
 msgstr "ਪਾਠ ਖੋਜ..."
 
@@ -1026,23 +1103,13 @@ msgstr "ਪਾਠ ਖੋਜ..."
 msgid "Search failed"
 msgstr "ਪਾਠ ਖੋਜ..."
 
-msgid "[deken] Unable to perform search."
-msgstr ""
-
-#, tcl-format
-msgid "Uploaded by %1$s @ %2$s"
-msgstr ""
-
-msgid "Deselect package"
+msgid "Unable to perform search."
 msgstr ""
 
 msgid "Select package for installation"
 msgstr ""
 
-msgid "Install selected packages"
-msgstr ""
-
-msgid "Install package"
+msgid "Deselect package"
 msgstr ""
 
 msgid "Open package webpage"
@@ -1055,6 +1122,10 @@ msgid "Copy SHA256 checksum URL"
 msgstr ""
 
 msgid "Copy OpenGPG signature URL"
+msgstr ""
+
+#, tcl-format
+msgid "Uninstall '%s'"
 msgstr ""
 
 #, tcl-format
@@ -1087,11 +1158,11 @@ msgid ""
 msgstr ""
 
 #, tcl-format
-msgid "couldn't create Pd documents directory: %s\n"
+msgid "couldn't create Pd documents directory: %s"
 msgstr ""
 
 #, tcl-format
-msgid "couldn't create \"externals\" directory in: %s\n"
+msgid "couldn't create \"externals\" directory in: %s"
 msgstr ""
 
 msgid "refusing to delete empty domain"
@@ -1333,6 +1404,10 @@ msgstr ""
 msgid "Quit"
 msgstr "ਬਾਹਰ(_Q)"
 
+#, tcl-format
+msgid "Do you want to save the changes you made in '%s'?"
+msgstr ""
+
 msgid "Properties"
 msgstr ""
 
@@ -1398,6 +1473,26 @@ msgstr "ਹਟਾਓ"
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
 msgstr ""
+
+#, fuzzy
+#~ msgid "bottom:"
+#~ msgstr "ਹੇਠਾਂ"
+
+#, fuzzy
+#~ msgid "height:"
+#~ msgstr "ਸੱਜਾ"
+
+#, fuzzy
+#~ msgid "right:"
+#~ msgstr "ਸੱਜਾ"
+
+#, fuzzy
+#~ msgid "size:"
+#~ msgstr "ਅਕਾਰ:"
+
+#, fuzzy
+#~ msgid "start searching for externals..."
+#~ msgstr "ਪਾਠ ਖੋਜ..."
 
 #, fuzzy
 #~ msgid "for:"

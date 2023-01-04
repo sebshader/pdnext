@@ -30,7 +30,7 @@ proc pdtk_textwindow_open {name geometry title font} {
 		set tmpcol [::pdtk_canvas::get_color text_window_text $name]
 		if {$tmpcol ne ""} {
 			$name.text configure -foreground $tmpcol
-		}	
+        }
 		set tmpcol [::pdtk_canvas::get_color text_window_cursor $name]
 		if {$tmpcol ne ""} {
 			$name.text configure -insertbackground $tmpcol
@@ -87,6 +87,28 @@ proc pdtk_textwindow_append {name contents} {
         $name.text insert end $contents
     }
 }
+
+proc pdtk_textwindow_appendatoms {name atoms} {
+    if {! [winfo exists $name]} { return }
+    set sep ""
+    foreach atom $atoms {
+        if { ";" eq $atom } {
+            # drop any previously added space
+            if { " " eq "$sep" } {
+                $name.text delete "end - 2 chars"
+            }
+            # message separator ';' starts a new line
+            set sep "\n"
+        } else {
+            # escape spaces in symbols
+            set atom [string map {" " "\\ " ";" "\\;"} $atom]
+            # atoms are separated by space
+            set sep " "
+        }
+        $name.text insert end "${atom}${sep}"
+    }
+}
+
 
 proc pdtk_textwindow_clear {name} {
     if {[winfo exists $name]} {
