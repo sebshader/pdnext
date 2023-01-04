@@ -2407,12 +2407,11 @@ static void canvas_doclick(t_canvas *x, int xpos, int ypos, int which,
                         x->gl_editor->e_xwas = xpos;
                         x->gl_editor->e_ywas = ypos;
                         pdgui_vmess("::pdtk_canvas::cords_to_foreground", "ci", x, 0);
-                        pdgui_vmess("pdtk_canvas::set_option_types",
-                            "ci crr iiii ri rs rr",
-                            x, 1, x, "create", "line",
+                        pdgui_vmess("pdtk_canvas::pdtk_connect",
+                            "iiii i rcr",
                             xpos,ypos, xpos,ypos,
-                            "-width", (issignal ? 2 : 1) * x->gl_zoom,
-                            "-tags", "x", "-fill", "selected");
+                            (issignal ? 2 : 1) * x->gl_zoom,
+                            "x", x, "selected");
                     }
                     else canvas_setcursor(x, CURSOR_EDITMODE_CONNECT);
                 }
@@ -2611,7 +2610,6 @@ static int tryconnect(t_canvas*x, t_object*src, int nout, t_object*sink, int nin
             int noutlets1, ninlets, lx1, ly1, lx2, ly2;
             char tag[128];
             char*tags[] = {tag, "cord"};
-            t_canvas *c = glist_getcanvas(x);
             sprintf(tag, "l%p", oc);
             gobj_getrect(&src->ob_g, x, &x11, &y11, &x12, &y12);
             gobj_getrect(&sink->ob_g, x, &x21, &y21, &x22, &y22);
@@ -2627,11 +2625,10 @@ static int tryconnect(t_canvas*x, t_object*src, int nout, t_object*sink, int nin
                              ((x22-x21-iow) * nin)/(ninlets-1) : 0)
                 + iom;
             ly2 = y21;
-            pdgui_vmess("pdtk_canvas::set_option_types", "ci crr iiii ri rS",
-                c, 1, c, "create", "line",
+            pdgui_vmess("pdtk_canvas::pdtk_connect", "iiii i Sc r",
                 lx1,ly1, lx2,ly2,
-                "-width", (obj_issignaloutlet(src, nout) ? 2 : 1) * x->gl_zoom,
-                "-tags", 2, tags, "-fill",
+                (obj_issignaloutlet(src, nout) ? 2 : 1) * x->gl_zoom,
+                2, tags, glist_getcanvas(x),
                 (issignal ? "signal_cord" : "msg_cord"));
             canvas_undo_add(x, UNDO_CONNECT, "connect", canvas_undo_set_connect(x,
                     canvas_getindex(x, &src->ob_g), nout,
@@ -2659,9 +2656,9 @@ static void canvas_doconnect(t_canvas *x, int xpos, int ypos, int mod, int doit)
         pdgui_vmess(0, "crs", x, "delete", "x");
     }
     else
-        pdgui_vmess(0, "crs iiii",
-            x, "coords", "x",
-            x->gl_editor->e_xwas,x->gl_editor->e_ywas, xpos,ypos);
+        pdgui_vmess("pdtk_canvas::pdtk_coords", "iiii rc",
+            x->gl_editor->e_xwas,x->gl_editor->e_ywas, xpos,ypos,
+            "x", x);
 
     if ((y1 = canvas_findhitbox(x, xwas, ywas, &x11, &y11, &x12, &y12))
         && (y2 = canvas_findhitbox(x, xpos, ypos, &x21, &y21, &x22, &y22)))
@@ -4424,14 +4421,11 @@ void canvas_connect(t_canvas *x, t_floatarg fwhoout, t_floatarg foutno,
         int issignal = obj_issignaloutlet(objsrc, outno);
         char tag[128];
         char*tags[] = {tag, "cord"};
-        t_canvas *c = glist_getcanvas (x);
         sprintf(tag, "l%p", oc);
-        pdgui_vmess("pdtk_canvas::set_option_types",
-            "ci crr iiii ri rS rr",
-            c, 1, c, "create", "line",
-            0, 0, 0, 0,
-            "-width", (issignal ? 2 : 1) * x->gl_zoom,
-            "-tags", 2, tags, "-fill", issignal ? "signal_cord" : "msg_cord");
+        pdgui_vmess("pdtk_canvas::pdtk_connect",
+            "iiii i Scr",
+            0, 0, 0, 0, (issignal ? 2 : 1) * x->gl_zoom,
+            2, tags, glist_getcanvas(x), issignal ? "signal_cord" : "msg_cord");
         canvas_fixlinesfor(x, objsrc);
     }
     return;

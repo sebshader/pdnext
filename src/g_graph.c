@@ -661,11 +661,9 @@ void glist_redraw(t_glist *x)
             {
                 char tagbuf[128];
                 sprintf(tagbuf, "l%p", oc);
-                pdgui_vmess("pdtk_canvas::set_option_types", "crs iiii",
-                          glist_getcanvas(x),
-                          "coords",
-                          tagbuf,
-                          t.tr_lx1, t.tr_ly1, t.tr_lx2, t.tr_ly2);
+                pdgui_vmess("pdtk_canvas::pdtk_coords", "iiii sc",
+                          t.tr_lx1, t.tr_ly1, t.tr_lx2, t.tr_ly2,
+                          tagbuf, glist_getcanvas(x));
             }
             canvas_drawredrect(x, 0);
             if (x->gl_goprect)

@@ -945,17 +945,16 @@ static void canvas_drawlines(t_canvas *x)
         char tag[128];
         const char *tags[2] = {tag, "cord"};
         int issignal;
-        t_canvas *c = glist_getcanvas(x);
         linetraverser_start(&t, x);
         while ((oc = linetraverser_next(&t)))
         {
             issignal = (outlet_getsymbol(t.tr_outlet) == &s_signal);
             sprintf(tag, "l%p", oc);
-            pdgui_vmess("pdtk_canvas::set_option_types", "ci crr iiii ri rS rr",
-                c, 1, c, "create", "line",
+            pdgui_vmess("pdtk_canvas::pdtk_connect", "iiii i Sc r",
                 t.tr_lx1,t.tr_ly1, t.tr_lx2,t.tr_ly2,
-                "-width", (issignal ? 2 : 1) * x->gl_zoom,
-                "-tags", 2, tags, "-fill", (issignal ? "signal_cord" : "msg_cord"));
+                (issignal ? 2 : 1) * x->gl_zoom,
+                2, tags, glist_getcanvas(x),
+                (issignal ? "signal_cord" : "msg_cord"));
         }
     }
 }
@@ -972,9 +971,9 @@ void canvas_fixlinesfor(t_canvas *x, t_text *text)
         {
             char tag[128];
             sprintf(tag, "l%p", oc);
-            pdgui_vmess(0, "crs iiii",
-                glist_getcanvas(x), "coords", tag,
-                t.tr_lx1,t.tr_ly1, t.tr_lx2,t.tr_ly2);
+            pdgui_vmess("pdtk_canvas::pdtk_coords", "iiii sc",
+                t.tr_lx1,t.tr_ly1, t.tr_lx2,t.tr_ly2,
+                tag, glist_getcanvas(x));
         }
     }
 }

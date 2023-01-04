@@ -520,7 +520,7 @@ proc ::pdtk_canvas::cords_to_foreground {mytoplevel {state 1}} {
     }
 }
 
-proc ::pdtk_canvas::pdtk_connect {x1 y1 x2 y2 width tags wind col} {
+proc ::pdtk_canvas::pdtk_connect {x1 y1 x2 y2 width tags canv col} {
 # from pd-l2ork
 	if {$::curve_cords} {
 		set ymax 0;
@@ -544,14 +544,14 @@ proc ::pdtk_canvas::pdtk_connect {x1 y1 x2 y2 width tags wind col} {
 		if {$yoff > $ymax} {
 			set yoff $ymax;
 		}
-		${wind}.c create line $x1 $y1 $x1 [expr {$y1 + $yoff}] \
+		$canv create line $x1 $y1 $x1 [expr {$y1 + $yoff}] \
 			[expr {$x1 + $halfx}] [expr {$y1 + $halfy}] $x2 \
 			[expr {$y2 - $yoff}] $x2 $y2 -smooth 1 \
-			-width $width -tags $tags -fill [get_color $col $wind]
+			-width $width -tags $tags -fill [get_color $col $canv]
 	} else {
 		# have to set smooth and splinesteps in case it changes
-		${wind}.c create line $x1 $y1 $x2 $y2 -width $width -tags $tags \
-			-smooth 1 -splinesteps 36  -fill [get_color $col $wind]
+		$canv create line $x1 $y1 $x2 $y2 -width $width -tags $tags \
+			-smooth 1 -splinesteps 36  -fill [get_color $col $canv]
 	}
 }
 
