@@ -5,9 +5,7 @@ on:
   # but only for the main branch
   push:
     branches:
-      - main
-      - master
-      - develop
+      - next
   pull_request:
   workflow_dispatch:
 
