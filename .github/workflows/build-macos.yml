@@ -13,7 +13,7 @@ jobs:
       - name: Install Homebrew Dependencies
         run: |
           brew update
-          brew install automake autoconf jack
+          brew install automake autoconf
       - name: configure Pd
         run: |
           ./autogen.sh
