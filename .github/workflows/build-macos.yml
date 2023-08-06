@@ -23,7 +23,7 @@ jobs:
       - name: configure Pd
         run: |
           ./autogen.sh
-          ./configure --enable-jack CFLAGS="-arch x86_64 -arch arm64"
+          ./configure --enable-jack --disable-jack-framework CFLAGS="-arch x86_64 -arch arm64"
       - name: make Pd
         run: make
       - name: make package
