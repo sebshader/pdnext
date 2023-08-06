@@ -1,0 +1,29 @@
+name: 'Build MacOs package'
+on: workflow_dispatch
+
+env:
+  PD_VERSION: 0.54-0-Next
+
+jobs:
+  make-package:
+    runs-on: macos-11
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Install Homebrew Dependencies
+        run: |
+          brew update
+          brew install automake autoconf jack
+      - name: configure Pd
+        run: |
+          ./autogen.sh
+          ./configure --enable-jack --disable-jack-framework CFLAGS="-arch x86_64 -arch arm64"
+      - name: make Pd
+        run: make
+      - name: make package
+        run: mac/osx-app.sh $PD_VERSION
+      - name: upload package
+        uses: actions/upload-artifact@v3
+        with:
+          name: MacOs-Build
+          path: mac/Pd-0.54-0-Next.app
