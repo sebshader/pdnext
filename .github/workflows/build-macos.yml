@@ -10,6 +10,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: Install Jack
+        run: |
+          - curl -L -o jack.tgz https://github.com/jackaudio/jack2-releases/releases/download/v1.9.22/jack2-macOS-universal-v1.9.22.tar.gz
+          - test ! -e jack.tgz || tar -xvf jack.tgz "jack*.pkg"
+          - for f in ./jack*.pkg; do test -e "${f}" || continue; sudo installer -pkg "${f}" -target /; done
+          - rm -f jack*.pkg jack.tgz
       - name: Install Homebrew Dependencies
         run: |
           brew update
@@ -17,7 +23,7 @@ jobs:
       - name: configure Pd
         run: |
           ./autogen.sh
-          ./configure CFLAGS="-arch x86_64 -arch arm64"
+          ./configure --enable-jack CFLAGS="-arch x86_64 -arch arm64"
       - name: make Pd
         run: make
       - name: make package
