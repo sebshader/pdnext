@@ -24,6 +24,7 @@ jobs:
         working-directory: ./mac
         run: ./osx-app.sh $PD_VERSION
       - name: prepare for upload
+        working-directory: ./mac
         run: |
           mkdir upload-container
           mv Pd-$PD_VERSION.app upload-container
