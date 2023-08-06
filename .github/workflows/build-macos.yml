@@ -21,7 +21,8 @@ jobs:
       - name: make Pd
         run: make
       - name: make package
-        run: mac/osx-app.sh $PD_VERSION
+        working-directory: ./mac
+        run: ./osx-app.sh $PD_VERSION
       - name: upload package
         uses: actions/upload-artifact@v3
         with:
