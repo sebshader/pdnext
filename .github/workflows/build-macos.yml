@@ -23,8 +23,12 @@ jobs:
       - name: make package
         working-directory: ./mac
         run: ./osx-app.sh $PD_VERSION
+      - name: prepare for upload
+        run: |
+          mkdir upload-container
+          mv Pd-$PD_VERSION.app upload-container
       - name: upload package
         uses: actions/upload-artifact@v3
         with:
           name: MacOs-Build
-          path: mac/Pd-0.54-0-Next.app
+          path: mac/upload-container
