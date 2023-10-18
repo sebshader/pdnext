@@ -28,12 +28,14 @@ jobs:
         run: make
       - name: make package
         working-directory: ./mac
-        run: ./osx-app.sh $PD_VERSION
+        run: |
+          ./osx-app.sh $PD_VERSION
+          hdiutil create -volname Pd-$PD_VERSION.app -format UDZO -srcfolder Pd-$PD_VERSION.app Pd-$PD_VERSION.dmg
       - name: prepare for upload
         working-directory: ./mac
         run: |
           mkdir upload-container
-          mv Pd-$PD_VERSION.app upload-container
+          mv Pd-$PD_VERSION.dmg upload-container
       - name: upload package
         uses: actions/upload-artifact@v3
         with:
