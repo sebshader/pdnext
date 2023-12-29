@@ -2,7 +2,7 @@ name: 'Build MacOs package'
 on: workflow_dispatch
 
 env:
-  PD_VERSION: 0.54-0-Next
+  PD_VERSION: 0.54-1-Next
 
 jobs:
   make-package:
