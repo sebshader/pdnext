@@ -30,6 +30,12 @@
 
 <H3> <A id="s1"> 5.1. release notes </A> </H3>
 
+<P> ------------------ 0.54-1 ------------------------------
+
+<p> Fixes a compatibility problem with MacOS 14.
+
+<p> Numerous bug fixes and documentation updates.
+
 <P> ------------------ 0.54-0 ------------------------------
 
 <P> Multichannel audio signals are supported for many objects.  They may be created
@@ -61,6 +67,9 @@ by coherently mixing both possible octaves.
 
 <P> The [lop~] object can now also take a signal to set rolloff frequency, but the same
 slightly faster algorithm is used if you have a scalar input instead.
+
+<P> There are new methods for the [file] object by IOhannes, namely "cwd", "patchpath",
+"normalize" and "isabsolute".
 
 <P> The 64-bit windows build uses the lower-latency WASAPI audio system in place
 of the older MMIO.  This therefore only runs on Windows 7 and newer.  The 32-bit version
