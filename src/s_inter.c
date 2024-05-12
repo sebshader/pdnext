@@ -873,6 +873,18 @@ void sys_vgui(const char *fmt, ...)
     INTER->i_bytessincelastping += msglen;
 }
 
+
+/* sys_vgui() and sys_gui() are deprecated for externals
+   and shouldn't be used directly within Pd.
+   however, the we do use them for implementing the high-level
+   communication, so we do not want the compiler to shout out loud.
+ */
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#elif defined _MSC_VER
+#pragma warning( disable : 4996 )
+#endif
+
 void sys_gui(const char *s)
 {
     sys_vgui("%s", s);
@@ -1210,7 +1222,7 @@ static void init_deken_arch(void)
     {
         int arm_cpu = __ARM_ARCH;
         int cpu_v;
-        int n;
+        int n = 0;
         const char endianness =
 #  if defined(__BYTE_ORDER__) && defined(__ORDER_BIG_ENDIAN__) && (__BYTE_ORDER__ == __ORDER_BIG_ENDIAN__)
             'b';
@@ -1614,11 +1626,15 @@ static int sys_do_startgui(const char *libdir)
 
     sys_init_deken();
 
-    do {
+    {
         t_audiosettings as;
         sys_get_audio_settings(&as);
         sys_vgui("set pd_whichapi %d\n", as.a_api);
-    } while(0);
+
+        pdgui_vmess("pdtk_pd_dsp", "s",
+            THISGUI->i_dspstate ? "ON" : "OFF");
+    }
+
     return (0);
 }
 
@@ -1728,6 +1744,8 @@ void sys_setrealtime(const char *libdir)
 #endif /* __APPLE__ */
 }
 
+void sys_do_close_audio(void);
+
 /* This is called when something bad has happened, like a segfault.
 Call glob_quit() below to exit cleanly.
 LATER try to save dirty documents even in the bad case. */
@@ -1741,7 +1759,7 @@ void sys_bail(int n)
             /* sys_close_audio() hangs if you're in a signal? */
         fprintf(stderr ,"gui socket %d - \n", INTER->i_guisock);
         fprintf(stderr, "closing audio...\n");
-        sys_close_audio();
+        sys_do_close_audio();
         fprintf(stderr, "closing MIDI...\n");
         sys_close_midi();
         fprintf(stderr, "... done.\n");
@@ -1751,20 +1769,11 @@ void sys_bail(int n)
     else _exit(1);
 }
 
-extern void sys_exit(void);
+void sys_exit(int status);
 
 void glob_exit(void *dummy, t_float status)
 {
-        /* sys_exit() sets the sys_quit flag, so all loops end */
-    sys_exit();
-    sys_close_audio();
-    sys_close_midi();
-    if (sys_havegui())
-    {
-        sys_closesocket(INTER->i_guisock);
-        sys_rmpollfn(INTER->i_guisock);
-    }
-    exit((int)status);
+    sys_exit(status);
 }
 void glob_quit(void *dummy)
 {
@@ -1803,11 +1812,11 @@ void sys_doneglobinit( void)
 }
 
     /* start the GUI up.  Before we actually draw our "visible" windows
-    we have to wait for the GUI to give us our font metrics.  LATER
-    it would be cool to figure out what metrics we really need and tell
-    the GUI - that way we can support arbitrary zoom with appropriate font
-    sizes.   And/or: if we ever move definitively to a vector-based GUI
-    lib we might be able to skip this step altogether. */
+    we have to wait for the GUI to give us our font metrics, see
+    glob_initfromgui().  LATER it would be cool to figure out what metrics
+    we really need and tell the GUI - that way we can support arbitrary
+    zoom with appropriate font sizes.   And/or: if we ever move definitively
+    to a vector-based GUI lib we might be able to skip this step altogether. */
 int sys_startgui(const char *libdir)
 {
     t_canvas *x;
@@ -1866,7 +1875,7 @@ void s_inter_free(t_instanceinter *inter)
         inter->i_nfdpoll = 0;
     }
 #if PDTHREADS
-    pthread_mutex_destroy(&INTER->i_mutex);
+    pthread_mutex_destroy(&inter->i_mutex);
 #endif
     freebytes(inter, sizeof(*inter));
 }
