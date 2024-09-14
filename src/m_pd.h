@@ -10,7 +10,7 @@ extern "C" {
 
 #define PD_MAJOR_VERSION 0
 #define PD_MINOR_VERSION 55
-#define PD_BUGFIX_VERSION 0
+#define PD_BUGFIX_VERSION 1
 #define PD_TEST_VERSION ""
 
 /* compile-time version check:
@@ -21,8 +21,6 @@ extern "C" {
 #define PD_VERSION(major, minor, bugfix) \
     (((major) << 16) + ((minor) << 8) + ((bugfix) > 255 ? 255 : (bugfix)))
 #define PD_VERSION_CODE PD_VERSION(PD_MAJOR_VERSION, PD_MINOR_VERSION, PD_BUGFIX_VERSION)
-
-extern int pd_compatibilitylevel;   /* e.g., 43 for pd 0.43 compatibility */
 
 /* old name for "MSW" flag -- we have to take it for the sake of many old
 "nmakefiles" for externs, which will define NT and not MSW */
@@ -127,6 +125,8 @@ typedef unsigned __int64  uint64_t;
 
 /* for FILE, needed by sys_fopen() and sys_fclose() only */
 #include <stdio.h>
+
+EXTERN int pd_compatibilitylevel;   /* e.g., 43 for pd 0.43 compatibility */
 
 #define MAXPDSTRING 1000        /* use this for anything you want */
 #define MAXPDARG 5              /* max number of args we can typecheck today */
@@ -893,7 +893,7 @@ PD_INLINE int PD_BADFLOAT(t_float f)  /* malformed float */
     t_bigorsmall32 pun;
     pun.f = f;
     pun.ui &= 0x7f800000;
-    return((pun.ui == 0) | (pun.ui == 0x7f800000));
+    return((f != 0) && ((pun.ui == 0) | (pun.ui == 0x7f800000)));
 }
 
 PD_INLINE int PD_BIGORSMALL(t_float f)  /* exponent outside (-64,64) */
@@ -916,7 +916,7 @@ PD_INLINE int PD_BADFLOAT(t_float f)  /* malformed double */
     t_bigorsmall64 pun;
     pun.f = f;
     pun.ui[1] &= 0x7ff00000;
-    return((pun.ui[1] == 0) | (pun.ui[1] == 0x7ff00000));
+    return((f != 0) && ((pun.ui[1] == 0) | (pun.ui[1] == 0x7ff00000)));
 }
 
 PD_INLINE int PD_BIGORSMALL(t_float f)  /* exponent outside (-512,512) */
