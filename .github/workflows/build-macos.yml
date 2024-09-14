@@ -37,7 +37,8 @@ jobs:
           mkdir upload-container
           mv Pd-$PD_VERSION.dmg upload-container
       - name: upload package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: MacOs-Build
           path: mac/upload-container
+          overwrite: true
